@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.library.project.vinhuni.entity.MuonSach;
 import com.library.project.vinhuni.entity.Sach;
 import com.library.project.vinhuni.entity.TacGia;
 import com.library.project.vinhuni.entity.TheLoai;
 import com.library.project.vinhuni.service.SachService;
 import com.library.project.vinhuni.service.TacGiaService;
 import com.library.project.vinhuni.service.TheLoaiService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class SachController {
@@ -59,11 +62,18 @@ public class SachController {
 	}
 
 	@GetMapping("/sach/{id}")
-	public String detail(@PathVariable Long id, Model model) {
+	public String detail(@PathVariable Long id, Model model, HttpServletRequest request) {
+
+		request.getSession(true);
 		Sach sach = sachService.findByMaSach(id);
 		if (sach == null) {
 			return "redirect:/sach";
 		}
+
+		MuonSach muonSach = new MuonSach();
+		muonSach.setSoLuong(1);
+		model.addAttribute("muonSach", muonSach);
+
 		model.addAttribute("sach", sach);
 		return "content/sach/detail";
 	}

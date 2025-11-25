@@ -92,11 +92,17 @@
 								</a>
 							</div>
 							<ul class="product_meta list-unstyled">
-								<li><span>Tác giả:</span><p  th:each="tacGia, i : ${sach.tacGias}" th:text="${i.count == 1 ? tacGia.tenTacGia : ', ' + tacGia.tenTacGia}"></p></li>
-								<li><span>Thể loại:</span><p  th:each="theLoai, i : ${sach.theLoais}" th:text="${i.count == 1 ? theLoai.tenTheLoai : ', ' + theLoai.tenTheLoai}"></p></li>
-								<li><span>Nhà xuất bản: </span><p th:text="${sach.nxb.tenNhaXuatBan}">nxb</p></li>
-								<li><span>ISBN:</span>3288365629</li>
-								<li><span>Language:</span>English</li>
+								<li><span>Tác giả:</span>
+									<p th:each="tacGia, i : ${sach.tacGias}"
+										th:text="${i.count == 1 ? tacGia.tenTacGia : ', ' + tacGia.tenTacGia}"></p></li>
+								<li><span>Thể loại:</span>
+									<p th:each="theLoai, i : ${sach.theLoais}"
+										th:text="${i.count == 1 ? theLoai.tenTheLoai : ', ' + theLoai.tenTheLoai}"></p></li>
+								<li><span>Nhà xuất bản: </span>
+									<p th:text="${sach.nxb.tenNhaXuatBan}">nxb</p></li>
+
+								<li><span>Năm xuất bản: </span>
+									<p th:text="${sach.namXuatBan}"></p></li>
 							</ul>
 						</div>
 					</div>
@@ -106,19 +112,19 @@
 								<button class="nav-link active" id="product_description-tab"
 									data-bs-toggle="tab" data-bs-target="#product_description"
 									type="button" role="tab" aria-controls="product_description"
-									aria-selected="true">Product Details</button>
+									aria-selected="true">Mô tả</button>
 							</li>
 							<li class="nav-item" role="presentation">
 								<button class="nav-link" id="product_aurhor_desc-tab"
 									data-bs-toggle="tab" data-bs-target="#product_aurhor_desc"
 									type="button" role="tab" aria-controls="product_aurhor_desc"
-									aria-selected="false">About Author</button>
+									aria-selected="false">Về tác giả</button>
 							</li>
 							<li class="nav-item" role="presentation">
 								<button class="nav-link" id="product_review-tab"
 									data-bs-toggle="tab" data-bs-target="#product_review"
 									type="button" role="tab" aria-controls="product_review"
-									aria-selected="false">Review</button>
+									aria-selected="false">Đánh giá</button>
 							</li>
 						</ul>
 						<div class="tab-content bj_book_single_tab_content mt-4">
@@ -126,60 +132,13 @@
 								role="tabpanel" aria-labelledby="product_description-tab">
 								<div class="product_book_content_details">
 									<div>
-										<h5 class="content_header mb-2">Key benefits</h5>
-										<ul class="content_text mb-2">
-											<li>Third edition of the bestselling, widely acclaimed
-												Python machine learning book</li>
-											<li>Clear and intuitive explanations take you deep into
-												the theory and practice of Python machine learning</li>
-											<li>Fully updated and expanded to cover TensorFlow 2,
-												Generative Adversarial Network models, reinforcement
-												learning, and best practices</li>
-										</ul>
-									</div>
-									<div>
-										<h5 class="content_header mb-2">Description</h5>
-										<p class="content_text mb-2">Python Machine Learning,
-											Third Edition is a comprehensive guide to machine learning
-											and deep learning with Python. It acts as both a step-by-step
-											tutorial, and a reference you'll keep coming back to as you
-											build your machine learning systems. Packed with clear
-											explanations, visualizations, and working examples, the book
-											covers all the essential machine learning techniques in
-											depth. While some books teach you only to follow
-											instructions, with this machine learning book, Raschka and
-											Mirjalili teach the principles behind machine learning,
-											allowing you to build models and applications for yourself.
-											Updated for TensorFlow 2.0, this new third edition introduces
-											readers to its new Keras API features, as well as the latest
-											additions to scikit-learn. It's also expanded to cover
-											cutting-edge reinforcement learning techniques based on deep
-											learning, as well as an introduction to GANs. Finally, this
-											book also explores a subfield of natural language processing
-											(NLP) called sentiment analysis, helping you learn how to use
-											machine learning algorithms to classify documents. This book
-											is your companion to machine learning with Python, whether
-											you're a Python developer new to machine learning or want to
-											deepen your knowledge of the latest developments.</p>
-									</div>
-									<div>
-										<h5 class="content_header mb-2">What you will learn</h5>
-										<ul class="content_text mb-2">
-											<li>Master the frameworks, models, and techniques that
-												enable machines to learn from data</li>
-											<li>Use scikit-learn for machine learning and TensorFlow
-												for deep learning</li>
-											<li>Apply machine learning to image classification,
-												sentiment analysis, intelligent web applications, and more</li>
-											<li>Build and train neural networks, GANs, and other
-												models</li>
-											<li>Discover best practices for evaluating and tuning
-												models</li>
-											<li>Predict continuous target outcomes using regression
-												analysis</li>
-											<li>Dig deeper into textual and social media data using
-												sentiment analysis</li>
-										</ul>
+										<h5 class="content_header mb-2">Mô tả</h5>
+										<p class="content_text mb-2" th:utext="${sach.moTa}">Python
+											Machine Learning, Third Edition is a comprehensive guide to
+											machine learning and deep learning with Python. It acts as
+											both a step-by-step tutorial, and a reference you'll keep
+											coming back to as you build your machine learning systems.
+											Packed with clear.</p>
 									</div>
 								</div>
 							</div>
@@ -458,64 +417,29 @@
 					</div>
 				</div>
 				<div class="col-xl-3">
-					<div class="product_sidbar">
+					<form th:action="@{/muonsach/{id}(id = ${sach.maSach})}" th:object="${muonSach}"  class="product_sidbar" method="post">
 						<div class="price_head">
-							Buy new: <span class="price">$10</span>
+							Đang còn: <span class="price" th:text="${sach.kho != null ? sach.kho.soLuong : '0'}"></span> quyển
 						</div>
-						<div class="discount_price">
-							List Price:
-							<del>$15.00</del>
-						</div>
-						<span class="save">(You Save $4.5 (30%))</span>
-						<ul class="list-unstyled">
-							<li>
-								<div class="icon">
-									<img th:src="@{/assets/img/arrow.png}" alt="">
-								</div>Get Fast, Free Shipping with <span class="blue_text">FREE
-									Returns</span>
-							</li>
-							<li>
-								<div class="icon">
-									<img th:src="@{/assets/img/arrow.png}" alt="">
-								</div>
-								<span class="blue_text">FREE delivery</span>if you spend $25 on
-								items shipped by Bookjar
-							</li>
-							<li>
-								<div class="icon">
-									<img th:src="@{/assets/img/arrow.png}" alt="">
-								</div>Fastest delivery Tuesday, January 18. Order within <span
-								class="blue_text">19 hrs 43 mins</span>
-							</li>
-							<li>
-								<div class="icon">
-									<img th:src="@{/assets/img/pin.png}" alt="">
-								</div>Select delivery location
-							</li>
-						</ul>
-						<h3>In Stock.</h3>
+
 						<div class="product-qty">
-							Qty:
+							Số quyển
 							<div class="cart_quantity">
-								<button class="quantity_btn minus">
+								<button class="quantity_btn minus" type="button">
 									<i class="icon_minus-06"></i>
 								</button>
-								<input type="number" min="1" max="99" step="1" value="1">
-								<button class="quantity_btn plus">
+								<input type="number" min="1" max="3" step="1" th:field="*{soLuong}">
+								<button class="quantity_btn plus" type="button">
 									<i class="icon_plus"></i>
 								</button>
 							</div>
 						</div>
 
 						<div class="d-flex flex-column gap-3">
-							<a href="checkout.html" class="bj_theme_btn"> Buy Now</a>
-							<button class="bj_theme_btn add-to-cart-automated" type="button"
-								data-name="A Storytelling Workbook" data-price="10"
-								th:attr="data-img=@{/assets/img/book-single1.jpg}" data-mrp="15">
-								<i class="icon_cart_alt"></i>Add to cart
-							</button>
+							<button type="submit" href="checkout.html" class="bj_theme_btn"> Mượn ngay</button>
 						</div>
-					</div>
+						<div th:if="${#fields.hasErrors('soLuong')}" th:errors="*{soLuong}" class="text-danger"></div>
+					</form>
 
 					<div class="product_details_sidebar">
 						<a class="details_header" data-bs-toggle="collapse"
