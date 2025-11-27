@@ -20,23 +20,18 @@ public class PhieuNhap {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long maPhieuNhap; // Khóa chính
+	private Long maPhieuNhap;
 
-	private LocalDateTime ngayNhap = LocalDateTime.now(); // Ngày nhập mặc định là ngày hiện tại
+	private LocalDateTime ngayNhap = LocalDateTime.now();
 	private String ghiChu;
-	// Đã loại bỏ: private Double tongTien; vì thư viện của bạn miễn phí
 
-	// Mối quan hệ Many-to-One: Một Phiếu Nhập được tạo bởi một Nhân Viên
 	@ManyToOne()
-	@JoinColumn(name = "maNhanVien") // Khóa ngoại trỏ đến tblNhanVien
+	@JoinColumn(name = "maNhanVien")
 	private NhanVien nhanVien;
 
-	// Mối quan hệ One-to-Many: Một Phiếu Nhập có nhiều Chi Tiết Phiếu Nhập
 	@OneToMany(mappedBy = "phieuNhap", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ChiTietPhieuNhap> chiTietList = new ArrayList<>();
 
-	// --- Constructors ---
-	// Cần có constructor rỗng để JPA hoạt động
 	public PhieuNhap() {
 	}
 
@@ -46,7 +41,6 @@ public class PhieuNhap {
 		this.chiTietList = chiTietList;
 	}
 
-	// --- Getters ---
 	public Long getMaPhieuNhap() {
 		return maPhieuNhap;
 	}
@@ -67,7 +61,6 @@ public class PhieuNhap {
 		return chiTietList;
 	}
 
-	// --- Setters ---
 	public void setMaPhieuNhap(Long maPhieuNhap) {
 		this.maPhieuNhap = maPhieuNhap;
 	}
