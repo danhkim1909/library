@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <section class="section" layout:fragment="content", style = "font-size: 15px">
+    <section class="section" layout:fragment="content" style="font-size: 25px;">
         <div class="section-body">
 
             <div class="row">
@@ -17,10 +17,10 @@
                         <div class="card-header">
                             <h4>Quản lý Tài khoản</h4>
                             <div class="card-header-action">
-                                <a th:href="@{/admin/nguoidung/create/docgia}" class="btn btn-primary mr-2">
+                                <a th:href="@{/admin/nguoidung/create/docgia}" class="btn btn-primary mr-2" style="font-size: 25px; padding: 8px 15px;">
                                     <i class="fas fa-user-plus"></i> Thêm Độc giả
                                 </a>
-                                <a th:href="@{/admin/nguoidung/create/nhanvien}" class="btn btn-info">
+                                <a th:href="@{/admin/nguoidung/create/nhanvien}" class="btn btn-info" style="font-size: 25px; padding: 8px 15px;">
                                     <i class="fas fa-user-tie"></i> Thêm Nhân viên
                                 </a>
                             </div>
@@ -31,19 +31,20 @@
                                     
                                     <thead>
                                         <tr>
-                                            <th style="width: 70px;">Ảnh</th> 
-                                            <th style="width: 200px;">Tên & TK</th> 
-                                            <th style="width: 100px;">Loại TK</th> 
+                                            <th style="width: 150px;">Ảnh</th> 
+                                            <th style="width: 350px;">Tên & TK</th> 
+                                            <th style="width: 200px; text-align: center;">Loại TK</th> 
                                             <th>Thông tin chi tiết</th> 
-                                            <th style="width: 50px;">Trạng thái</th>
-                                            <th style="width: 100px;">Thao tác</th> </tr>
+                                            <th style="width: 180px;">Trạng thái</th>
+                                            <th style="width: 150px;">Thao tác</th> 
+                                        </tr>
                                     </thead>
 
                                     <tbody>
                                         <tr th:each="taiKhoan : ${taiKhoans}">
                                             
                                             <td>
-                                                <img alt="Ảnh đại diện" width="50" height="50"
+                                                <img alt="Ảnh đại diện" width="80" height="80"
                                                     src="https://img7.thuthuatphanmem.vn/uploads/2024/07/09/avatar-facebook-mac-dinh-de-thuong-nhat_084649042.jpg"
                                                     class="rounded-circle" style="object-fit: cover;">
                                             </td>
@@ -52,18 +53,19 @@
                                                 <div class="font-weight-600" 
                                                      th:text="${taiKhoan.loaiTaiKhoan == 'docgia' ? taiKhoan.docGia.tenDocGia : taiKhoan.nhanVien.tenNhanVien}">Tên Người Dùng</div>
                                                 <div class="text-small text-muted" 
-                                                     th:text="${taiKhoan.tenDangNhap}">ten_dang_nhap</div>
+                                                     th:text="${taiKhoan.tenDangNhap}" style="font-size: 22px;">ten_dang_nhap</div>
                                             </td>
 
-                                            <td>
+                                            <td style="text-align: center;"> 
                                                 <div th:class="${taiKhoan.loaiTaiKhoan == 'docgia' ? 'badge badge-primary' : 'badge badge-info'}"
-                                                     th:text="${taiKhoan.loaiTaiKhoan == 'docgia' ? 'Độc giả' : 'Nhân viên'}">Loại</div>
+                                                     th:text="${taiKhoan.loaiTaiKhoan == 'docgia' ? 'Độc giả' : 'Nhân viên'}"
+                                                     style="font-size: 25px !important;">Loại</div>
                                             </td>
 
                                             <td>
                                                 <div th:text="${'GT: ' + (taiKhoan.loaiTaiKhoan == 'docgia' ? taiKhoan.docGia.gioiTinh : taiKhoan.nhanVien.gioiTinh)}">Giới tính</div>
                                                 <div class="text-small text-muted" 
-                                                     th:text="${taiKhoan.loaiTaiKhoan == 'docgia' ? taiKhoan.docGia.diaChi : taiKhoan.nhanVien.diaChi}">Địa chỉ</div>
+                                                     th:text="${taiKhoan.loaiTaiKhoan == 'docgia' ? taiKhoan.docGia.diaChi : taiKhoan.nhanVien.diaChi}" style="font-size: 22px;">Địa chỉ</div>
                                             </td>
 
                                             <td>
@@ -71,8 +73,8 @@
                                                     <input type="hidden" name="tenDangNhap" th:value="${taiKhoan.tenDangNhap}" />
                                                     <button type="submit" 
                                                             th:class="${taiKhoan.trangThai ? 'badge badge-success btn-sm p-2 border-0' : 'badge badge-danger btn-sm p-2 border-0'}" 
-                                                            style="width: 100%; cursor: pointer;"
-                                                            th:title="${taiKhoan.trangThai ? 'Nhấn để khóa' : 'Nhấn để mở khóa'}">
+                                                            style="width: 100%; cursor: pointer; font-size: 25px !important; padding: 10px !important;" 
+                                                            th:title="${taiKhoan.trangThai ? 'Nhấn để mở khóa' : 'Nhấn để khóa'}">
                                                         <i th:class="${taiKhoan.trangThai ? 'fas fa-unlock' : 'fas fa-lock'}"></i>
                                                         <span th:text="${taiKhoan.trangThai ? 'Hoạt động' : 'Đã khóa'}"></span>
                                                     </button>
@@ -82,7 +84,7 @@
                                             <td>
                                                 <form th:action="@{/admin/nguoidung/update}" method="post">
                                                     <input type="hidden" name="tenDangNhap" th:value="${taiKhoan.tenDangNhap}" />
-                                                    <button type="submit" class="btn btn-sm btn-outline-info" title="Sửa thông tin">
+                                                    <button type="submit" class="btn btn-sm btn-outline-info" title="Sửa thông tin" style="font-size: 25px; padding: 5px 10px;">
                                                         <i class="fas fa-edit"></i> Sửa
                                                     </button>
                                                 </form>

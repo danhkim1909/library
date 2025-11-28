@@ -7,7 +7,6 @@
 
 <body layout:fragment="content">
 
-	<!-- breadcrumb area  -->
 	<section class="bj_breadcrumb_area text-center banner_animation_03"
 		data-bg-color="#f5f5f5">
 		<div class="bg_one"
@@ -56,10 +55,6 @@
 			</ol>
 		</div>
 	</section>
-	<!-- breadcrumb area  -->
-
-
-	<!-- shop area  -->
 	<section class="bj_shop_area sec_padding" data-bg-color="#f5f5f5">
 		<div class="container">
 			<div class="row">
@@ -67,7 +62,7 @@
 					<div class="shop_sidebar">
 						<div class="widget filter_widget">
 							<h3 class="shop_sidebar_title">
-								<a href="#"><img src="assets/img/shop/filter.svg" alt=""></a>Filter
+								<a href="#"><img src="assets/img/shop/filter.svg" alt=""></a>Bộ lọc
 							</h3>
 						</div>
 						<div class="widget shop_category_widget">
@@ -76,12 +71,12 @@
 							</h4>
 							<ul class="list-unstyled shop_category_list">
 								<li><a
-									th:href="@{/sach?tuKhoa={tK}&maTacGia={maTG}&maTheLoai=0(tK = ${tuKhoa}, maTG = ${maTacGia})}"
+									th:href="@{/sach(tuKhoa=${tuKhoa}, maTacGia=${maTacGia}, maTheLoai=0, sapXepTheo=${sapXepTheo})}"
 									th:class="${maTheLoai == 0 ? 'text-primary' : '' }">Tất cả</a></li>
 								<li th:each="theLoai : ${theLoais}"><a
-									th:href="@{/sach?tuKhoa={tuKhoa}&maTacGia={maTG}&maTheLoai={maTL}(tuKhoa = ${tuKhoa}, maTG= ${maTacGia}, maTL=${theLoai.maTheLoai})}"
+									th:href="@{/sach(tuKhoa=${tuKhoa}, maTacGia=${maTacGia}, maTheLoai=${theLoai.maTheLoai}, sapXepTheo=${sapXepTheo})}"
 									th:class="${maTheLoai == theLoai.maTheLoai ? 'text-primary' : '' }"
-									th:text="${theLoai.tenTheLoai}">The loai</a></li>
+									th:text="${theLoai.tenTheLoai}">Tên thể loại</a></li>
 							</ul>
 
 						</div>
@@ -92,12 +87,12 @@
 
 							<ul class="list-unstyled shop_category_list">
 								<li><a
-									th:href="@{/sach?tuKhoa={tK}&maTacGia=0&maTheLoai={maTL}(tK = ${tuKhoa}, maTL = ${maTheLoai})}"
+									th:href="@{/sach(tuKhoa=${tuKhoa}, maTacGia=0, maTheLoai=${maTheLoai}, sapXepTheo=${sapXepTheo})}"
 									th:class="${maTacGia == 0 ? 'text-primary' : '' }">Tất cả</a></li>
 								<li th:each="tacGia : ${tacGias}"><a
-									th:href="@{/sach?tuKhoa={tK}&maTacGia={maTG}&maTheLoai={maTL}(tK = ${tuKhoa}, maTL = ${maTheLoai}, maTG = ${tacGia.maTacGia})}"
+									th:href="@{/sach(tuKhoa=${tuKhoa}, maTacGia=${tacGia.maTacGia}, maTheLoai=${maTheLoai}, sapXepTheo=${sapXepTheo})}"
 									th:class="${maTacGia == tacGia.maTacGia ? 'text-primary' : '' }"
-									th:text="${tacGia.tenTacGia}">Tac gia</a></li>
+									th:text="${tacGia.tenTacGia}">Tên tác giả</a></li>
 							</ul>
 						</div>
 					</div>
@@ -105,9 +100,12 @@
 				<div class="col-lg-9">
 					<form role="search" method="get" class="pr_search_form input-group"
 						th:action="@{/sach}">
-						<input type="text" name="tuKhoa" value=""
+						<input type="hidden" name="maTheLoai" th:value="${maTheLoai}">
+						<input type="hidden" name="maTacGia" th:value="${maTacGia}">
+						<input type="hidden" name="sapXepTheo" th:value="${sapXepTheo}">
+						<input type="text" name="tuKhoa"
 							class="form-control search-field" id="search"
-							placeholder="Tìm sách" th:value="${tuKhoa}">
+							placeholder="Tìm sách..." th:value="${tuKhoa}">
 						<button type="submit">
 							<i class="ti-search"></i>
 						</button>
@@ -116,16 +114,15 @@
 						class="shop_top d-flex align-items-center justify-content-between">
 						<div class="shop_menu_left"
 							th:text="${'Tìm được ' + truyVan.totalElements + ' sách'}">500
-							sach</div>
+							sách</div>
 						<div
 							class="shop_menu_right d-flex align-items-center justify-content-end">
 							Sắp xếp theo:
 							<div class="woocommerce-ordering" method="get">
 								<select name="orderby" class="orderby selectpickers"
 									id="selectOrder">
-									<option value="ngayNhap_asc" th:selected="${sapXepTheo == 'ngayNhap_asc'}">Mới
-										nhất</option>
-									<option value="ngayNhap_desc"  th:selected="${sapXepTheo == 'ngayNhap_desc'}">Cũ nhất</option>
+									<option value="ngayNhap_desc" th:selected="${sapXepTheo == 'ngayNhap_desc'}">Mới nhất</option>
+									<option value="ngayNhap_asc"  th:selected="${sapXepTheo == 'ngayNhap_asc'}">Cũ nhất</option>
 									<option value="tenSach_asc"  th:selected="${sapXepTheo == 'tenSach_asc'}">Tên từ A đến Z</option>
 									<option value="tenSach_desc"  th:selected="${sapXepTheo == 'tenSach_desc'}">Tên từ Z đến A</option>
 								</select>
@@ -143,19 +140,21 @@
 										<span class="product-badge" th:if="${sach.isMoi()}">Sách
 											mới</span>
 										<div class="ratting">
-											<!-- <img src="assets/img/star-1.png" alt="">4.9 -->
-										</div>
+											</div>
 									</div>
 									<div class="hover_item">
 										<a class="quick_button" href="my-wishlist.html"
 											data-bs-toggle="tooltip" data-bs-placement="right"
-											title="Wishlist"><i class="icon_heart_alt"></i></a> <span
+											title="Danh sách yêu thích"><i class="icon_heart_alt"></i></a> 
+										<span
 											data-bs-toggle="tooltip" data-bs-placement="right"
-											title="Quickview"><button class="quick_button"
+											title="Xem nhanh"><button class="quick_button"
 												data-bs-toggle="modal" data-bs-target="#productQuickView">
 												<i class="arrow_move"></i>
-											</button></span> <a class="quick_button" href="#" data-bs-toggle="tooltip"
-											data-bs-placement="right" title="Compare"><i
+											</button>
+										</span> 
+										<a class="quick_button" href="#" data-bs-toggle="tooltip"
+											data-bs-placement="right" title="So sánh"><i
 											class="ti-control-shuffle"></i></a>
 									</div>
 									<button type="button"
@@ -168,12 +167,11 @@
 								</div>
 								<div class="bj_new_pr_content">
 									<a th:href="@{/sach/{id}(id = ${sach.maSach})}">
-										<h4 class="bj_new_pr_title" th:text="${sach.tenSach}">ten
-											sach</h4>
+										<h4 class="bj_new_pr_title" th:text="${sach.tenSach}">Tên sách</h4>
 									</a>
 									<div class="bj_pr_meta d-flex">
-										<div class="book_price" th:text="${sach.moTa}">mota</div>
-									</div>
+										<div class="book_price" th:text="${sach.moTa}" 
+                                             style="font-weight: normal; color: #6c757d;">Mô tả</div> </div>
 								</div>
 							</div>
 						</div>
@@ -181,15 +179,22 @@
 					<div class="text-center">
 						<nav aria-label="...">
 							<ul class="pagination pagi-content">
-								<li class="page-item"><a class="page-link" href="#"><i
-										class="ti-angle-left"></i>Trước</a></li>
+								<li th:if="${!truyVan.isFirst()}" class="page-item">
+									<a class="page-link"
+										th:href="@{/sach(tuKhoa=${tuKhoa}, maTacGia=${maTacGia}, maTheLoai=${maTheLoai}, sapXepTheo=${sapXepTheo}, trang=${truyVan.number})}"
+										><i class="ti-angle-left"></i>Trước</a>
+								</li>
 								<li th:each="i : ${#numbers.sequence(1, truyVan.totalPages)}"
 									class="page-item" aria-current="page"
-									th:classappend="${truyVan.number + 1 == i? 'active' : ''}"><a
-									class="page-link" th:text="${i}"
-									th:href="@{/sach?tuKhoa={tK}&maTacGia={maTG}&maTheLoai={maTL}&sapXepTheo={sX}&trang={t}(tK = ${tuKhoa}, maTG = ${maTacGia}, maTL=${maTheLoai}, sX=${sapXepTheo}, t = ${i})}">1</a></li>
-								<li class="page-item"><a class="page-link">Sau<i
-										class="ti-angle-right"></i></a></li>
+									th:classappend="${truyVan.number + 1 == i ? 'active' : ''}">
+									<a class="page-link" th:text="${i}"
+										th:href="@{/sach(tuKhoa=${tuKhoa}, maTacGia=${maTacGia}, maTheLoai=${maTheLoai}, sapXepTheo=${sapXepTheo}, trang=${i})}">1</a>
+								</li>
+								<li th:if="${!truyVan.isLast()}" class="page-item">
+									<a class="page-link"
+										th:href="@{/sach(tuKhoa=${tuKhoa}, maTacGia=${maTacGia}, maTheLoai=${maTheLoai}, sapXepTheo=${sapXepTheo}, trang=${truyVan.number + 2})}"
+										>Sau<i class="ti-angle-right"></i></a>
+								</li>
 							</ul>
 						</nav>
 					</div>
@@ -204,14 +209,20 @@
 						function() {
 							const selectOrder = document
 									.getElementById('selectOrder');
+							// Sửa lại cách lấy tham số và tạo URL để bao gồm tất cả tham số cần thiết
 							$('#selectOrder')
 									.on(
 											'change',
 											function() {
-												let maTG = /*[[${maTacGia}]] */0;
-												let maTL = /*[[${maTheLoai}]] */0;
-												let tK = /*[[${tuKhoa}]] */'';
-												let url = `/sach?tuKhoa=${tK}&maTheLoai=${maTL}&maTacGia=${maTG}&sapXepTheo=${selectOrder.value}`
+												// Lấy các tham số hiện tại từ server-side qua Thymeleaf
+												let maTG = /*[[${maTacGia}]] */ 0;
+												let maTL = /*[[${maTheLoai}]] */ 0;
+												let tK = /*[[${tuKhoa}]] */ '';
+                                                // Lấy giá trị sắp xếp mới
+												let sX = selectOrder.value; 
+												
+                                                // Tạo URL mới, bỏ qua tham số trang (mặc định sẽ là trang 1)
+												let url = `/sach?tuKhoa=${tK}&maTheLoai=${maTL}&maTacGia=${maTG}&sapXepTheo=${sX}`;
 												window.location.href = url;
 											});
 						});

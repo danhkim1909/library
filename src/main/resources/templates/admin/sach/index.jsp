@@ -35,7 +35,10 @@
 									<tr th:each="sach,i : ${sachs}" class="">
 										<th scope="row" th:text="${i.count}">STT</th>
 
-							
+										<td><img th:if="${sach.anhBia != null}"
+											th:src="@{${sach.anhBia}}" alt="Ảnh bìa"
+											style="width: 60px; height: auto; object-fit: cover;">
+										</td>
 
 										<td th:text="${sach.tenSach}">Tên sách mẫu</td>
 
@@ -43,6 +46,7 @@
 											<div th:each="tl : ${sach.theLoais}"
 												th:text="${tl.tenTheLoai}"></div>
 										</td>
+
 
 										<td>
 											<div th:each="tg : ${sach.tacGias}" th:text="${tg.tenTacGia}">
@@ -61,10 +65,6 @@
 												<i th:class="${sach.hien ? 'fa fa-eye' : 'fa fa-eye-slash'}"></i>
 												<span th:text="${sach.hien ? 'Đang hiện' : 'Đã ẩn'}"></span>
 										</a></td>
-													<td><img th:if="${sach.anhBia != null}"
-											th:src="@{${sach.anhBia}}" alt="Ảnh bìa"
-											style="width: 60px; height: auto; object-fit: cover;">
-										</td>
 									</tr>
 								</tbody>
 							</table>
