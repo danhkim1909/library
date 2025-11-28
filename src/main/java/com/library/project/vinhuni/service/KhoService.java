@@ -1,5 +1,7 @@
 package com.library.project.vinhuni.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,10 @@ public class KhoService {
 
 	@Autowired
 	private KhoRepository khoRepository;
+
+	public List<Kho> getAll() {
+		return khoRepository.findAll();
+	}
 
 	public Kho findBySach(Sach sach) {
 		return khoRepository.findBySach(sach).orElse(null);

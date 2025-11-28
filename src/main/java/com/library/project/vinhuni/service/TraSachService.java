@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.library.project.vinhuni.controller.RegisterController;
 import com.library.project.vinhuni.entity.Kho;
 import com.library.project.vinhuni.entity.MuonSach;
 import com.library.project.vinhuni.entity.NhanVien;
@@ -16,14 +17,24 @@ import com.library.project.vinhuni.repository.TraSachRepository;
 @Service
 public class TraSachService {
 
+	private final RegisterController registerController;
+
 	@Autowired
 	TraSachRepository traSachRepository;
 
 	@Autowired
 	KhoRepository khoRepository;
 
+	TraSachService(RegisterController registerController) {
+		this.registerController = registerController;
+	}
+
 	public TraSach findByMaTraSach(Long maTraSach) {
 		return traSachRepository.findById(maTraSach).orElse(null);
+	}
+
+	public List<TraSach> findByXacNhanTrue() {
+		return traSachRepository.findByXacNhanTrue();
 	}
 
 	public List<TraSach> findByXacNhanFalse() {

@@ -24,6 +24,10 @@ public class MuonSachService {
 	@Autowired
 	KhoRepository khoRepository;
 
+	public List<MuonSach> getAll() {
+		return muonSachRepository.findAll();
+	}
+
 	public MuonSach findByMaMuonSach(Long maMuonSach) {
 		return muonSachRepository.findById(maMuonSach).orElse(null);
 	}

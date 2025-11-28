@@ -12,4 +12,5 @@ public interface PhieuNhapRepository extends JpaRepository<PhieuNhap, Long> {
 	public PhieuNhap findByMaPhieuNhap(Long maPhieuNhap);
 
 	List<PhieuNhap> findByOrderByNgayNhapDesc();
+
 }

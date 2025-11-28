@@ -31,6 +31,10 @@ public class PhieuNhapService {
 		return phieuNhapRepository.findByOrderByNgayNhapDesc();
 	}
 
+	public List<PhieuNhap> getAll() {
+		return phieuNhapRepository.findAll();
+	}
+
 	public void createPhieuNhap(PhieuNhapDto phieuNhapDto, NhanVien nhanVien) {
 		PhieuNhap phieuNhap = new PhieuNhap();
 		phieuNhap.setGhiChu(phieuNhapDto.getGhiChu());
