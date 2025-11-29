@@ -17,6 +17,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -75,6 +76,9 @@ public class Sach {
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "tbl_sach_tac_gia", joinColumns = @JoinColumn(name = "ma_sach"), inverseJoinColumns = @JoinColumn(name = "ma_tac_gia"))
 	private List<TacGia> tacGias = new ArrayList<>();
+
+	@OneToMany(mappedBy = "sach", fetch = FetchType.LAZY)
+	private List<DanhGia> danhGias = new ArrayList<>();
 
 	public Sach() {
 
@@ -174,6 +178,14 @@ public class Sach {
 
 	public Boolean getHien() {
 		return this.hien;
+	}
+
+	public void setDanhGias(List<DanhGia> danhGias) {
+		this.danhGias = danhGias;
+	}
+
+	public List<DanhGia> getDanhGias() {
+		return danhGias;
 	}
 
 	public Integer getSoLuong() {

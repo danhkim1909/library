@@ -663,6 +663,14 @@
   $('a[href="#product_review"]').click(function () {
     activateTabByHash();
   });
+
+  // Reset star rating when modal is opened
+  $('#exampleModal').on('shown.bs.modal', function () {
+    var $modal = $(this);
+    $modal.find('.dynamic-star-rating-input').val(1);
+    $modal.find('.dynamic-star-rating i').removeClass('active');
+    $modal.find('.dynamic-star-rating i').first().addClass('active');
+  });
 })(jQuery);
 
 // Automated Cart System

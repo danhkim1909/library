@@ -40,6 +40,10 @@ public class MuonSachService {
 		return muonSachRepository.findByDocGiaAndSach(docGia, sach);
 	}
 
+	public List<MuonSach> findByXacNhanTrueAndDocGiaAndSach(DocGia docGia, Sach sach) {
+		return muonSachRepository.findByXacNhanTrueAndDocGiaAndSach(docGia, sach);
+	}
+
 	public MuonSach findByTraSach(TraSach traSach) {
 		return muonSachRepository.findByTraSach(traSach).orElse(null);
 	}

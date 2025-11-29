@@ -21,4 +21,6 @@ public interface MuonSachRepository extends JpaRepository<MuonSach, Long> {
 	public List<MuonSach> findByXacNhanNull();
 
 	public List<MuonSach> findByDocGiaOrderByThoiGianMuonDesc(DocGia docGia);
+
+	public List<MuonSach> findByXacNhanTrueAndDocGiaAndSach(DocGia docGia, Sach sach);
 }
