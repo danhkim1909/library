@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.library.project.vinhuni.entity.PhieuNhap;
+import com.library.project.vinhuni.service.DanhGiaService;
 import com.library.project.vinhuni.service.KhoService;
 import com.library.project.vinhuni.service.MuonSachService;
 import com.library.project.vinhuni.service.PhieuNhapService;
@@ -34,6 +35,8 @@ public class BangDieuKhienController {
 
 	@Autowired
 	TraSachService traSachService;
+	@Autowired
+	DanhGiaService danhGiaService;
 
 	@GetMapping("")
 	public String index(Model model) {
@@ -55,6 +58,11 @@ public class BangDieuKhienController {
 		Integer daTra = traSachService.findByXacNhanTrue().stream().filter(tr -> tr.getMuonSach().getThoiGianMuon().isAfter(bayNgayTruoc)).mapToInt(tr -> tr.getMuonSach().getSoLuong()).sum();
 		model.addAttribute("daTra", daTra);
 		model.addAttribute("muonTrongTuan", muonTrongTuan);
+
+		Integer danhGiaTrongTuan = danhGiaService.findAll().stream().filter(dg -> dg.getThoiGian().isAfter(bayNgayTruoc)).toList().size();
+		Integer danhGia5SaoTrongTuan = danhGiaService.findAll().stream().filter(dg -> dg.getThoiGian().isAfter(bayNgayTruoc) && dg.getSoSao() == 5).toList().size();
+		model.addAttribute("danhGia5SaoTrongTuan", danhGia5SaoTrongTuan);
+		model.addAttribute("danhGiaTrongTuan", danhGiaTrongTuan);
 		return "admin/dashboard";
 	}
 }

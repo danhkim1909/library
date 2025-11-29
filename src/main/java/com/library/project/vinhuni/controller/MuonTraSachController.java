@@ -81,7 +81,7 @@ public class MuonTraSachController {
 
 		muonSachService.create(muonSach, docGia, sach);
 
-		return "redirect:/sach";
+		return "redirect:/sachmuon";
 	}
 
 	@GetMapping("/sachmuon")

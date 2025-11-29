@@ -1,6 +1,7 @@
 package com.library.project.vinhuni.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,10 @@ public class DanhGiaService {
 
 	public DanhGia findByDocGiaAndSach(DocGia docGia, Sach sach) {
 		return danhGiaRepository.findByDocGiaAndSach(docGia, sach).orElse(null);
+	}
+
+	public List<DanhGia> findAll() {
+		return danhGiaRepository.findAll();
 	}
 
 	public void create(DanhGia danhGia, DocGia docGia, Sach sach) {
