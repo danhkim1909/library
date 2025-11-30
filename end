@@ -1,0 +1,236 @@
+[33mcommit f0f5d8379e16961b19971192bdd82570d6213342[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Sun Nov 30 20:36:39 2025 +0700
+
+    sửa bảng điều khiển
+
+[33mcommit c5025be409edc3b9fac0e09256e6bec009c96d68[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Sat Nov 29 15:24:55 2025 +0700
+
+    dẫn hướng để mượn xong là truuy cập lịch sử mượn, sửa bảng điều khiển
+
+[33mcommit a9a106e8d58e223262df5add8b13a557893e03cd[m
+Merge: 5ea6e97 d36c7c8
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Sat Nov 29 09:51:50 2025 +0700
+
+    thêm đánh giá
+
+[33mcommit 5ea6e972d02a5363a601e0f12064fb86ded34199[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Fri Nov 28 21:12:44 2025 +0700
+
+    merge
+
+[33mcommit d36c7c87b272a760b528b71f76a310fc9bd22040[m
+Author: danhkim1909 <danhnguyenthikim@gmail.com>
+Date:   Fri Nov 28 16:37:07 2025 +0700
+
+     sua giao dien nguoi dung
+
+[33mcommit c4c3c2a0f3aeee4b36fb9b256af942255207d85e[m
+Author: danhkim1909 <danhnguyenthikim@gmail.com>
+Date:   Thu Nov 27 16:35:47 2025 +0700
+
+    doi tep jsp
+
+[33mcommit f58a26766e23fe78bdc7c4555bcfebe6f9c53b28[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Thu Nov 27 16:08:12 2025 +0700
+
+    đổi cài đặt định dạng tệp view
+
+[33mcommit c42076b28949cd4be1ec63e7505b6ad70da59bf8[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Tue Nov 25 10:49:47 2025 +0700
+
+    thêm tính năng mượn sách, duyệt mượn sách, hủy mượn sách khi chưa duyệt, xem danh sách đang mượn, thông báo đi trả sách, duyệt thông báo trả sách, chụp ảnh để xác nhận sách sau khi trả, xem lại lịch sử mượn trả, tính năng xác nhận trả sách trực tiếp của nhân viên mà không cần người dùng thông báo, tính năng giới hạn số quyển đang mượn trên cùng một mẫu sách
+
+[33mcommit e886303c7774fe5105a76b797a8cc901cfd3aeef[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Sat Nov 22 17:33:09 2025 +0700
+
+    thêm trang danh sách sách, tìm kiếm sách, chi tiết sách
+
+[33mcommit d9936c4c9d9acf09a9d11a755b658260d665411b[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Tue Nov 18 12:51:14 2025 +0700
+
+    asdsa
+
+[33mcommit a3bd3651ef554bca8573632861b6926580fd5ab1[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Tue Nov 18 03:28:24 2025 +0700
+
+    quản lý nhập xuất kho
+
+[33mcommit 60cd2b6a15394c0941a0f7c1703ad6719df70c17[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Mon Nov 17 22:59:28 2025 +0700
+
+    sửa kho, thêm validate nhập hàng
+
+[33mcommit fb0e95716f741d9e1614fa6abfa3b725164665a9[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Mon Nov 17 15:14:22 2025 +0700
+
+    về trang chủ cũ
+
+[33mcommit cf690df761fadaf55d5d0167876de95069af55eb[m
+Merge: 414ab18 56ffa24
+Author: Lê Anh Dũng <anhdun.cxh@gmail.com>
+Date:   Fri Nov 14 16:18:53 2025 +0700
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit 56ffa2475e21a3e5094efab6f9cb564a55e832f4[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Fri Nov 14 14:01:54 2025 +0700
+
+    tạo mới, hiển thị danh sách phiếu nhập
+
+[33mcommit ef825ee52384491e7ac776d191c77774c4d218e7[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Fri Nov 14 11:35:53 2025 +0700
+
+    tạo phiếu nhập
+
+[33mcommit 414ab1836c542bbe05317b616cdf0eadf9fa645a[m
+Author: Lê Anh Dũng <anhdun.cxh@gmail.com>
+Date:   Thu Nov 13 20:31:09 2025 +0700
+
+    Lê Anh Dũng, sửa trang chủ, sửa xíu cú pháp CSDL vì tui dùng XAMPP MySQL
+
+[33mcommit 8371827983a50d58a6aa69c9072d24eab818cf70[m
+Author: danhkim1909 <danhnguyenthikim@gmail.com>
+Date:   Thu Nov 13 12:23:11 2025 +0700
+
+    .
+
+[33mcommit b1daeb4f8e0bec2cec8de0dbe9ccac92cc6d6a22[m
+Author: danhkim1909 <danhnguyenthikim@gmail.com>
+Date:   Wed Nov 12 16:17:58 2025 +0700
+
+    them entity, repositori kho,pn,ctpn
+
+[33mcommit 23b0ee3b444afd37eb5b399532b293b9bb8dfa6d[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Tue Nov 11 00:13:16 2025 +0700
+
+    thêm, sửa, ẩn sách
+
+[33mcommit 3bed50fae24d50460a999c024d4108c7d8d546a2[m
+Author: danhkim1909 <danhnguyenthikim@gmail.com>
+Date:   Mon Nov 10 15:13:23 2025 +0700
+
+    Thay đổi entity tác gia, theloai, them toan bo file sach
+
+[33mcommit 690764c8184298c384c6ffbf742e22044ace6299[m
+Author: danhkim1909 <danhnguyenthikim@gmail.com>
+Date:   Wed Nov 5 16:45:43 2025 +0700
+
+    entity danh gia va yeu thich
+
+[33mcommit 8b1a0675a362bfdbab634fb0143b7b78df5c505c[m
+Author: danhkim1909 <danhnguyenthikim@gmail.com>
+Date:   Wed Nov 5 15:14:39 2025 +0700
+
+    them db sach
+
+[33mcommit c4577e6b0c54b0826373dd54b1bcba3b39d1bb9e[m
+Author: danhkim1909 <danhnguyenthikim@gmail.com>
+Date:   Mon Nov 3 16:27:47 2025 +0700
+
+    sua nut
+
+[33mcommit 12dd665310c97cfbee9fb7ac1c01968a9b25ec7a[m
+Merge: efbd461 ec07b5e
+Author: danhkim1909 <danhnguyenthikim@gmail.com>
+Date:   Mon Nov 3 16:14:06 2025 +0700
+
+    Đẩy lên lại
+
+[33mcommit efbd46166531b05854179bd4c81bdb5f6bb890fc[m
+Author: danhkim1909 <danhnguyenthikim@gmail.com>
+Date:   Mon Nov 3 16:05:40 2025 +0700
+
+    sua giao dien
+
+[33mcommit ec07b5eae0f5b06853b13f40b03aff69e72fc7f4[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Sun Nov 2 23:52:24 2025 +0700
+
+    Ẩn hiện nhà xuất bản
+
+[33mcommit 1fd5c029e922523ec34aa1a56d395432287a111c[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Sun Nov 2 01:38:20 2025 +0700
+
+    Thêm validation, thêm sửa nhà xuất bản
+
+[33mcommit f025de3abca901fb5db32b66d68faebd9f78b855[m
+Author: danhkim1909 <danhnguyenthikim@gmail.com>
+Date:   Sat Nov 1 20:04:11 2025 +0700
+
+    nhaxuatban
+
+[33mcommit e9896309ca82ada93ef3048882fe1b695c780231[m
+Author: danhkim1909 <danhnguyenthikim@gmail.com>
+Date:   Tue Oct 28 09:52:54 2025 +0700
+
+    thêm tính năng khoá tài khoản
+
+[33mcommit db5a4b07aeabe284a4663f229f8637923a84dbab[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Tue Oct 28 02:26:41 2025 +0700
+
+    trang quản trị, têhm, sửa, ẩn thể loại
+
+[33mcommit 22821bc2e2f2705866f8e2b306a0f299c0eb085a[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Mon Oct 27 16:57:23 2025 +0700
+
+    xong
+
+[33mcommit 5e9f9c853d5eabe5369120c6aa8e19b45cd0562b[m
+Author: danhkim1909 <danhnguyenthikim@gmail.com>
+Date:   Mon Oct 27 16:32:46 2025 +0700
+
+    error
+
+[33mcommit 14d526ed8909c46951e4ea060b848ae53ea73514[m
+Author: danhkim1909 <danhnguyenthikim@gmail.com>
+Date:   Mon Oct 27 15:29:54 2025 +0700
+
+    Thêm tính năng quản lý thể loại
+
+[33mcommit d60a8d42143efd67bb7cb61c7e3a31944f17b1ce[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Mon Oct 27 01:15:53 2025 +0700
+
+    fix lỗi avata xem chi tiết
+
+[33mcommit 705704e9b6ff634007409facc1a13c63589abb22[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Mon Oct 27 01:09:35 2025 +0700
+
+    quản lý tác giả
+
+[33mcommit 7d6849f6c4a44e05e27e83e5700ff618d08604a4[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Thu Oct 23 00:00:34 2025 +0700
+
+    tính năng chỉnh sửa thông tin người dùng ở cửa sở admin
+
+[33mcommit 0bb9aa55c1f6eb626ae860bdcb603122faa97c0d[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Wed Oct 22 21:36:31 2025 +0700
+
+    tính năng tạo người dùng ở cửa sở admin
+
+[33mcommit 848e534b53e29021a19902f7d540db32278438c2[m
+Author: locboyf1 <locboyf1@gmail.com>
+Date:   Tue Oct 14 11:37:53 2025 +0700
+
+    first commit
