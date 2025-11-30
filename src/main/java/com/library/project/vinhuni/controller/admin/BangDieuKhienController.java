@@ -60,8 +60,8 @@ public class BangDieuKhienController {
 		model.addAttribute("muonTrongTuan", muonTrongTuan);
 
 		Integer danhGiaTrongTuan = danhGiaService.findAll().stream().filter(dg -> dg.getThoiGian().isAfter(bayNgayTruoc)).toList().size();
-		Integer danhGia5SaoTrongTuan = danhGiaService.findAll().stream().filter(dg -> dg.getThoiGian().isAfter(bayNgayTruoc) && dg.getSoSao() == 5).toList().size();
-		model.addAttribute("danhGia5SaoTrongTuan", danhGia5SaoTrongTuan);
+		Double saoTrungBinh = danhGiaService.findAll().stream().filter(dg -> dg.getThoiGian().isAfter(bayNgayTruoc) && dg.getSoSao() == 5).mapToInt(dg -> dg.getSoSao()).average().orElse(0);
+		model.addAttribute("saoTrungBinh", saoTrungBinh);
 		model.addAttribute("danhGiaTrongTuan", danhGiaTrongTuan);
 		return "admin/dashboard";
 	}

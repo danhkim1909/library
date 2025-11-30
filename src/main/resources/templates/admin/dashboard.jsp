@@ -98,8 +98,8 @@
 									<div class="card-content">
 										<h5 class="font-15">7 ngày đánh giá</h5>
 										<h2 class="mb-3 font-18" th:text="${danhGiaTrongTuan + ' lần'}">$48,697</h2>
-										<p class="mb-0">
-											<span class="col-green" th:text="${danhGia5SaoTrongTuan}">123</span> lần 5 sao
+										<p class="mb-0">Trung bình 
+											<span class="col-green" th:text="${#numbers.formatDecimal(saoTrungBinh, 1, 1)}">123</span> sao
 										</p>
 									</div>
 								</div>
