@@ -129,7 +129,7 @@ function chart2() {
                 show: false
             },
             zoom: {
-                enabled: true
+                enabled: false
             }
         },
         responsive: [{
@@ -145,22 +145,19 @@ function chart2() {
         plotOptions: {
             bar: {
                 horizontal: false,
-                columnWidth: '200px',
+                columnWidth: '60%',
             },
         },
         series: [{
-            name: 'PRODUCT A',
-            data: [44, 55, 41, 67, 22, 43]
+            name: 'Đã trả',
+            data: window.traList
         }, {
-            name: 'PRODUCT B',
-            data: [13, 23, 20, 8, 13, 27]
-        }, {
-            name: 'PRODUCT C',
-            data: [11, 17, 15, 15, 21, 14]
+            name: 'Chưa trả',
+            data: window.chuaTraList
         }],
         xaxis: {
-            type: 'datetime',
-            categories: ['01/01/2019 GMT', '01/02/2019 GMT', '01/03/2019 GMT', '01/04/2019 GMT', '01/05/2019 GMT', '01/06/2019 GMT'],
+            type: 'category',
+            categories: window.thangList,
             labels: {
                 style: {
                     colors: "#9aa0ac"
@@ -170,8 +167,8 @@ function chart2() {
         yaxis: {
             labels: {
                 style: {
-                    color: "#9aa0ac"
-                }
+					color: "#9aa0ac"
+				}
             }
         },
         legend: {

@@ -60,7 +60,7 @@ public class MuonSachService {
 
 		List<MuonSach> muonSachs = muonSachRepository.findByDocGiaAndSach(docGia, sach);
 
-		Integer soSachChuaTra = muonSachs.stream().filter(ms -> ms.isDaTra() == false).filter(ms -> ms.getSach() == sach).filter(ms -> ms.getXacNhan() != false).mapToInt(MuonSach::getSoLuong).sum();
+		Integer soSachChuaTra = muonSachs.stream().filter(ms -> ms.isDaTra() == false).filter(ms -> ms.getSach() == sach).filter(ms -> ms.getXacNhan() == null || ms.getXacNhan() == true).mapToInt(MuonSach::getSoLuong).sum();
 
 		return soSachChuaTra;
 	}

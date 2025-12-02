@@ -1,6 +1,10 @@
 package com.library.project.vinhuni.controller.admin;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.YearMonth;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.library.project.vinhuni.entity.MuonSach;
 import com.library.project.vinhuni.entity.PhieuNhap;
 import com.library.project.vinhuni.service.DanhGiaService;
 import com.library.project.vinhuni.service.KhoService;
@@ -63,6 +68,37 @@ public class BangDieuKhienController {
 		Double saoTrungBinh = danhGiaService.findAll().stream().filter(dg -> dg.getThoiGian().isAfter(bayNgayTruoc) && dg.getSoSao() == 5).mapToInt(dg -> dg.getSoSao()).average().orElse(0);
 		model.addAttribute("saoTrungBinh", saoTrungBinh);
 		model.addAttribute("danhGiaTrongTuan", danhGiaTrongTuan);
+
+		LocalDate homNay = LocalDate.now();
+		int namHienTai = homNay.getYear();
+		int thangHienTai = homNay.getMonthValue();
+
+		List<String> thang = new ArrayList<>();
+		List<Integer> daTraSachMuonTrongThang = new ArrayList<>();
+		List<Integer> chuaTraSachMuonTrongThang = new ArrayList<>();
+
+		for (int i = 1; i <= thangHienTai; i++) {
+			thang.add("Tháng " + i);
+
+			YearMonth thangCanTinh = YearMonth.of(namHienTai, i);
+
+			LocalDateTime dauThang = thangCanTinh.atDay(1).atStartOfDay();
+			LocalDateTime cuoiThang = thangCanTinh.atEndOfMonth().atTime(LocalTime.MAX);
+
+			List<MuonSach> daMuonTrongThangIList = muonSachService.getAll().stream().filter(ms -> ms.getXacNhan() != null && ms.getXacNhan() == true && ms.getThoiGianMuon().isAfter(dauThang) && ms.getThoiGianMuon().isBefore(cuoiThang)).toList();
+			Integer daMuonTrongThangI = daMuonTrongThangIList.size();
+
+			List<MuonSach> daTraSachMuonTrongThangIList = daMuonTrongThangIList.stream().filter(ms -> ms.isDaTra()).toList();
+			Integer daTraSachMuonTrongThangI = daTraSachMuonTrongThangIList.size();
+
+			daTraSachMuonTrongThang.add(daTraSachMuonTrongThangI);
+			chuaTraSachMuonTrongThang.add(daMuonTrongThangI - daTraSachMuonTrongThangI);
+		}
+
+		model.addAttribute("thangList", thang);
+		model.addAttribute("chuaTraList", chuaTraSachMuonTrongThang);
+		model.addAttribute("traList", daTraSachMuonTrongThang);
+
 		return "admin/dashboard";
 	}
 }
