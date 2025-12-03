@@ -179,7 +179,7 @@
 							<li class="nav-item"><a class="nav-link" th:href="@{/sach}">
 									Sách </a></li>
 
-							<li class="nav-item"><a class="nav-link" th:href="@{/sachmuon}">
+							<li class="nav-item" sec:authorize="hasRole('docgia')"><a class="nav-link" th:href="@{/sachmuon}" >
 									Sách tôi mượn</a></li>
 							<li class="nav-item dropdown submenu mega_menu tab-demo"><a
 								class="nav-link dropdown-toggle" href="#" role="button"
@@ -408,7 +408,7 @@
 						<a sec:authorize="isAnonymous()"
 							class="bj_theme_btn strock_btn hidden-sm hidden-xs"
 							th:href="@{/login}"><i class="fa-regular fa-user"></i>Đăng
-							nhập</a> <a sec:authorize="isAuthenticated()"
+							nhập</a> <a sec:authorize="hasRole('nhanvien')"
 							class="bj_theme_btn strock_btn hidden-sm hidden-xs"
 							th:href="@{/admin}"><i class="fa-regular fa-user"></i>Trang
 							quản trị</a>

@@ -1,7 +1,7 @@
 package com.library.project.vinhuni.entity;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.Collections;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -45,11 +45,11 @@ public class TaiKhoan implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-
-		if (this.nhanVien != null) {
-			return List.of(new SimpleGrantedAuthority("nhanvien"));
+		String loaiTK = this.loaiTaiKhoan;
+		if (loaiTK == null) {
+			loaiTK = "ROLE_docgia";
 		}
-		return List.of();
+		return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + this.loaiTaiKhoan));
 	}
 
 	public String getTenDangNhap() {
