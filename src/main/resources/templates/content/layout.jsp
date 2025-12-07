@@ -1,31 +1,24 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" th:href="@{/assets/img/favicon.png}">
-<!-- Bootstrap CSS -->
-<link th:href="@{/assets/vendors/bootstrap/css/bootstrap.min.css}"
-	rel="stylesheet">
-<link th:href="@{/assets/vendors/elagent-icon/style.css}"
-	rel="stylesheet">
-<link th:href="@{/assets/vendors/icomoon/style.css}" rel="stylesheet">
-<link th:href="@{/assets/vendors/themify-icon/themify-icons.css}"
-	rel="stylesheet">
-<link th:href="@{/assets/vendors/font-awesome/css/all.min.css}"
-	rel="stylesheet">
-<link th:href="@{/assets/vendors/animation/animate.css}"
-	rel="stylesheet">
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" th:href="@{/assets/img/favicon.png}">
+	<!-- Bootstrap CSS -->
+	<link th:href="@{/assets/vendors/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/assets/vendors/elagent-icon/style.css}" rel="stylesheet">
+	<link th:href="@{/assets/vendors/icomoon/style.css}" rel="stylesheet">
+	<link th:href="@{/assets/vendors/themify-icon/themify-icons.css}" rel="stylesheet">
+	<link th:href="@{/assets/vendors/font-awesome/css/all.min.css}" rel="stylesheet">
+	<link th:href="@{/assets/vendors/animation/animate.css}" rel="stylesheet">
 
-<link th:href="@{/assets/vendors/nice-select/css/nice-select.css}"
-	rel="stylesheet">
-<link th:href="@{/assets/css/style.css}" rel="stylesheet">
-<link th:href="@{/assets/css/responsive.css}" rel="stylesheet">
+	<link th:href="@{/assets/vendors/nice-select/css/nice-select.css}" rel="stylesheet">
+	<link th:href="@{/assets/css/style.css}" rel="stylesheet">
+	<link th:href="@{/assets/css/responsive.css}" rel="stylesheet">
 
-<title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Bookjar</title>
+	<title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Bookjar</title>
 </head>
 
 <body data-scroll-animation="true">
@@ -47,13 +40,11 @@
 
 	<div class="body_wrapper">
 		<div class="toast-container position-fixed p-3">
-			<div id="cartToast" class="toast" role="alert" aria-live="assertive"
-				aria-atomic="true">
+			<div id="cartToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
 				<div class="toast-header">
 					<strong class="me-auto">Cart Update</strong> <small>just
 						now</small>
-					<button type="button" class="btn-close" data-bs-dismiss="toast"
-						aria-label="Close"></button>
+					<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
 				</div>
 				<div class="toast-body">Item added to the cart!</div>
 			</div>
@@ -61,12 +52,10 @@
 
 
 		<!-- Modal -->
-		<div class="modal fade product-quickview-modal" id="productQuickView"
-			tabindex="-1" aria-hidden="true">
+		<div class="modal fade product-quickview-modal" id="productQuickView" tabindex="-1" aria-hidden="true">
 			<div class="modal-dialog  modal-dialog-centered">
 				<div class="modal-content">
-					<button type="button" class="close-btn" data-bs-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close">
 						<i class="icon_close"></i>
 					</button>
 					<div class="bj_book_single">
@@ -92,8 +81,8 @@
 								<div class="star-rating">
 									<span>4.9</span>
 								</div>
-								<a href="#product_review" class="woocommerce-review-link"> <span
-									class="count"> 50 </span>Reviews
+								<a href="#product_review" class="woocommerce-review-link"> <span class="count"> 50
+									</span>Reviews
 								</a>
 							</div>
 							<div class="price">$10</div>
@@ -121,31 +110,27 @@
 								</div>
 
 								<div class="single_product_price_variation mb-3">
-									<label class="variation_single"> <input
-										class="variation_single_input" name="variation_single"
-										type="radio" checked> <span class="price-details">
+									<label class="variation_single"> <input class="variation_single_input"
+											name="variation_single" type="radio" checked> <span class="price-details">
 											<span class="price-type">Handcover</span> <span
-											class="price-cost">$10</span>
-									</span>
-									</label> <label class="variation_single"> <input
-										class="variation_single_input" name="variation_single"
-										type="radio"> <span class="price-details"> <span
-											class="price-type">eBook</span> <span class="price-cost">$20</span>
-									</span>
-									</label> <label class="variation_single"> <input
-										class="variation_single_input" name="variation_single"
-										type="radio"> <span class="price-details"> <span
-											class="price-type">Print</span> <span class="price-cost">$30</span>
-									</span>
+												class="price-cost">$10</span>
+										</span>
+									</label> <label class="variation_single"> <input class="variation_single_input"
+											name="variation_single" type="radio"> <span class="price-details"> <span
+												class="price-type">eBook</span> <span class="price-cost">$20</span>
+										</span>
+									</label> <label class="variation_single"> <input class="variation_single_input"
+											name="variation_single" type="radio"> <span class="price-details"> <span
+												class="price-type">Print</span> <span class="price-cost">$30</span>
+										</span>
 									</label>
 
 								</div>
 								<div class="d-flex flex-column gap-2">
 									<a href="checkout.html" class="bj_theme_btn"> Buy Now</a>
-									<button class="bj_theme_btn add-to-cart-automated"
-										type="button" data-name="A Storytelling Workbook"
-										data-price="10" data-img="assets/img/book-single1.jpg"
-										data-mrp="15">
+									<button class="bj_theme_btn add-to-cart-automated" type="button"
+										data-name="A Storytelling Workbook" data-price="10"
+										data-img="assets/img/book-single1.jpg" data-mrp="15">
 										<i class="icon_cart_alt"></i>Add to cart
 									</button>
 								</div>
@@ -159,61 +144,57 @@
 		<header class="header_area">
 			<nav class="navbar navbar-expand-lg menu_one" id="header">
 				<div class="container">
-					<a class="navbar-brand" th:href="@{/}"><img
-						th:src="@{/assets/img/home-two/logo-dark.svg}" alt="logo"></a>
-					<button class="navbar-toggler collapsed" type="button"
-						data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-						aria-controls="navbarSupportedContent" aria-expanded="false"
-						aria-label="Toggle navigation">
+					<a class="navbar-brand" th:href="@{/}"><img th:src="@{/assets/img/home-two/logo-dark.svg}"
+							alt="logo"></a>
+					<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+						data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+						aria-expanded="false" aria-label="Toggle navigation">
 						<span class="menu_toggle"> <span class="hamburger">
 								<span></span> <span></span> <span></span>
-						</span> <span class="hamburger-cross"> <span></span> <span></span>
-						</span>
+							</span> <span class="hamburger-cross"> <span></span> <span></span>
+							</span>
 						</span>
 					</button>
-					<div class="collapse navbar-collapse justify-content-between"
-						id="navbarSupportedContent">
+					<div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
 						<ul class="navbar-nav menu w_menu ms-auto me-auto ">
-							<li class="nav-item active"><a class="nav-link"
-								th:href="@{/}"> Trang chủ </a></li>
+							<li class="nav-item active"><a class="nav-link" th:href="@{/}"> Trang chủ </a></li>
 							<li class="nav-item"><a class="nav-link" th:href="@{/sach}">
 									Sách </a></li>
 
-							<li class="nav-item" sec:authorize="hasRole('docgia')"><a class="nav-link" th:href="@{/sachmuon}" >
+							<li class="nav-item" sec:authorize="hasRole('docgia')"><a class="nav-link"
+									th:href="@{/sachmuon}">
 									Sách tôi mượn</a></li>
-							<li class="nav-item dropdown submenu mega_menu tab-demo"><a
-								class="nav-link dropdown-toggle" href="#" role="button"
-								data-bs-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false">Explore </a>
+							<li class="nav-item dropdown submenu mega_menu tab-demo"><a class="nav-link dropdown-toggle"
+									href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false">Explore </a>
 								<ul class="dropdown-menu sub">
 									<li>
 										<div class="row">
 											<div class="col-lg-5 tabHeader">
-												<ul class="nav flex-column nav-pills" id="v-pills-tab"
-													role="tablist" aria-orientation="vertical">
+												<ul class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+													aria-orientation="vertical">
 													<li class="nav-item active"><a class="nav-link"
-														id="v-pills-tour-tab" data-toggle="pill"
-														href="#v-pills-tour" role="tab"
-														aria-controls="v-pills-tour" aria-selected="false">Utility
+															id="v-pills-tour-tab" data-toggle="pill"
+															href="#v-pills-tour" role="tab" aria-controls="v-pills-tour"
+															aria-selected="false">Utility
 															Pages</a></li>
-													<li class="nav-item"><a class="nav-link"
-														id="v-others-menu-tab" data-toggle="pill"
-														href="#v-others-menu" role="tab"
-														aria-controls="v-others-menu" aria-selected="false">Company</a>
+													<li class="nav-item"><a class="nav-link" id="v-others-menu-tab"
+															data-toggle="pill" href="#v-others-menu" role="tab"
+															aria-controls="v-others-menu"
+															aria-selected="false">Company</a>
 													</li>
-													<li class="nav-item"><a class="nav-link"
-														id="v-pills-doc-tab" data-toggle="pill"
-														href="#v-pills-doc" role="tab" aria-controls="v-pills-doc"
-														aria-selected="true">Shop Pages</a></li>
-													<li class="nav-item"><a class="nav-link"
-														id="v-pills-code-tab" data-toggle="pill"
-														href="#v-pills-code" role="tab"
-														aria-controls="v-pills-code" aria-selected="false">Dashboard</a>
+													<li class="nav-item"><a class="nav-link" id="v-pills-doc-tab"
+															data-toggle="pill" href="#v-pills-doc" role="tab"
+															aria-controls="v-pills-doc" aria-selected="true">Shop
+															Pages</a></li>
+													<li class="nav-item"><a class="nav-link" id="v-pills-code-tab"
+															data-toggle="pill" href="#v-pills-code" role="tab"
+															aria-controls="v-pills-code"
+															aria-selected="false">Dashboard</a>
 													</li>
-													<li class="nav-item"><a class="nav-link"
-														id="v-pills-layout-tab" data-toggle="pill"
-														href="#v-pills-layout" role="tab"
-														aria-controls="v-pills-layout" aria-selected="false">Blog
+													<li class="nav-item"><a class="nav-link" id="v-pills-layout-tab"
+															data-toggle="pill" href="#v-pills-layout" role="tab"
+															aria-controls="v-pills-layout" aria-selected="false">Blog
 															Author</a></li>
 												</ul>
 											</div>
@@ -233,8 +214,8 @@
 															</ul>
 														</div>
 													</div>
-													<div class="tab-pane fade" id="v-others-menu"
-														role="tabpanel" aria-labelledby="v-others-menu-tab">
+													<div class="tab-pane fade" id="v-others-menu" role="tabpanel"
+														aria-labelledby="v-others-menu-tab">
 														<div class="d-flex">
 															<ul class="list-unstyled tab_list w_100">
 																<li><a href="book-listing.html">Book Listing</a></li>
@@ -270,8 +251,8 @@
 															</ul>
 														</div>
 													</div>
-													<div class="tab-pane fade" id="v-pills-code"
-														role="tabpanel" aria-labelledby="v-pills-code-tab">
+													<div class="tab-pane fade" id="v-pills-code" role="tabpanel"
+														aria-labelledby="v-pills-code-tab">
 														<div class="d-flex">
 															<ul class="list-unstyled tab_list">
 																<li><a href="my-account.html">User Profile</a></li>
@@ -300,8 +281,8 @@
 															</ul>
 														</div>
 													</div>
-													<div class="tab-pane fade" id="v-pills-layout"
-														role="tabpanel" aria-labelledby="v-pills-layout-tab">
+													<div class="tab-pane fade" id="v-pills-layout" role="tabpanel"
+														aria-labelledby="v-pills-layout-tab">
 														<div class="d-flex">
 															<ul class="list-unstyled tab_list">
 																<li><a href="blog-grid.html">Blog Grid</a></li>
@@ -319,41 +300,39 @@
 											</div>
 										</div>
 									</li>
-								</ul></li>
-							<li class="nav-item dropdown submenu"><a
-								class="nav-link dropdown-toggle" href="blog-list.html"
-								role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false"> Blog </a>
+								</ul>
+							</li>
+							<li class="nav-item dropdown submenu"><a class="nav-link dropdown-toggle"
+									href="blog-list.html" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false"> Blog </a>
 
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a href="blog-grid.html"
-										class="nav-link">Blog Grid</a></li>
-									<li class="nav-item"><a href="blog-extend-grid.html"
-										class="nav-link">Extended Grid</a></li>
-									<li class="nav-item"><a href="blog-list.html"
-										class="nav-link">Blog List</a></li>
-									<li class="nav-item"><a href="blog-details.html"
-										class="nav-link">Blog Details</a></li>
-								</ul></li>
+									<li class="nav-item"><a href="blog-grid.html" class="nav-link">Blog Grid</a></li>
+									<li class="nav-item"><a href="blog-extend-grid.html" class="nav-link">Extended
+											Grid</a></li>
+									<li class="nav-item"><a href="blog-list.html" class="nav-link">Blog List</a></li>
+									<li class="nav-item"><a href="blog-details.html" class="nav-link">Blog Details</a>
+									</li>
+								</ul>
+							</li>
 						</ul>
 						<div class="alter_nav">
 							<ul class="navbar-nav search_cart menu">
-								<li class="nav-item search"><a class="nav-link search-btn"
-									href="javascript:void(0);"><i class="ti-search"></i></a>
+								<li class="nav-item search"><a class="nav-link search-btn" href="javascript:void(0);"><i
+											class="ti-search"></i></a>
 									<form action="#" method="get" class="menu-search-form">
 										<div class="input-group">
-											<input type="search" class="form-control"
-												placeholder="Search here..">
+											<input type="search" class="form-control" placeholder="Search here..">
 											<button type="submit">
 												<i class="ti-arrow-right"></i>
 											</button>
 										</div>
-									</form></li>
+									</form>
+								</li>
 								<li class="nav-item shpping-cart dropdown submenu"><a
-									class="cart-btn nav-link dropdown-toggle" href="#"
-									role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false"> <i class="ti-shopping-cart"></i><span
-										class="num total-cart-count">2</span></a>
+										class="cart-btn nav-link dropdown-toggle" href="#" role="button"
+										data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
+											class="ti-shopping-cart"></i><span class="num total-cart-count">2</span></a>
 									<div class="dropdown-menu">
 										<ul class="cart-dropdown list-unstyled">
 											<li class="cart-single-item clearfix">
@@ -392,7 +371,7 @@
 											<div class="cart-pricing">
 												<p class="total">
 													Subtotal :<span class="p-total text-end">$<span
-														class="total-cart-amount"></span></span>
+															class="total-cart-amount"></span></span>
 												</p>
 											</div>
 											<div class="cart-button text-center">
@@ -401,21 +380,19 @@
 													class="btn btn-cart get_btn dark">Checkout</a>
 											</div>
 										</div>
-									</div></li>
+									</div>
+								</li>
 							</ul>
 						</div>
 
-						<a sec:authorize="isAnonymous()"
-							class="bj_theme_btn strock_btn hidden-sm hidden-xs"
+						<a sec:authorize="isAnonymous()" class="bj_theme_btn strock_btn hidden-sm hidden-xs"
 							th:href="@{/login}"><i class="fa-regular fa-user"></i>Đăng
 							nhập</a> <a sec:authorize="hasRole('nhanvien')"
-							class="bj_theme_btn strock_btn hidden-sm hidden-xs"
-							th:href="@{/admin}"><i class="fa-regular fa-user"></i>Trang
+							class="bj_theme_btn strock_btn hidden-sm hidden-xs" th:href="@{/admin}"><i
+								class="fa-regular fa-user"></i>Trang
 							quản trị</a>
-						<form sec:authorize="isAuthenticated()" th:action="@{/logout}"
-							method="post">
-							<button type="submit"
-								class="bj_theme_btn strock_btn hidden-sm hidden-xs">Đăng
+						<form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">
+							<button type="submit" class="bj_theme_btn strock_btn hidden-sm hidden-xs">Đăng
 								xuất</button>
 						</form>
 					</div>
@@ -432,15 +409,13 @@
 					<div class="row">
 						<div class="col-lg-3 col-sm-6">
 							<div class="f_widget f_widget_dark link_widget">
-								<a href="#" class="f_logo"> <img
-									src="assets/img/home-two/logo-dark.svg" alt="f_logo">
+								<a href="#" class="f_logo"> <img src="assets/img/home-two/logo-dark.svg" alt="f_logo">
 								</a>
 								<div class="footer_subscribes">
 									<h2 class="f_widget_title dark">Subscribe Now</h2>
 									<form action="#">
 										<div class="footer_subscribe_form">
-											<input type="text" placeholder="Enter your Email"
-												class="form-control">
+											<input type="text" placeholder="Enter your Email" class="form-control">
 											<button type="submit" class="bj_theme_btn">Subscribe</button>
 										</div>
 									</form>
@@ -487,10 +462,10 @@
 							<div class="f_widget f_widget_dark link_widget">
 								<h2 class="f_widget_title dark">Contacs Us</h2>
 								<ul class="list-unstyled list">
-									<li><a href="tel:610383766284"><i
-											class="fa-solid fa-phone-volume"></i>+61 (0) 3 8376 6284</a></li>
+									<li><a href="tel:610383766284"><i class="fa-solid fa-phone-volume"></i>+61 (0) 3
+											8376 6284</a></li>
 									<li><a href="mailto:noreply@bookjar.com"><i
-											class="fa-solid fa-envelope"></i>noreply@bookjar.com</a></li>
+												class="fa-solid fa-envelope"></i>noreply@bookjar.com</a></li>
 								</ul>
 								<ul class="list-unstyled f_social_round">
 									<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
@@ -524,10 +499,31 @@
 	<script th:src="@{/assets/vendors/parallax/jquery.parallax-scroll.js}"></script>
 	<script th:src="@{/assets/vendors/wow/wow.min.js}"></script>
 	<script th:src="@{/assets/vendors/ui-fliter/jquery-ui.js}"></script>
-	<script
-		th:src="@{/assets/vendors/nice-select/js/jquery.nice-select.min.js}"></script>
+	<script th:src="@{/assets/vendors/nice-select/js/jquery.nice-select.min.js}"></script>
 	<script th:src="@{/assets/js/custom.js}"></script>
 	<th:block layout:fragment="scripts"></th:block>
+
+	<link th:href="@{/assets/css/chatbot.css}" rel="stylesheet">
+
+	<button id="chat-widget-btn" onclick="batTatChat()">💬</button>
+
+	<div id="chat-box">
+		<div class="chat-header">
+			<span>Trợ lý AI</span>
+			<button class="close-btn" onclick="batTatChat()">✕</button>
+		</div>
+		<div id="messages-area">
+			<div class="message bot">Xin chào! Tôi có thể giúp gì cho bạn?</div>
+		</div>
+		<div class="input-area">
+			<input type="text" id="msg-input" placeholder="Nhập tin nhắn..." onkeypress="xuLyEnter(event)">
+			<button id="send-btn" onclick="guiTinNhan()">Gửi</button>
+		</div>
+	</div>
+
+	<script th:src="@{/assets/js/sockjs.min.js}"></script>
+	<script th:src="@{/assets/js/stomp.min.js}"></script>
+	<script th:src="@{/assets/js/chatbot.js}"></script>
 
 </body>
 
