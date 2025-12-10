@@ -21,6 +21,7 @@ public class HomeController {
 		List<Sach> sachs = sachService.findByHienTrueOrderByNgayNhapDesc();
 		List<Sach> sachMois = sachs.stream().filter(sach -> sach.isMoi()).limit(4).toList();
 		model.addAttribute("sachMois", sachMois);
+
 		return "content/home";
 	}
 

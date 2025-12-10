@@ -23,8 +23,10 @@ public class SecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(authorize -> authorize.requestMatchers("/admin/**").hasAuthority("ROLE_nhanvien")
 				.anyRequest().permitAll())
-				.exceptionHandling(exception -> exception.accessDeniedHandler(new FilterPage())).formLogin(form -> form
-						.loginPage("/login").loginProcessingUrl("/login").defaultSuccessUrl("/", true).permitAll())
+				.exceptionHandling(exception -> exception.accessDeniedHandler(new FilterPage()))
+				.formLogin(form -> form.loginPage("/login").loginProcessingUrl("/login").defaultSuccessUrl("/", true)
+						.permitAll())
+
 				.logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/").permitAll());
 
 		return http.build();
