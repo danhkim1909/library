@@ -8,6 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.library.project.Component.FilterPage;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -19,7 +21,12 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests(authorize -> authorize.requestMatchers("/admin/**").hasAuthority("nhanvien").anyRequest().permitAll()).formLogin(form -> form.loginPage("/login").loginProcessingUrl("/login").defaultSuccessUrl("/", true).permitAll()).logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/").permitAll());
+		http.authorizeHttpRequests(authorize -> authorize.requestMatchers("/admin/**").hasAuthority("ROLE_nhanvien")
+				.anyRequest().permitAll())
+				.exceptionHandling(exception -> exception.accessDeniedHandler(new FilterPage()))
+				.formLogin(form -> form.loginPage("/login").loginProcessingUrl("/login").defaultSuccessUrl("/", true)
+						.permitAll())
+				.logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/").permitAll());
 
 		return http.build();
 	}

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.library.project.vinhuni.entity.DocGia;
 import com.library.project.vinhuni.entity.Kho;
@@ -42,15 +43,23 @@ public class MuonTraSachController {
 	TraSachService traSachService;
 
 	@PostMapping("/muonsach/{id}")
-	public String create(@PathVariable Long id, @Valid @ModelAttribute("muonSach") MuonSach muonSach, BindingResult result, @AuthenticationPrincipal TaiKhoan taiKhoan, Model model) {
+	public String create(@PathVariable Long id, @Valid @ModelAttribute("muonSach") MuonSach muonSach,
+			BindingResult result, @AuthenticationPrincipal TaiKhoan taiKhoan, Model model,
+			RedirectAttributes redirectAttributess) {
 
 		Sach sach = sachService.findByMaSach(id);
 		if (sach == null) {
+			redirectAttributess.addFlashAttribute("error", "Có lỗi xảy ra, vui lòng thử lại");
 			return "redirect:/sach";
 		}
 
 		if (taiKhoan == null) {
+			redirectAttributess.addFlashAttribute("info", "Vui lòng đăng nhập");
 			return "redirect:/login";
+		}
+		if (taiKhoan.getLoaiTaiKhoan().equals("nhanvien")) {
+			redirectAttributess.addFlashAttribute("error", "Chức năng này dành cho độc giả");
+			return "redirect:/sach/" + id;
 		}
 
 		Kho kho = sach.getKho();
@@ -62,16 +71,13 @@ public class MuonTraSachController {
 			result.rejectValue("soLuong", "", "Số sách còn lại không đủ");
 		}
 
-		if (taiKhoan.getLoaiTaiKhoan().equals("nhanvien")) {
-			result.rejectValue("soLuong", "", "Chức năng này dành cho độc giả");
-		}
-
 		DocGia docGia = taiKhoanService.findByTenDangNhap(taiKhoan.getTenDangNhap()).getDocGia();
 
 		Integer dangMuon = muonSachService.soSachDangMuon(docGia, sach);
 
 		if (muonSach.getSoLuong() + dangMuon > GIOIHANMUON) {
-			result.rejectValue("soLuong", "", "Xin lỗi, mỗi mẫu sách bạn được mượn tối đa " + GIOIHANMUON + " quyển cùng lúc");
+			result.rejectValue("soLuong", "",
+					"Xin lỗi, mỗi mẫu sách bạn được mượn tối đa " + GIOIHANMUON + " quyển cùng lúc");
 		}
 
 		if (result.hasErrors()) {
@@ -80,7 +86,7 @@ public class MuonTraSachController {
 		}
 
 		muonSachService.create(muonSach, docGia, sach);
-
+		redirectAttributess.addFlashAttribute("success", "Mượn thành công");
 		return "redirect:/sachmuon";
 	}
 
@@ -92,32 +98,38 @@ public class MuonTraSachController {
 		TaiKhoan taiKhoanDb = taiKhoanService.findByTenDangNhap(taiKhoan.getTenDangNhap());
 		List<MuonSach> muonSachs = muonSachService.findByDocGiaOrderByThoiGianMuonDesc(taiKhoanDb.getDocGia());
 
-		List<MuonSach> lichSus = muonSachs.stream().filter(ls -> ls.isDaTra() || (ls.getXacNhan() != null && ls.getXacNhan() == false)).toList();
+		List<MuonSach> lichSus = muonSachs.stream()
+				.filter(ls -> ls.isDaTra() || (ls.getXacNhan() != null && ls.getXacNhan() == false)).toList();
 		model.addAttribute("lichSus", lichSus);
 
-		muonSachs = muonSachs.stream().filter(ms -> !ms.isDaTra() && (ms.getXacNhan() == null || ms.getXacNhan() == true)).toList();
+		muonSachs = muonSachs.stream()
+				.filter(ms -> !ms.isDaTra() && (ms.getXacNhan() == null || ms.getXacNhan() == true)).toList();
 		model.addAttribute("muonSachs", muonSachs);
 
 		return "content/muonsach/index";
 	}
 
 	@GetMapping("/trasach/{id}")
-	public String trasach(@PathVariable Long id) {
+	public String trasach(@PathVariable Long id, RedirectAttributes redirectAttributes) {
 		MuonSach muonSach = muonSachService.findByMaMuonSach(id);
 		if (muonSach == null) {
+			redirectAttributes.addFlashAttribute("error", "Có lỗi xảy ra, vui lòng thử lại");
 			return "redirect:/sachmuon";
 		}
 		traSachService.create(muonSach);
+		redirectAttributes.addFlashAttribute("success", "Đã thông báo trả sách, nhân viên đang chờ bạn");
 		return "redirect:/sachmuon";
 	}
 
 	@GetMapping("/huymuon/{id}")
-	public String huymuon(@PathVariable Long id) {
+	public String huymuon(@PathVariable Long id, RedirectAttributes redirectAttributes) {
 		MuonSach muonSach = muonSachService.findByMaMuonSach(id);
 		if (muonSach == null) {
+			redirectAttributes.addFlashAttribute("error", "Có lỗi xảy ra, vui lòng thử lại");
 			return "redirect:/sachmuon";
 		}
 		muonSachService.cancel(muonSach);
+		redirectAttributes.addFlashAttribute("success", "Đã hủy yêu cầu mượn");
 		return "redirect:/sachmuon";
 	}
 

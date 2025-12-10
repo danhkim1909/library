@@ -13,7 +13,7 @@
 	<link th:href="@{/assets/vendors/themify-icon/themify-icons.css}" rel="stylesheet">
 	<link th:href="@{/assets/vendors/font-awesome/css/all.min.css}" rel="stylesheet">
 	<link th:href="@{/assets/vendors/animation/animate.css}" rel="stylesheet">
-
+	<link th:href="@{/assets/vendors/izitoast/css/iziToast.min.css}" rel="stylesheet" />
 	<link th:href="@{/assets/vendors/nice-select/css/nice-select.css}" rel="stylesheet">
 	<link th:href="@{/assets/css/style.css}" rel="stylesheet">
 	<link th:href="@{/assets/css/responsive.css}" rel="stylesheet">
@@ -162,8 +162,7 @@
 									Sách </a></li>
 
 							<li class="nav-item" sec:authorize="hasRole('docgia')"><a class="nav-link"
-									th:href="@{/sachmuon}">
-									Sách tôi mượn</a></li>
+									th:href="@{/sachmuon}"> Sách tôi mượn</a></li>
 							<li class="nav-item dropdown submenu mega_menu tab-demo"><a class="nav-link dropdown-toggle"
 									href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
 									aria-expanded="false">Explore </a>
@@ -483,12 +482,41 @@
 			</div>
 		</footer>
 	</div>
+
 	<!-- Back to top button -->
 	<a id="back-to-top" title="Back to Top"></a>
 	<!-- Optional JavaScript; choose one of the two! -->
 	<script th:src="@{/assets/js/jquery-3.6.0.min.js}"></script>
 
 	<!-- Option 2: Separate Popper and Bootstrap JS -->
+	<script th:src="@{/assets/vendors/izitoast/js/iziToast.min.js}"></script>
+	<script type="text/javascript" th:inline="javascript">
+		document.addEventListener("DOMContentLoaded", function () {
+			const success = /*[[${success}]]*/ null;
+			const error = /*[[${error}]]*/ null;
+			const info = /*[[${info}]]*/ null;
+
+			if (success && success.trim() !== '') {
+				iziToast.success({
+					title: 'Thành công',
+					message: success,
+					position: 'topRight'
+				});
+			} else if (error && error.trim() !== '') {
+				iziToast.error({
+					title: 'Thất bại',
+					message: error,
+					position: 'topRight'
+				});
+			} else if (info && info.trim() !== '') {
+				iziToast.info({
+					title: 'Thông báo',
+					message: info,
+					position: 'topRight'
+				});
+			}
+		});
+	</script>
 
 	<script th:src="@{/assets/js/preloader.js}"></script>
 	<script th:src="@{/assets/vendors/bootstrap/js/popper.min.js}"></script>
@@ -501,11 +529,13 @@
 	<script th:src="@{/assets/vendors/ui-fliter/jquery-ui.js}"></script>
 	<script th:src="@{/assets/vendors/nice-select/js/jquery.nice-select.min.js}"></script>
 	<script th:src="@{/assets/js/custom.js}"></script>
+
+
 	<th:block layout:fragment="scripts"></th:block>
 
 	<link th:href="@{/assets/css/chatbot.css}" rel="stylesheet">
 
-	<button id="chat-widget-btn" onclick="batTatChat()">💬</button>
+	<button id="chat-widget-btn" onclick="batTatChat()"><i class="fa fa-commenting"></i></button>
 
 	<div id="chat-box">
 		<div class="chat-header">
@@ -521,9 +551,11 @@
 		</div>
 	</div>
 
+
 	<script th:src="@{/assets/js/sockjs.min.js}"></script>
 	<script th:src="@{/assets/js/stomp.min.js}"></script>
 	<script th:src="@{/assets/js/chatbot.js}"></script>
+
 
 </body>
 

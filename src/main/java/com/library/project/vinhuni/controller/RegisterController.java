@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.library.project.vinhuni.dto.DocGiaDto;
 import com.library.project.vinhuni.entity.DocGia;
@@ -39,7 +40,8 @@ public class RegisterController {
 
 	@PostMapping
 	@Transactional
-	public String register(@Valid @ModelAttribute DocGiaDto user, BindingResult result) {
+	public String register(@Valid @ModelAttribute DocGiaDto user, BindingResult result,
+			RedirectAttributes redirectAttributes) {
 
 		if (result.hasErrors()) {
 			return "content/register";
@@ -66,6 +68,7 @@ public class RegisterController {
 
 		taiKhoanRepository.save(taiKhoan);
 
-		return "redirect:/login?success";
+		redirectAttributes.addFlashAttribute("success", "Đăng ký thành công");
+		return "redirect:/login";
 	}
 }
