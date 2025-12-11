@@ -25,6 +25,22 @@ class Request {
 		this.systemInstruction = systemInstruction;
 		this.contents = contents;
 	}
+
+	public Content getSystemInstruction() {
+		return systemInstruction;
+	}
+
+	public void setSystemInstruction(Content systemInstruction) {
+		this.systemInstruction = systemInstruction;
+	}
+
+	public List<Content> getContents() {
+		return contents;
+	}
+
+	public void setContents(List<Content> contents) {
+		this.contents = contents;
+	}
 }
 
 class Content {
