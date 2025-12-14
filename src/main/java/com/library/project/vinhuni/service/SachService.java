@@ -35,7 +35,16 @@ public class SachService {
 	@Autowired
 	NhaXuatBanService nhaXuatBanService;
 
-	public Page<Sach> findByKeyword(String tuKhoa, Integer trang, TacGia tacGia, TheLoai theLoai, String sapXepTheo, Integer dungTichTrang) {
+	public List<Sach> findByVectorNull() {
+		return sachRepository.findByVectorNull();
+	}
+
+	public List<Sach> findByVectorNotNullAndHienTrue() {
+		return sachRepository.findByVectorNotNullAndHienTrue();
+	}
+
+	public Page<Sach> findByKeyword(String tuKhoa, Integer trang, TacGia tacGia, TheLoai theLoai, String sapXepTheo,
+			Integer dungTichTrang) {
 		String[] sapXep = sapXepTheo.split("_");
 		Pageable pageable = null;
 		if (sapXep[1].equals("asc")) {
@@ -52,6 +61,11 @@ public class SachService {
 		} else {
 			return sachRepository.findByKeywordAndTheLoaiAndTacGia(tuKhoa, theLoai, tacGia, pageable);
 		}
+	}
+
+	public void createVector(Sach sach, List<Double> vector) {
+		sach.setVector(vector);
+		sachRepository.save(sach);
 	}
 
 	public Sach findByMaSach(Long maSach) {

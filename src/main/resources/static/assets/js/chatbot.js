@@ -47,7 +47,7 @@ function hienThiTinNhan(text, sender) {
     var area = document.getElementById('messages-area');
     var msgDiv = document.createElement('div');
     msgDiv.className = 'message ' + sender;
-    msgDiv.innerText = text;
+    msgDiv.innerHTML = text;
 
     var clearDiv = document.createElement('div');
     clearDiv.style.clear = 'both';

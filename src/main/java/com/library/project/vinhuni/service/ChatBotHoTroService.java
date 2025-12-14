@@ -3,9 +3,11 @@ package com.library.project.vinhuni.service;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,7 +16,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.client.RestTemplate;
 
+import com.library.project.vinhuni.entity.Sach;
+import com.library.project.vinhuni.entity.TacGia;
+import com.library.project.vinhuni.entity.TheLoai;
+
 import jakarta.annotation.PostConstruct;
+import jakarta.transaction.Transactional;
 import tools.jackson.databind.JsonNode;
 
 class Request {
@@ -88,6 +95,13 @@ class Part {
 
 @Service
 public class ChatBotHoTroService {
+
+	@Autowired
+	private VectorHoaDuLieuService vectorHoaDuLieuService;
+
+	@Autowired
+	private SachService sachService;
+
 	@Value("classpath:data/rules.txt")
 	private Resource rulesResource;
 
@@ -107,7 +121,41 @@ public class ChatBotHoTroService {
 
 	}
 
+	@Transactional
 	public String sendMessage(String sessionId, String message) {
+
+		List<Double> vectorMessage = new ArrayList<>();
+
+		vectorMessage = vectorHoaDuLieuService.vectorHoaDuLieu(message);
+		if (vectorMessage.size() == 0) {
+			return "Xin lỗi, chúng tôi gặp sự cố";
+		}
+
+		List<Sach> sachList = sachService.findByVectorNotNullAndHienTrue();
+
+		for (Sach sach : sachList) {
+			Double tuSo = 0.0;
+			for (int i = 0; i < sach.getVector().size(); i++) {
+				tuSo += sach.getVector().get(i) * vectorMessage.get(i);
+			}
+
+			Double mauSo1 = 0.0;
+			for (int i = 0; i < sach.getVector().size(); i++) {
+				mauSo1 += sach.getVector().get(i) * sach.getVector().get(i);
+			}
+
+			Double mauSo2 = 0.0;
+			for (int i = 0; i < vectorMessage.size(); i++) {
+				mauSo2 += vectorMessage.get(i) * vectorMessage.get(i);
+			}
+
+			sach.setDiemTuongDongCosine(tuSo / Math.sqrt(mauSo1 * mauSo2));
+		}
+
+		List<Sach> sachs = sachList.stream().sorted(Comparator.comparing(Sach::getDiemTuongDongCosine).reversed())
+				.limit(5)
+				.collect(Collectors.toList());
+
 		String apiURL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key="
 				+ GEMINI_API_KEY;
 
@@ -115,7 +163,29 @@ public class ChatBotHoTroService {
 		Part part = new Part(message);
 		lichSu.add(new Content("user", List.of(part)));
 
-		Content prompt = new Content("user", List.of(new Part(rules)));
+		String attach = "Thông tin sách tìm được: \n";
+		for (Sach sach : sachs) {
+
+			String tacGias = "";
+			for (TacGia tacGia : sach.getTacGias()) {
+				tacGias += "" + tacGia.getTenTacGia() + ", ";
+			}
+
+			String theLoais = "";
+			for (TheLoai theLoai : sach.getTheLoais()) {
+				theLoais += "" + theLoai.getTenTheLoai() + ", ";
+			}
+
+			attach += "Mã sách: " + sach.getMaSach() + "\n"
+					+ "Tên sách: " + sach.getTenSach() + "\n"
+					+ "Tác giả: " + tacGias + "\n"
+					+ "Thể loại: " + theLoais + "\n"
+					+ "Năm xuất bản: " + sach.getNamXuatBan() + "\n"
+					+ "Nhà xuất bản: " + sach.getNxb().getTenNhaXuatBan() + "\n"
+					+ "Mô tả: " + sach.getMoTa() + "\n";
+		}
+
+		Content prompt = new Content("user", List.of(new Part(rules + "\n" + attach)));
 		Request request = new Request(prompt, lichSu);
 		try {
 			JsonNode response = restTemplate.postForObject(apiURL, request, JsonNode.class);

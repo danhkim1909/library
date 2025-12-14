@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,6 +22,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -60,6 +63,10 @@ public class Sach {
 	@OneToOne(mappedBy = "sach")
 	private Kho kho;
 
+	@JdbcTypeCode(SqlTypes.JSON)
+	@Column(name = "vector", columnDefinition = "json")
+	private List<Double> vector;
+
 	@NotNull(message = "Nhà xuất bản không được để trống")
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ma_nxb")
@@ -80,6 +87,17 @@ public class Sach {
 	@OneToMany(mappedBy = "sach", fetch = FetchType.LAZY)
 	private List<DanhGia> danhGias = new ArrayList<>();
 
+	@Transient
+	private Double diemTuongDongCosine;
+
+	public Double getDiemTuongDongCosine() {
+		return diemTuongDongCosine;
+	}
+
+	public void setDiemTuongDongCosine(Double diemTuongDongCosine) {
+		this.diemTuongDongCosine = diemTuongDongCosine;
+	}
+
 	public Sach() {
 
 	}
@@ -90,6 +108,14 @@ public class Sach {
 
 	public void setKho(Kho kho) {
 		this.kho = kho;
+	}
+
+	public List<Double> getVector() {
+		return vector;
+	}
+
+	public void setVector(List<Double> vector) {
+		this.vector = vector;
 	}
 
 	public Long getMaSach() {

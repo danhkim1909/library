@@ -13,14 +13,24 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "tblTaiKhoan")
 public class TaiKhoan implements UserDetails {
+
+	public TaiKhoan() {
+	}
+
+	public TaiKhoan(String tenDangNhap, String matKhau, String loaiTaiKhoan, Boolean trangThai, NhanVien nhanVien,
+			DocGia docGia) {
+		super();
+		this.tenDangNhap = tenDangNhap;
+		this.matKhau = matKhau;
+		this.loaiTaiKhoan = loaiTaiKhoan;
+		this.trangThai = trangThai;
+		this.nhanVien = nhanVien;
+		this.docGia = docGia;
+	}
 
 	@Id
 	@Column(name = "TenDangNhap", length = 50)
