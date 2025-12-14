@@ -77,7 +77,7 @@ public class ChatBotHoTroService {
 	}
 
 	public String sendMessage(String sessionId, String message) {
-		String apiURL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key="
+		String apiURL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key="
 				+ GEMINI_API_KEY;
 
 		List<Content> lichSu = lichSuChat.computeIfAbsent(sessionId, k -> new ArrayList<>());

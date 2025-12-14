@@ -3,13 +3,9 @@
 
 
 <head>
-<title>Otika - Admin Dashboard Template</title>
-<style>
-    /* Nếu class 'text-center' chưa được định nghĩa trong framework CSS của bạn */
-    .text-center {
-        text-align: center !important;
-    }
-</style>
+
+	<title>Otika - Admin Dashboard Template</title>
+
 </head>
 
 <body>
@@ -26,26 +22,27 @@
 							<table class="table table-hover">
 								<thead>
 									<tr>
-										<th scope="col">STT</th>
-										<th scope="col">Tên sách</th>
-										<th scope="col">Ảnh sách</th>
-										<th scope="col">Người mượn</th>
-										<th scope="col" class="text-center">Số lượng mượn</th> 
-										<th scope="col">Hành Động</th>
+										<th style="text-align: center;" scope="col">STT</th>
+										<th style="text-align: center;" scope="col">Tên sách</th>
+										<th style="text-align: center;" scope="col">Ảnh sách</th>
+										<th style="text-align: center;" scope="col">Người mượn</th>
+										<th style="text-align: center;" scope="col">Số lượng mượn</th>
+										<th style="text-align: center;" scope="col">Hành Động</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr th:each="muonSach, i : ${muonSachs}">
-										<th scope="row" th:text="${i.count}">1</th>
-										<td th:text="${muonSach.sach.tenSach}">Mark</td>
-										<td><img th:src="${muonSach.sach.anhBia}" width="80" /></td>
-										<td th:text="${muonSach.docGia.tenDocGia}">@mdo</td>
-										<td th:text="${muonSach.soLuong}" class="text-center"></td> 
-										<td><a
-											th:href="@{/admin/muonsach/tuchoi/{id}(id = ${muonSach.maMuonSach})}"
-											class="btn btn-outline-danger ">Từ chối</a> <a
-											th:href="@{/admin/muonsach/chapnhan/{id}(id=${muonSach.maMuonSach})}"
-											class="btn btn-outline-success">Đồng ý</a></td>
+										<th style="text-align: center;" scope="row" th:text="${i.count}">1</th>
+										<td style="text-align: center;" th:text="${muonSach.sach.tenSach}">Mark</td>
+										<td style="text-align: center;"><img th:src="${muonSach.sach.anhBia}"
+												width="80" /></td>
+										<td style="text-align: center;" th:text="${muonSach.docGia.tenDocGia}">@mdo</td>
+										<td style="text-align: center;" th:text="${muonSach.soLuong}"></td>
+										<td style="text-align: center;"><a
+												th:href="@{/admin/muonsach/tuchoi/{id}(id = ${muonSach.maMuonSach})}"
+												class="btn btn-outline-danger ">Từ chối</a> <a
+												th:href="@{/admin/muonsach/chapnhan/{id}(id=${muonSach.maMuonSach})}"
+												class="btn btn-outline-success">Đồng ý</a></td>
 									</tr>
 								</tbody>
 							</table>
