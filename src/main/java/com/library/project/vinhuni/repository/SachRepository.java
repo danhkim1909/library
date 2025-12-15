@@ -16,7 +16,11 @@ public interface SachRepository extends JpaRepository<Sach, Long> {
 
 	List<Sach> findByHienTrueOrderByNgayNhapDesc();
 
+	List<Sach> findByVectorNotNullAndHienTrue();
+
 	Sach findByMaSach(Long maSach);
+
+	List<Sach> findByVectorNull();
 
 	@Query("SELECT s FROM Sach s WHERE (s.tenSach LIKE CONCAT('%', :tuKhoa, '%') OR s.moTa LIKE CONCAT('%', :tuKhoa, '%')) AND s.hien = true")
 	Page<Sach> findByKeyword(String tuKhoa, Pageable pageable);

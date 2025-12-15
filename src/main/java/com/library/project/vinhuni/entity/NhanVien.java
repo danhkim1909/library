@@ -11,18 +11,27 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "tblNhanVien")
 public class NhanVien {
+
+	public NhanVien() {
+	}
+
+	public NhanVien(Integer maNhanVien, String tenNhanVien, String gioiTinh, LocalDate ngaySinh, String soDT,
+			String diaChi,
+			String chucVu, TaiKhoan taiKhoan) {
+		super();
+		this.maNhanVien = maNhanVien;
+		this.tenNhanVien = tenNhanVien;
+		this.gioiTinh = gioiTinh;
+		this.ngaySinh = ngaySinh;
+		this.soDT = soDT;
+		this.diaChi = diaChi;
+		this.chucVu = chucVu;
+		this.taiKhoan = taiKhoan;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

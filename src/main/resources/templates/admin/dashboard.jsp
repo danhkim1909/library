@@ -6,7 +6,7 @@
 
 <head>
 
-<title>Bảng điều khiển</title>
+	<title>Bảng điều khiển</title>
 
 </head>
 
@@ -49,8 +49,8 @@
 										<h5 class="font-15">Trong kho</h5>
 										<h2 class="mb-3 font-18" th:text="${trongKho + ' quyển'}">1,287</h2>
 										<p class="mb-0">
-											Mới thêm <span class="col-orange"
-												th:text="${nhapThemTrongTuan}"> </span> quyển
+											Mới thêm <span class="col-orange" th:text="${nhapThemTrongTuan}"> </span>
+											quyển
 										</p>
 									</div>
 								</div>
@@ -98,8 +98,9 @@
 									<div class="card-content">
 										<h5 class="font-15">7 ngày đánh giá</h5>
 										<h2 class="mb-3 font-18" th:text="${danhGiaTrongTuan + ' lần'}">$48,697</h2>
-										<p class="mb-0">Trung bình 
-											<span class="col-green" th:text="${#numbers.formatDecimal(saoTrungBinh, 1, 1)}">123</span> sao
+										<p class="mb-0">Trung bình
+											<span class="col-green"
+												th:text="${#numbers.formatDecimal(saoTrungBinh, 1, 1)}">123</span> sao
 										</p>
 									</div>
 								</div>
@@ -118,10 +119,14 @@
 			<div class="col-12 col-sm-12 col-lg-12">
 				<div class="card">
 					<div class="card-header">
-						<h4>Chart</h4>
+						<h4>Biểu đồ</h4>
 					</div>
 					<div class="card-body">
 						<div id="chart2" class="chartsh"></div>
+						<form th:action="@{/admin/vector-hoa-du-lieu}" th:method="post">
+							<button type="submit" class="btn btn-primary"><i data-feather="monitor"></i><span> Vector
+									hóa dữ liệu</span></button>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -149,12 +154,10 @@
 							<table class="table table-striped">
 								<tr>
 									<th class="text-center">
-										<div
-											class="custom-checkbox custom-checkbox-table custom-control">
-											<input type="checkbox" data-checkboxes="mygroup"
-												data-checkbox-role="dad" class="custom-control-input"
-												id="checkbox-all"> <label for="checkbox-all"
-												class="custom-control-label">&nbsp;</label>
+										<div class="custom-checkbox custom-checkbox-table custom-control">
+											<input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad"
+												class="custom-control-input" id="checkbox-all"> <label
+												for="checkbox-all" class="custom-control-label">&nbsp;</label>
 										</div>
 									</th>
 									<th>Task Name</th>
@@ -169,27 +172,24 @@
 									<td class="p-0 text-center">
 										<div class="custom-checkbox custom-control">
 											<input type="checkbox" data-checkboxes="mygroup"
-												class="custom-control-input" id="checkbox-1"> <label
-												for="checkbox-1" class="custom-control-label">&nbsp;</label>
+												class="custom-control-input" id="checkbox-1"> <label for="checkbox-1"
+												class="custom-control-label">&nbsp;</label>
 										</div>
 									</td>
 									<td>Create a mobile app</td>
 									<td class="text-truncate">
 										<ul class="list-unstyled order-list m-b-0 m-b-0">
-											<li class="team-member team-member-sm"><img
-												class="rounded-circle" src="assets/img/users/user-8.png"
-												alt="user" data-toggle="tooltip" title=""
-												data-original-title="Wildan Ahdian"></li>
-											<li class="team-member team-member-sm"><img
-												class="rounded-circle" src="assets/img/users/user-9.png"
-												alt="user" data-toggle="tooltip" title=""
-												data-original-title="John Deo"></li>
-											<li class="team-member team-member-sm"><img
-												class="rounded-circle" src="assets/img/users/user-10.png"
-												alt="user" data-toggle="tooltip" title=""
-												data-original-title="Sarah Smith"></li>
-											<li class="avatar avatar-sm"><span
-												class="badge badge-primary">+4</span></li>
+											<li class="team-member team-member-sm"><img class="rounded-circle"
+													src="assets/img/users/user-8.png" alt="user" data-toggle="tooltip"
+													title="" data-original-title="Wildan Ahdian"></li>
+											<li class="team-member team-member-sm"><img class="rounded-circle"
+													src="assets/img/users/user-9.png" alt="user" data-toggle="tooltip"
+													title="" data-original-title="John Deo"></li>
+											<li class="team-member team-member-sm"><img class="rounded-circle"
+													src="assets/img/users/user-10.png" alt="user" data-toggle="tooltip"
+													title="" data-original-title="Sarah Smith"></li>
+											<li class="avatar avatar-sm"><span class="badge badge-primary">+4</span>
+											</li>
 										</ul>
 									</td>
 									<td class="align-middle">
@@ -209,23 +209,21 @@
 									<td class="p-0 text-center">
 										<div class="custom-checkbox custom-control">
 											<input type="checkbox" data-checkboxes="mygroup"
-												class="custom-control-input" id="checkbox-2"> <label
-												for="checkbox-2" class="custom-control-label">&nbsp;</label>
+												class="custom-control-input" id="checkbox-2"> <label for="checkbox-2"
+												class="custom-control-label">&nbsp;</label>
 										</div>
 									</td>
 									<td>Redesign homepage</td>
 									<td class="text-truncate">
 										<ul class="list-unstyled order-list m-b-0 m-b-0">
-											<li class="team-member team-member-sm"><img
-												class="rounded-circle" src="assets/img/users/user-1.png"
-												alt="user" data-toggle="tooltip" title=""
-												data-original-title="Wildan Ahdian"></li>
-											<li class="team-member team-member-sm"><img
-												class="rounded-circle" src="assets/img/users/user-2.png"
-												alt="user" data-toggle="tooltip" title=""
-												data-original-title="John Deo"></li>
-											<li class="avatar avatar-sm"><span
-												class="badge badge-primary">+2</span></li>
+											<li class="team-member team-member-sm"><img class="rounded-circle"
+													src="assets/img/users/user-1.png" alt="user" data-toggle="tooltip"
+													title="" data-original-title="Wildan Ahdian"></li>
+											<li class="team-member team-member-sm"><img class="rounded-circle"
+													src="assets/img/users/user-2.png" alt="user" data-toggle="tooltip"
+													title="" data-original-title="John Deo"></li>
+											<li class="avatar avatar-sm"><span class="badge badge-primary">+2</span>
+											</li>
 										</ul>
 									</td>
 									<td class="align-middle">
@@ -245,27 +243,24 @@
 									<td class="p-0 text-center">
 										<div class="custom-checkbox custom-control">
 											<input type="checkbox" data-checkboxes="mygroup"
-												class="custom-control-input" id="checkbox-3"> <label
-												for="checkbox-3" class="custom-control-label">&nbsp;</label>
+												class="custom-control-input" id="checkbox-3"> <label for="checkbox-3"
+												class="custom-control-label">&nbsp;</label>
 										</div>
 									</td>
 									<td>Backup database</td>
 									<td class="text-truncate">
 										<ul class="list-unstyled order-list m-b-0 m-b-0">
-											<li class="team-member team-member-sm"><img
-												class="rounded-circle" src="assets/img/users/user-3.png"
-												alt="user" data-toggle="tooltip" title=""
-												data-original-title="Wildan Ahdian"></li>
-											<li class="team-member team-member-sm"><img
-												class="rounded-circle" src="assets/img/users/user-4.png"
-												alt="user" data-toggle="tooltip" title=""
-												data-original-title="John Deo"></li>
-											<li class="team-member team-member-sm"><img
-												class="rounded-circle" src="assets/img/users/user-5.png"
-												alt="user" data-toggle="tooltip" title=""
-												data-original-title="Sarah Smith"></li>
-											<li class="avatar avatar-sm"><span
-												class="badge badge-primary">+3</span></li>
+											<li class="team-member team-member-sm"><img class="rounded-circle"
+													src="assets/img/users/user-3.png" alt="user" data-toggle="tooltip"
+													title="" data-original-title="Wildan Ahdian"></li>
+											<li class="team-member team-member-sm"><img class="rounded-circle"
+													src="assets/img/users/user-4.png" alt="user" data-toggle="tooltip"
+													title="" data-original-title="John Deo"></li>
+											<li class="team-member team-member-sm"><img class="rounded-circle"
+													src="assets/img/users/user-5.png" alt="user" data-toggle="tooltip"
+													title="" data-original-title="Sarah Smith"></li>
+											<li class="avatar avatar-sm"><span class="badge badge-primary">+3</span>
+											</li>
 										</ul>
 									</td>
 									<td class="align-middle">
@@ -285,23 +280,21 @@
 									<td class="p-0 text-center">
 										<div class="custom-checkbox custom-control">
 											<input type="checkbox" data-checkboxes="mygroup"
-												class="custom-control-input" id="checkbox-4"> <label
-												for="checkbox-4" class="custom-control-label">&nbsp;</label>
+												class="custom-control-input" id="checkbox-4"> <label for="checkbox-4"
+												class="custom-control-label">&nbsp;</label>
 										</div>
 									</td>
 									<td>Android App</td>
 									<td class="text-truncate">
 										<ul class="list-unstyled order-list m-b-0 m-b-0">
-											<li class="team-member team-member-sm"><img
-												class="rounded-circle" src="assets/img/users/user-7.png"
-												alt="user" data-toggle="tooltip" title=""
-												data-original-title="John Deo"></li>
-											<li class="team-member team-member-sm"><img
-												class="rounded-circle" src="assets/img/users/user-8.png"
-												alt="user" data-toggle="tooltip" title=""
-												data-original-title="Sarah Smith"></li>
-											<li class="avatar avatar-sm"><span
-												class="badge badge-primary">+4</span></li>
+											<li class="team-member team-member-sm"><img class="rounded-circle"
+													src="assets/img/users/user-7.png" alt="user" data-toggle="tooltip"
+													title="" data-original-title="John Deo"></li>
+											<li class="team-member team-member-sm"><img class="rounded-circle"
+													src="assets/img/users/user-8.png" alt="user" data-toggle="tooltip"
+													title="" data-original-title="Sarah Smith"></li>
+											<li class="avatar avatar-sm"><span class="badge badge-primary">+4</span>
+											</li>
 										</ul>
 									</td>
 									<td class="align-middle">
@@ -321,27 +314,24 @@
 									<td class="p-0 text-center">
 										<div class="custom-checkbox custom-control">
 											<input type="checkbox" data-checkboxes="mygroup"
-												class="custom-control-input" id="checkbox-5"> <label
-												for="checkbox-5" class="custom-control-label">&nbsp;</label>
+												class="custom-control-input" id="checkbox-5"> <label for="checkbox-5"
+												class="custom-control-label">&nbsp;</label>
 										</div>
 									</td>
 									<td>Logo Design</td>
 									<td class="text-truncate">
 										<ul class="list-unstyled order-list m-b-0 m-b-0">
-											<li class="team-member team-member-sm"><img
-												class="rounded-circle" src="assets/img/users/user-9.png"
-												alt="user" data-toggle="tooltip" title=""
-												data-original-title="Wildan Ahdian"></li>
-											<li class="team-member team-member-sm"><img
-												class="rounded-circle" src="assets/img/users/user-10.png"
-												alt="user" data-toggle="tooltip" title=""
-												data-original-title="John Deo"></li>
-											<li class="team-member team-member-sm"><img
-												class="rounded-circle" src="assets/img/users/user-2.png"
-												alt="user" data-toggle="tooltip" title=""
-												data-original-title="Sarah Smith"></li>
-											<li class="avatar avatar-sm"><span
-												class="badge badge-primary">+2</span></li>
+											<li class="team-member team-member-sm"><img class="rounded-circle"
+													src="assets/img/users/user-9.png" alt="user" data-toggle="tooltip"
+													title="" data-original-title="Wildan Ahdian"></li>
+											<li class="team-member team-member-sm"><img class="rounded-circle"
+													src="assets/img/users/user-10.png" alt="user" data-toggle="tooltip"
+													title="" data-original-title="John Deo"></li>
+											<li class="team-member team-member-sm"><img class="rounded-circle"
+													src="assets/img/users/user-2.png" alt="user" data-toggle="tooltip"
+													title="" data-original-title="Sarah Smith"></li>
+											<li class="avatar avatar-sm"><span class="badge badge-primary">+2</span>
+											</li>
 										</ul>
 									</td>
 									<td class="align-middle">
@@ -361,27 +351,24 @@
 									<td class="p-0 text-center">
 										<div class="custom-checkbox custom-control">
 											<input type="checkbox" data-checkboxes="mygroup"
-												class="custom-control-input" id="checkbox-6"> <label
-												for="checkbox-6" class="custom-control-label">&nbsp;</label>
+												class="custom-control-input" id="checkbox-6"> <label for="checkbox-6"
+												class="custom-control-label">&nbsp;</label>
 										</div>
 									</td>
 									<td>Ecommerce website</td>
 									<td class="text-truncate">
 										<ul class="list-unstyled order-list m-b-0 m-b-0">
-											<li class="team-member team-member-sm"><img
-												class="rounded-circle" src="assets/img/users/user-8.png"
-												alt="user" data-toggle="tooltip" title=""
-												data-original-title="Wildan Ahdian"></li>
-											<li class="team-member team-member-sm"><img
-												class="rounded-circle" src="assets/img/users/user-9.png"
-												alt="user" data-toggle="tooltip" title=""
-												data-original-title="John Deo"></li>
-											<li class="team-member team-member-sm"><img
-												class="rounded-circle" src="assets/img/users/user-10.png"
-												alt="user" data-toggle="tooltip" title=""
-												data-original-title="Sarah Smith"></li>
-											<li class="avatar avatar-sm"><span
-												class="badge badge-primary">+4</span></li>
+											<li class="team-member team-member-sm"><img class="rounded-circle"
+													src="assets/img/users/user-8.png" alt="user" data-toggle="tooltip"
+													title="" data-original-title="Wildan Ahdian"></li>
+											<li class="team-member team-member-sm"><img class="rounded-circle"
+													src="assets/img/users/user-9.png" alt="user" data-toggle="tooltip"
+													title="" data-original-title="John Deo"></li>
+											<li class="team-member team-member-sm"><img class="rounded-circle"
+													src="assets/img/users/user-10.png" alt="user" data-toggle="tooltip"
+													title="" data-original-title="Sarah Smith"></li>
+											<li class="avatar avatar-sm"><span class="badge badge-primary">+4</span>
+											</li>
 										</ul>
 									</td>
 									<td class="align-middle">
@@ -410,75 +397,69 @@
 					<div class="card-header">
 						<h4>Support Ticket</h4>
 						<form class="card-header-form">
-							<input type="text" name="search" class="form-control"
-								placeholder="Search">
+							<input type="text" name="search" class="form-control" placeholder="Search">
 						</form>
 					</div>
 					<div class="card-body">
 						<div class="support-ticket media pb-1 mb-3">
-							<img src="assets/img/users/user-1.png" class="user-img mr-2"
-								alt="">
+							<img src="assets/img/users/user-1.png" class="user-img mr-2" alt="">
 							<div class="media-body ml-3">
 								<div class="badge badge-pill badge-success mb-1 float-right">Feature</div>
-								<span class="font-weight-bold">#89754</span> <a
-									href="javascript:void(0)">Please add advance table</a>
+								<span class="font-weight-bold">#89754</span> <a href="javascript:void(0)">Please add
+									advance table</a>
 								<p class="my-1">Hi, can you please add new table for
 									advan...</p>
-								<small class="text-muted">Created by <span
-									class="font-weight-bold font-13">John Deo</span> &nbsp;&nbsp; -
+								<small class="text-muted">Created by <span class="font-weight-bold font-13">John
+										Deo</span> &nbsp;&nbsp; -
 									1 day ago
 								</small>
 							</div>
 						</div>
 						<div class="support-ticket media pb-1 mb-3">
-							<img src="assets/img/users/user-2.png" class="user-img mr-2"
-								alt="">
+							<img src="assets/img/users/user-2.png" class="user-img mr-2" alt="">
 							<div class="media-body ml-3">
 								<div class="badge badge-pill badge-warning mb-1 float-right">Bug</div>
-								<span class="font-weight-bold">#57854</span> <a
-									href="javascript:void(0)">Select item not working</a>
+								<span class="font-weight-bold">#57854</span> <a href="javascript:void(0)">Select item
+									not working</a>
 								<p class="my-1">please check select item in advance form not
 									work...</p>
-								<small class="text-muted">Created by <span
-									class="font-weight-bold font-13">Sarah Smith</span>
+								<small class="text-muted">Created by <span class="font-weight-bold font-13">Sarah
+										Smith</span>
 									&nbsp;&nbsp; - 2 day ago
 								</small>
 							</div>
 						</div>
 						<div class="support-ticket media pb-1 mb-3">
-							<img src="assets/img/users/user-3.png" class="user-img mr-2"
-								alt="">
+							<img src="assets/img/users/user-3.png" class="user-img mr-2" alt="">
 							<div class="media-body ml-3">
 								<div class="badge badge-pill badge-primary mb-1 float-right">Query</div>
-								<span class="font-weight-bold">#85784</span> <a
-									href="javascript:void(0)">Are you provide template in
+								<span class="font-weight-bold">#85784</span> <a href="javascript:void(0)">Are you
+									provide template in
 									Angular?</a>
 								<p class="my-1">can you provide template in latest angular
 									8.</p>
-								<small class="text-muted">Created by <span
-									class="font-weight-bold font-13">Ashton Cox</span> &nbsp;&nbsp;
+								<small class="text-muted">Created by <span class="font-weight-bold font-13">Ashton
+										Cox</span> &nbsp;&nbsp;
 									-2 day ago
 								</small>
 							</div>
 						</div>
 						<div class="support-ticket media pb-1 mb-3">
-							<img src="assets/img/users/user-6.png" class="user-img mr-2"
-								alt="">
+							<img src="assets/img/users/user-6.png" class="user-img mr-2" alt="">
 							<div class="media-body ml-3">
 								<div class="badge badge-pill badge-info mb-1 float-right">Enhancement</div>
-								<span class="font-weight-bold">#25874</span> <a
-									href="javascript:void(0)">About template page load speed</a>
+								<span class="font-weight-bold">#25874</span> <a href="javascript:void(0)">About template
+									page load speed</a>
 								<p class="my-1">Hi, John, can you work on increase page
 									speed of template...</p>
-								<small class="text-muted">Created by <span
-									class="font-weight-bold font-13">Hasan Basri</span>
+								<small class="text-muted">Created by <span class="font-weight-bold font-13">Hasan
+										Basri</span>
 									&nbsp;&nbsp; -3 day ago
 								</small>
 							</div>
 						</div>
 					</div>
-					<a href="javascript:void(0)"
-						class="card-footer card-link text-center small ">View All</a>
+					<a href="javascript:void(0)" class="card-footer card-link text-center small ">View All</a>
 				</div>
 				<!-- Support tickets -->
 			</div>
@@ -557,9 +538,9 @@
 			</div>
 		</div>
 		<script th:inline="javascript">
-		window.thangList = /*[[${thangList}]]*/[];
-		window.chuaTraList = /*[[${chuaTraList}]]*/[];
-		window.traList = /*[[${traList}]]*/[];
+			window.thangList = /*[[${thangList}]]*/[];
+			window.chuaTraList = /*[[${chuaTraList}]]*/[];
+			window.traList = /*[[${traList}]]*/[];
 		</script>
 	</section>
 
