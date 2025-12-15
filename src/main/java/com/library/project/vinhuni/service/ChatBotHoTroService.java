@@ -15,14 +15,8 @@ import org.springframework.util.StreamUtils;
 import org.springframework.web.client.RestTemplate;
 
 import jakarta.annotation.PostConstruct;
-// import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import tools.jackson.databind.JsonNode;
-// import tools.jackson.databind.ObjectMapper; // Was removed in file, keeping commented out or just JsonNode if that's what is needed
 
-@Data
-@NoArgsConstructor
 class Request {
 	private Content systemInstruction;
 	private List<Content> contents;
@@ -31,12 +25,43 @@ class Request {
 		this.systemInstruction = systemInstruction;
 		this.contents = contents;
 	}
+
+	public Content getSystemInstruction() {
+		return systemInstruction;
+	}
+
+	public void setSystemInstruction(Content systemInstruction) {
+		this.systemInstruction = systemInstruction;
+	}
+
+	public List<Content> getContents() {
+		return contents;
+	}
+
+	public void setContents(List<Content> contents) {
+		this.contents = contents;
+	}
 }
 
-@Data
-@NoArgsConstructor
 class Content {
 	private String role;
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public List<Part> getParts() {
+		return parts;
+	}
+
+	public void setParts(List<Part> parts) {
+		this.parts = parts;
+	}
+
 	private List<Part> parts;
 
 	public Content(String role, List<Part> parts) {
@@ -45,12 +70,18 @@ class Content {
 	}
 }
 
-@Data
-@NoArgsConstructor
 class Part {
 	private String text;
 
 	public Part(String text) {
+		this.text = text;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
 		this.text = text;
 	}
 }
@@ -77,7 +108,7 @@ public class ChatBotHoTroService {
 	}
 
 	public String sendMessage(String sessionId, String message) {
-		String apiURL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key="
+		String apiURL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key="
 				+ GEMINI_API_KEY;
 
 		List<Content> lichSu = lichSuChat.computeIfAbsent(sessionId, k -> new ArrayList<>());
