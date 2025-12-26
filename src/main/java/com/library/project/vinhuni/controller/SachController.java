@@ -56,7 +56,9 @@ public class SachController {
 	final Integer DUNGTICHTRANG = 12;
 
 	@GetMapping("/sach")
-	public String index(@RequestParam(defaultValue = "") String tuKhoa, @RequestParam(defaultValue = "1") Integer trang, @RequestParam(defaultValue = "0") Integer maTacGia, @RequestParam(defaultValue = "0") Integer maTheLoai, @RequestParam(defaultValue = "ngayNhap_desc") String sapXepTheo, Model model) {
+	public String index(@RequestParam(defaultValue = "") String tuKhoa, @RequestParam(defaultValue = "1") Integer trang,
+			@RequestParam(defaultValue = "0") Integer maTacGia, @RequestParam(defaultValue = "0") Integer maTheLoai,
+			@RequestParam(defaultValue = "ngayNhap_desc") String sapXepTheo, Model model) {
 		model.addAttribute("tuKhoa", tuKhoa);
 		model.addAttribute("maTacGia", maTacGia);
 		model.addAttribute("maTheLoai", maTheLoai);
@@ -83,7 +85,8 @@ public class SachController {
 	}
 
 	@GetMapping("/sach/{id}")
-	public String detail(@PathVariable Long id, Model model, HttpServletRequest request, @AuthenticationPrincipal TaiKhoan taiKhoan) {
+	public String detail(@PathVariable Long id, Model model, HttpServletRequest request,
+			@AuthenticationPrincipal TaiKhoan taiKhoan) {
 
 		request.getSession(true);
 		Sach sach = sachService.findByMaSach(id);

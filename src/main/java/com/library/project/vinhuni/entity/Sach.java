@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
@@ -78,6 +79,9 @@ public class Sach {
 	@JoinTable(name = "tbl_sach_the_loai", joinColumns = @JoinColumn(name = "ma_sach"), inverseJoinColumns = @JoinColumn(name = "ma_the_loai"))
 	private List<TheLoai> theLoais = new ArrayList<>();
 
+	@OneToMany(mappedBy = "sach", fetch = FetchType.LAZY)
+	private List<MuonSach> muonSachs = new ArrayList<>();
+
 	@BatchSize(size = 10)
 	@NotEmpty(message = "Phải chọn ít nhất một tác giả")
 	@ManyToMany(fetch = FetchType.LAZY)
@@ -87,8 +91,25 @@ public class Sach {
 	@OneToMany(mappedBy = "sach", fetch = FetchType.LAZY)
 	private List<DanhGia> danhGias = new ArrayList<>();
 
+	@OneToMany(mappedBy = "sach", fetch = FetchType.LAZY)
+	private List<YeuThich> yeuThichs = new ArrayList<>();
+
+	@Formula("(SELECT COUNT(*) FROM tbl_yeu_thich yt WHERE yt.ma_sach = ma_sach)")
+	private Boolean daThich;
+
+	public Boolean getDaThich() {
+		return daThich;
+	}
+
 	@Transient
 	private Double diemTuongDongCosine;
+
+	@Formula("(SELECT COUNT(*) FROM tbl_muon_sach ms WHERE ms.ma_sach = ma_sach)")
+	private Integer soLanMuon;
+
+	public Integer getSoLanMuon() {
+		return soLanMuon;
+	}
 
 	public Double getDiemTuongDongCosine() {
 		return diemTuongDongCosine;

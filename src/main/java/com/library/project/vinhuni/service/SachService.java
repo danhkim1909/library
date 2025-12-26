@@ -52,14 +52,22 @@ public class SachService {
 		} else {
 			pageable = PageRequest.of(trang - 1, dungTichTrang, Sort.by(sapXep[0]).descending());
 		}
-		if (tacGia == null && theLoai == null) {
-			return sachRepository.findByKeyword(tuKhoa, pageable);
-		} else if (tacGia == null) {
-			return sachRepository.findByKeywordAndTheLoai(tuKhoa, theLoai, pageable);
-		} else if (theLoai == null) {
-			return sachRepository.findByKeywordAndTacGia(tuKhoa, tacGia, pageable);
+		if (sapXep[0].equals("soLanMuon")) {
+			if (sapXep[1].equals("asc")) {
+				return sachRepository.findByKeywordOrderBySoLanMuonAsc(tuKhoa, pageable);
+			} else {
+				return sachRepository.findByKeywordOrderBySoLanMuonDesc(tuKhoa, pageable);
+			}
 		} else {
-			return sachRepository.findByKeywordAndTheLoaiAndTacGia(tuKhoa, theLoai, tacGia, pageable);
+			if (tacGia == null && theLoai == null) {
+				return sachRepository.findByKeyword(tuKhoa, pageable);
+			} else if (tacGia == null) {
+				return sachRepository.findByKeywordAndTheLoai(tuKhoa, theLoai, pageable);
+			} else if (theLoai == null) {
+				return sachRepository.findByKeywordAndTacGia(tuKhoa, tacGia, pageable);
+			} else {
+				return sachRepository.findByKeywordAndTheLoaiAndTacGia(tuKhoa, theLoai, tacGia, pageable);
+			}
 		}
 	}
 

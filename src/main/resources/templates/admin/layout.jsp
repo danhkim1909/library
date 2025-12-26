@@ -213,6 +213,8 @@
 						<li class="dropdown"><a th:href="@{/admin/trasach}" class="nav-link"><i
 									data-feather="archive"></i><span>Quản
 									lý trả sách</span></a></li>
+						<li class="dropdown"><a th:href="@{/admin/trasach/lichsu}" class="nav-link"><i
+									data-feather="archive"></i><span>Lịch sử trả sách</span></a></li>
 					</ul>
 				</aside>
 			</div>

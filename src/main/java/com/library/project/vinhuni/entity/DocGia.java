@@ -1,6 +1,8 @@
 package com.library.project.vinhuni.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.library.project.vinhuni.dto.DocGiaDto;
 
@@ -9,6 +11,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -57,6 +60,9 @@ public class DocGia {
 
 	@OneToOne(mappedBy = "docGia")
 	private TaiKhoan taiKhoan;
+
+	@OneToMany(mappedBy = "docGia")
+	private List<YeuThich> yeuThichs = new ArrayList<>();
 
 	public Integer getMaDocGia() {
 		return maDocGia;

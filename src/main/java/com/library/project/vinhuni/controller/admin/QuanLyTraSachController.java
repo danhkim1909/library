@@ -69,4 +69,11 @@ public class QuanLyTraSachController {
 
 		return "redirect:/admin/trasach";
 	}
+
+	@GetMapping("/lichsu")
+	public String lichsu(Model model) {
+		List<TraSach> traSachs = traSachService.findByXacNhanTrue();
+		model.addAttribute("traSachs", traSachs);
+		return "admin/trasach/lichsu";
+	}
 }

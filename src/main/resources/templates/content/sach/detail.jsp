@@ -47,45 +47,54 @@
 			<div class="row gy-xl-0 gy-3">
 				<div class="col-xl-9">
 					<div class="bj_book_single me-xl-3">
-						<div class="bj_book_img flip">
-							<div class="front">
-								<img class="img-fluid" th:src="@{/assets/img/book-single1.jpg}" alt="">
-							</div>
-							<div class="back">
-								<img class="img-fluid" th:src="@{/assets/img/book-single.jpg}" alt="">
-							</div>
-							<div class="pr_ribbon" th:if="${sach.isMoi}">
-								<span class="product-badge">Sách mới</span>
-							</div>
-						</div>
-						<div class="bj_book_details">
-							<h2 th:text="${sach.tenSach}">A Storytelling Workbook</h2>
-							<div class="ratting review">
-								<div class="star-rating">
-									<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i>
-									<i class="fas fa-star"></i> <i class="fas fa-star-half-stroke"></i> <span>4.5</span>
-								</div>
-								<a href="#product_review" class="woocommerce-review-link"> <span class="count"> 50
-									</span>Reviews
-								</a>
-							</div>
-							<ul class="product_meta list-unstyled">
-								<li><span>Tác giả:</span>
-									<p th:each="tacGia, i : ${sach.tacGias}"
-										th:text="${i.count == 1 ? tacGia.tenTacGia : ', ' + tacGia.tenTacGia}"></p>
-								</li>
-								<li><span>Thể loại:</span>
-									<p th:each="theLoai, i : ${sach.theLoais}"
-										th:text="${i.count == 1 ? theLoai.tenTheLoai : ', ' + theLoai.tenTheLoai}"></p>
-								</li>
-								<li><span>Nhà xuất bản: </span>
-									<p th:text="${sach.nxb.tenNhaXuatBan}">nxb</p>
-								</li>
+						<div class="row">
+							<div class="col-md-5">
+								<div class="bj_book_img flip">
+									<div>
+										<img class="img-fluid" th:src="@{${sach.anhBia}}" alt="">
+									</div>
 
-								<li><span>Năm xuất bản: </span>
-									<p th:text="${sach.namXuatBan}"></p>
-								</li>
-							</ul>
+									<div class="pr_ribbon" th:if="${sach.isMoi}">
+										<span class="product-badge">Sách mới</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-7">
+								<div class="bj_book_details">
+									<h2 th:text="${sach.tenSach}">A Storytelling Workbook</h2>
+									<div class="ratting review">
+										<div class="star-rating">
+											<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+												class="fas fa-star"></i>
+											<i class="fas fa-star"></i> <i class="fas fa-star-half-stroke"></i>
+											<span>4.5</span>
+										</div>
+										<a href="#product_review" class="woocommerce-review-link"> <span class="count">
+												50
+											</span>Reviews
+										</a>
+									</div>
+									<ul class="product_meta list-unstyled">
+										<li><span>Tác giả:</span>
+											<p th:each="tacGia, i : ${sach.tacGias}"
+												th:text="${i.count == 1 ? tacGia.tenTacGia : ', ' + tacGia.tenTacGia}">
+											</p>
+										</li>
+										<li><span>Thể loại:</span>
+											<p th:each="theLoai, i : ${sach.theLoais}"
+												th:text="${i.count == 1 ? theLoai.tenTheLoai : ', ' + theLoai.tenTheLoai}">
+											</p>
+										</li>
+										<li><span>Nhà xuất bản: </span>
+											<p th:text="${sach.nxb.tenNhaXuatBan}">nxb</p>
+										</li>
+
+										<li><span>Năm xuất bản: </span>
+											<p th:text="${sach.namXuatBan}"></p>
+										</li>
+									</ul>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="bj_book_single_tab_area me-xl-3">
@@ -124,33 +133,18 @@
 							<div class="tab-pane fade" id="product_aurhor_desc" role="tabpanel"
 								aria-labelledby="product_aurhor_desc-tab">
 								<div class="tab_slider_content">
-									<div class="bj_author_single d-flex align-items-center">
-										<img th:src="@{/assets/img/home/author.jpg}" alt="">
-										<div class="bj_author_single_content">
-											<h2>Phillip Siphron</h2>
-											<p>Diam, urna, ornare leo facilisis suspendisse eu rutrum
-												id augue cursus tincidunt nisl eget ornare pharetra ac
-												pharetra, pulvinar ipsum.</p>
-											<ul class="book_info">
-												<li><span>Position:</span> Book Writer</li>
-												<li><span>Book Count:</span>23</li>
-												<li><span>Born:</span>1973</li>
-												<li><span>Category:</span><a href="#">Biography,</a><a
-														href="#">Fantasy,</a><a href="#">Sci-Fi</a></li>
-												<li><span>Language:</span><a href="#">English,</a><a href="#">German</a>
-												</li>
-											</ul>
-											<ul class="list-unstyled f_social_round">
-												<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-												<li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-												<li><a href="#"><i class="fa-brands fa-reddit"></i></a>
-												</li>
-												<li><a href="#"><i class="fa-brands fa-quora"></i></a>
-												</li>
-											</ul>
-											<a href="author-single.html" class="bj_theme_btn text_btn">More
-												Details<i class="arrow_right"></i>
-											</a>
+									<div class="row">
+										<div class="col-lg-6" th:each="tacGia : ${sach.tacGias}">
+											<div class="bj_author_single mb-4 d-flex align-items-center gap-3">
+												<div class="bj_author_img">
+													<img th:src="@{${tacGia.anh}}" alt="Author Image"
+														style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
+												</div>
+												<div class="bj_author_single_content">
+													<h2 th:text="${tacGia.tenTacGia}"></h2>
+													<p th:text="${tacGia.moTa}"></p>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -352,7 +346,9 @@
 															th:each="i : ${#numbers.sequence(1, danhGia.soSao)}"></i>
 
 													</div>
-													<span th:text="${#temporals.format(danhGia.thoiGian, 'dd/MM/yyyy - hh:mm a')}">⋅ Nov 5, 2021</span>
+													<span
+														th:text="${#temporals.format(danhGia.thoiGian, 'dd/MM/yyyy - hh:mm a')}">⋅
+														Nov 5, 2021</span>
 												</div>
 												<p class="small-2" th:text="${danhGia.noiDung}">A Storytelling Workbook
 													is a gem for
