@@ -191,19 +191,15 @@
 				function () {
 					const selectOrder = document
 						.getElementById('selectOrder');
-					// Sửa lại cách lấy tham số và tạo URL để bao gồm tất cả tham số cần thiết
 					$('#selectOrder')
 						.on(
 							'change',
 							function () {
-								// Lấy các tham số hiện tại từ server-side qua Thymeleaf
 								let maTG = /*[[${maTacGia}]] */ 0;
 								let maTL = /*[[${maTheLoai}]] */ 0;
 								let tK = /*[[${tuKhoa}]] */ '';
-								// Lấy giá trị sắp xếp mới
 								let sX = selectOrder.value;
 
-								// Tạo URL mới, bỏ qua tham số trang (mặc định sẽ là trang 1)
 								let url = `/sach?tuKhoa=${tK}&maTheLoai=${maTL}&maTacGia=${maTG}&sapXepTheo=${sX}`;
 								window.location.href = url;
 							});

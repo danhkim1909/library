@@ -24,6 +24,10 @@ import com.library.project.vinhuni.service.SachService;
 import com.library.project.vinhuni.service.TacGiaService;
 import com.library.project.vinhuni.service.TaiKhoanService;
 import com.library.project.vinhuni.service.TheLoaiService;
+import com.library.project.vinhuni.service.YeuThichService;
+import com.library.project.vinhuni.entity.YeuThich;
+import java.util.Set;
+import java.util.HashSet;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -48,6 +52,9 @@ public class SachController {
 	@Autowired
 	private DanhGiaService danhGiaService;
 
+	@Autowired
+	private YeuThichService yeuThichService;
+
 	SachController(DanhGiaService danhGiaService, MuonSachService muonSachService) {
 		this.danhGiaService = danhGiaService;
 		this.muonSachService = muonSachService;
@@ -58,7 +65,8 @@ public class SachController {
 	@GetMapping("/sach")
 	public String index(@RequestParam(defaultValue = "") String tuKhoa, @RequestParam(defaultValue = "1") Integer trang,
 			@RequestParam(defaultValue = "0") Integer maTacGia, @RequestParam(defaultValue = "0") Integer maTheLoai,
-			@RequestParam(defaultValue = "ngayNhap_desc") String sapXepTheo, Model model) {
+			@RequestParam(defaultValue = "ngayNhap_desc") String sapXepTheo, Model model,
+			@AuthenticationPrincipal TaiKhoan taiKhoan) {
 		model.addAttribute("tuKhoa", tuKhoa);
 		model.addAttribute("maTacGia", maTacGia);
 		model.addAttribute("maTheLoai", maTheLoai);
@@ -73,6 +81,8 @@ public class SachController {
 			theLoai = theLoaiService.findByMaTheLoai(maTheLoai);
 		}
 		Page<Sach> truyVan = sachService.findByKeyword(tuKhoa, trang, tacGia, theLoai, sapXepTheo, DUNGTICHTRANG);
+		sachService.checkDaThich(truyVan, taiKhoan);
+
 		model.addAttribute("truyVan", truyVan);
 
 		List<TheLoai> theLoais = theLoaiService.findByHienTrue();
@@ -98,7 +108,7 @@ public class SachController {
 		DanhGia danhGiaCu = null;
 
 		if (taiKhoan != null) {
-			DocGia docGia = taiKhoanService.findByTenDangNhap(taiKhoan.getTenDangNhap()).getDocGia();
+			DocGia docGia = taiKhoan.getDocGia();
 			model.addAttribute("docGia", docGia);
 			danhGiaCu = danhGiaService.findByDocGiaAndSach(docGia, sach);
 

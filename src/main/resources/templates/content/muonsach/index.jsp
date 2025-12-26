@@ -6,7 +6,7 @@
 
 <head>
 
-<title>Bookjar</title>
+	<title>Bookjar</title>
 </head>
 
 <body layout:fragment="content">
@@ -18,38 +18,7 @@
 	<section class="bj_account_dashboard" data-bg-color="#f5f5f5">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3">
-					<div class="account_dashboard_sidebar">
-						<div
-							class="sidebar_widget_body d-flex account_dashboard_sidebar_profile">
-							<div class="">
-								<img src="assets/img/profile-img.png" alt="account">
-							</div>
-							<div class="">
-								<div class="greetings">Hello</div>
-								<div class="name">Muaz BK</div>
-
-							</div>
-						</div>
-						<div class="sidebar_widget_body p-0">
-							<ul class="sidebar_widget_menu">
-								<li><a href="my-account.html">My Profile</a></li>
-								<li><a href="my-address.html">My Address</a></li>
-								<li><a href="my-orders.html">My Orders</a></li>
-								<li><a href="my-ebook-library.html">My eBook Library </a></li>
-								<li><a href="my-list.html">My List</a></li>
-								<li><a href="my-wishlist.html">My Wishlist</a></li>
-								<li><a href="my-rating-reviews.html">My Rating &
-										Reviews</a></li>
-								<li><a class="active" href="my-following-authors.html">My
-										Following Authors</a></li>
-							</ul>
-						</div>
-					</div>
-
-
-				</div>
-				<div class="col-lg-9">
+				<div class="col-lg-12">
 					<div class="account_dashboard_body">
 						<div class="account_dashboard_content">
 							<div class="account_dashboard_content_header">Danh sách
@@ -73,28 +42,32 @@
 													<tr th:each="muonSach, i : ${muonSachs}">
 														<td th:text="${i.count}">stt</td>
 														<td><img th:src="${muonSach.sach.anhBia}"
-															th:alt="${muonSach.sach.tenSach}" width="100"></td>
+																th:alt="${muonSach.sach.tenSach}" width="100"></td>
 														<td><a href="#" class="author_name"
-															th:text="${muonSach.sach.tenSach  + ' - ' + muonSach.soLuong + ' quyển'}">Rabindranath
+																th:text="${muonSach.sach.tenSach  + ' - ' + muonSach.soLuong + ' quyển'}">Rabindranath
 																Tagore</a></td>
 														<td
-															th:text="${#temporals.format(muonSach.thoiGianMuon, 'dd/MM/yyyy - hh:mm a')}">11
+															th:text="${#temporals.format(muonSach.thoiGianMuon, 'dd/MM/yyyy - hh:mm a')}">
+															11
 															Oct 2024</td>
 														<td>
 															<div th:if="${muonSach.xacNhan == true && muonSach.traSach == null}"
 																class="text-success">Được cho phép</div>
-																<div th:if="${muonSach.xacNhan == true && muonSach.traSach != null}"
+															<div th:if="${muonSach.xacNhan == true && muonSach.traSach != null}"
 																class="text-success">Đang đi trả sách</div>
 															<div th:if="${muonSach.xacNhan == null}"
 																class="text-warning">Chờ xem xét</div>
 														</td>
-														<td><a th:if="${muonSach.xacNhan == true && muonSach.traSach == null}" class="btn btn-success"
-															th:href="@{/trasach/{id}(id=${muonSach.maMuonSach})}">Trả
+														<td><a th:if="${muonSach.xacNhan == true && muonSach.traSach == null}"
+																class="btn btn-success"
+																th:href="@{/trasach/{id}(id=${muonSach.maMuonSach})}">Trả
 																sách</a>
-																
-																<a th:if="${muonSach.xacNhan == null}" class="btn btn-success"
-															th:href="@{/huymuon/{id}(id=${muonSach.maMuonSach})}">Hủy
-																mượn</a></td>
+
+															<a th:if="${muonSach.xacNhan == null}"
+																class="btn btn-success"
+																th:href="@{/huymuon/{id}(id=${muonSach.maMuonSach})}">Hủy
+																mượn</a>
+														</td>
 													</tr>
 												</tbody>
 											</table>
@@ -125,20 +98,21 @@
 													<tr th:each="muonSach, i : ${lichSus}">
 														<td th:text="${i.count}">stt</td>
 														<td><img th:src="${muonSach.sach.anhBia}"
-															th:alt="${muonSach.sach.tenSach}" width="100"></td>
+																th:alt="${muonSach.sach.tenSach}" width="100"></td>
 														<td><a href="#" class="author_name"
-															th:text="${muonSach.sach.tenSach  + ' - ' + muonSach.soLuong + ' quyển'}">Rabindranath
+																th:text="${muonSach.sach.tenSach  + ' - ' + muonSach.soLuong + ' quyển'}">Rabindranath
 																Tagore</a></td>
 														<td
-															th:text="${#temporals.format(muonSach.thoiGianMuon, 'dd/MM/yyyy - hh:mm a')}">11
+															th:text="${#temporals.format(muonSach.thoiGianMuon, 'dd/MM/yyyy - hh:mm a')}">
+															11
 															Oct 2024</td>
-															<td>
+														<td>
 															<div th:if="${muonSach.xacNhan == true}"
 																class="text-success">Đã trả</div>
 															<div th:if="${muonSach.xacNhan == false}"
 																class="text-danger">Đã hủy</div>
 														</td>
-													
+
 													</tr>
 												</tbody>
 											</table>

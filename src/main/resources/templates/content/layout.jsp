@@ -328,67 +328,18 @@
 										</div>
 									</form>
 								</li>
-								<li class="nav-item shpping-cart dropdown submenu"><a
-										class="cart-btn nav-link dropdown-toggle" href="#" role="button"
-										data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-											class="ti-shopping-cart"></i><span class="num total-cart-count">2</span></a>
-									<div class="dropdown-menu">
-										<ul class="cart-dropdown list-unstyled">
-											<li class="cart-single-item clearfix">
-												<div class="cart-img">
-													<img src="assets/img/cart1.jpg" alt="styler">
-												</div>
-												<div class="cart-content text-left">
-													<p class="cart-title">
-														<a href="#">Pale pink and black buttoned dress</a>
-													</p>
-													<p>
-														<del>$400.00</del>
-														- $350.00
-													</p>
-												</div>
-												<div class="cart-remove">
-													<a href="#" class="action"><span class="ti-close"></span></a>
-												</div>
-											</li>
-											<li class="cart-single-item clearfix">
-												<div class="cart-img">
-													<img src="assets/img/cart1.jpg" alt="styler">
-												</div>
-												<div class="cart-content text-left">
-													<p class="cart-title">
-														<a href="#">Vera bradley lug- gage large duffel</a>
-													</p>
-													<p>$350.00</p>
-												</div>
-												<div class="cart-remove">
-													<a href="#" class="action"><span class="ti-close"></span></a>
-												</div>
-											</li>
-										</ul>
-										<div class="cart_f">
-											<div class="cart-pricing">
-												<p class="total">
-													Subtotal :<span class="p-total text-end">$<span
-															class="total-cart-amount"></span></span>
-												</p>
-											</div>
-											<div class="cart-button text-center">
-												<a href="cart.html" class="btn btn-cart get_btn pink">View
-													Cart</a> <a href="checkout.html"
-													class="btn btn-cart get_btn dark">Checkout</a>
-											</div>
-										</div>
-									</div>
+								<li class="nav-item shpping-cart "><a class="cart-btn nav-link"
+										sec:authorize="hasRole('docgia')" th:href="@{/danhsachyeuthich}"><i
+											class="far fa-heart"></i></a>
 								</li>
 							</ul>
 						</div>
 
 						<a sec:authorize="isAnonymous()" class="bj_theme_btn strock_btn hidden-sm hidden-xs"
 							th:href="@{/login}"><i class="fa-regular fa-user"></i>Đăng
-							nhập</a> <a sec:authorize="hasRole('nhanvien')"
-							class="bj_theme_btn strock_btn hidden-sm hidden-xs" th:href="@{/admin}"><i
-								class="fa-regular fa-user"></i>Trang
+							nhập</a>
+						<a sec:authorize="hasRole('nhanvien')" class="bj_theme_btn strock_btn hidden-sm hidden-xs"
+							th:href="@{/admin}"><i class="fa-regular fa-user"></i>Trang
 							quản trị</a>
 						<form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">
 							<button type="submit" class="bj_theme_btn strock_btn hidden-sm hidden-xs">Đăng

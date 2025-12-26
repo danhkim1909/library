@@ -15,6 +15,7 @@ public class DocGiaDto {
 	@NotBlank(message = "Địa chỉ không được để trống")
 	@Size(max = 255, message = "Địa chỉ không để quá dài")
 	private String diaChi;
+
 	@Size(max = 20, message = "Số điện thoại không để quá dài")
 	private String soDt;
 	private String gioiTinh;

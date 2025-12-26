@@ -5,6 +5,9 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -94,18 +97,34 @@ public class Sach {
 	@OneToMany(mappedBy = "sach", fetch = FetchType.LAZY)
 	private List<YeuThich> yeuThichs = new ArrayList<>();
 
-	@Formula("(SELECT COUNT(*) FROM tbl_yeu_thich yt WHERE yt.ma_sach = ma_sach)")
+	@Transient
+	private Double diemTuongDongCosine;
+
+	@Formula("(select count(*) from tbl_muon_sach ms where ms.ma_sach = ma_sach and ms.xac_nhan = true)")
+	private Integer soLanMuon;
+
+	public List<MuonSach> getMuonSachs() {
+		return muonSachs;
+	}
+
+	public void setMuonSachs(List<MuonSach> muonSachs) {
+		this.muonSachs = muonSachs;
+	}
+
+	public void setSoLanMuon(Integer soLanMuon) {
+		this.soLanMuon = soLanMuon;
+	}
+
+	@Transient
 	private Boolean daThich;
 
 	public Boolean getDaThich() {
 		return daThich;
 	}
 
-	@Transient
-	private Double diemTuongDongCosine;
-
-	@Formula("(SELECT COUNT(*) FROM tbl_muon_sach ms WHERE ms.ma_sach = ma_sach)")
-	private Integer soLanMuon;
+	public void setDaThich(Boolean daThich) {
+		this.daThich = daThich;
+	}
 
 	public Integer getSoLanMuon() {
 		return soLanMuon;
@@ -233,6 +252,14 @@ public class Sach {
 
 	public List<DanhGia> getDanhGias() {
 		return danhGias;
+	}
+
+	public List<YeuThich> getYeuThichs() {
+		return yeuThichs;
+	}
+
+	public void setYeuThichs(List<YeuThich> yeuThichs) {
+		this.yeuThichs = yeuThichs;
 	}
 
 	public Integer getSoLuong() {

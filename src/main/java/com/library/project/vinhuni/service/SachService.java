@@ -14,10 +14,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.library.project.vinhuni.Utillities.ImageProcess;
 import com.library.project.vinhuni.dto.SachDto;
+import com.library.project.vinhuni.entity.DocGia;
 import com.library.project.vinhuni.entity.NhaXuatBan;
 import com.library.project.vinhuni.entity.Sach;
 import com.library.project.vinhuni.entity.TacGia;
+import com.library.project.vinhuni.entity.TaiKhoan;
 import com.library.project.vinhuni.entity.TheLoai;
+import com.library.project.vinhuni.entity.YeuThich;
 import com.library.project.vinhuni.repository.SachRepository;
 
 @Service
@@ -136,6 +139,31 @@ public class SachService {
 	public void show(Sach sach) {
 		sach.setHien(!sach.getHien());
 		sachRepository.save(sach);
+	}
+
+	public List<Sach> checkDaThich(List<Sach> saches, TaiKhoan taiKhoan) {
+		if (taiKhoan == null) {
+			return saches;
+		}
+		DocGia docGia = taiKhoan.getDocGia();
+
+		for (Sach sach : saches) {
+			boolean check = false;
+			if (docGia != null) {
+				for (YeuThich yeuThich : sach.getYeuThichs()) {
+					if (yeuThich.getDocGia().getMaDocGia() == docGia.getMaDocGia()) {
+						check = true;
+						break;
+					}
+				}
+			}
+			sach.setDaThich(check);
+		}
+		return saches;
+	}
+
+	public void checkDaThich(Page<Sach> page, TaiKhoan taiKhoan) {
+		checkDaThich(page.getContent(), taiKhoan);
 	}
 
 }

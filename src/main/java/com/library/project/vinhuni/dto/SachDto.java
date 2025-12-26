@@ -142,7 +142,8 @@ public class SachDto {
 		}
 
 		if (sach.getTheLoais() != null) {
-			List<Integer> theLoaiIds = sach.getTheLoais().stream().map(TheLoai::getMaTheLoai).collect(Collectors.toList());
+			List<Integer> theLoaiIds = sach.getTheLoais().stream().map(TheLoai::getMaTheLoai)
+					.collect(Collectors.toList());
 			this.setTheLoaiIds(theLoaiIds);
 		}
 	}
