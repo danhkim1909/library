@@ -39,6 +39,9 @@ public class TaiKhoan implements UserDetails {
 	@Column(name = "MatKhau", length = 255, nullable = false)
 	private String matKhau;
 
+	@Column(name = "Email", length = 100, nullable = false)
+	private String email;
+
 	@Column(name = "LoaiTaiKhoan", length = 20)
 	private String loaiTaiKhoan;
 
@@ -84,6 +87,14 @@ public class TaiKhoan implements UserDetails {
 
 	public String getMatKhau() {
 		return matKhau;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public void setDocGia(DocGia docGia) {

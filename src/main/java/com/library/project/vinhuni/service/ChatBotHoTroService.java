@@ -131,30 +131,7 @@ public class ChatBotHoTroService {
 			return "Xin lỗi, chúng tôi gặp sự cố";
 		}
 
-		List<Sach> sachList = sachService.findByVectorNotNullAndHienTrue();
-
-		for (Sach sach : sachList) {
-			Double tuSo = 0.0;
-			for (int i = 0; i < sach.getVector().size(); i++) {
-				tuSo += sach.getVector().get(i) * vectorMessage.get(i);
-			}
-
-			Double mauSo1 = 0.0;
-			for (int i = 0; i < sach.getVector().size(); i++) {
-				mauSo1 += sach.getVector().get(i) * sach.getVector().get(i);
-			}
-
-			Double mauSo2 = 0.0;
-			for (int i = 0; i < vectorMessage.size(); i++) {
-				mauSo2 += vectorMessage.get(i) * vectorMessage.get(i);
-			}
-
-			sach.setDiemTuongDongCosine(tuSo / Math.sqrt(mauSo1 * mauSo2));
-		}
-
-		List<Sach> sachs = sachList.stream().sorted(Comparator.comparing(Sach::getDiemTuongDongCosine).reversed())
-				.limit(5)
-				.collect(Collectors.toList());
+		List<Sach> sachs = sachService.findByCousineSimilarity(vectorMessage, 5, 0L);
 
 		String apiURL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key="
 				+ GEMINI_API_KEY;

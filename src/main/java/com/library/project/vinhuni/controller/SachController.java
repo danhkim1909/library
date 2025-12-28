@@ -124,6 +124,8 @@ public class SachController {
 		muonSach.setSoLuong(1);
 		model.addAttribute("muonSach", muonSach);
 
+		List<Sach> sachTuongDongs = sachService.findByCousineSimilarity(sach.getVector(), 4, id);
+		model.addAttribute("sachTuongDongs", sachTuongDongs);
 		model.addAttribute("sach", sach);
 		return "content/sach/detail";
 	}

@@ -3,7 +3,9 @@ package com.library.project.vinhuni.dto;
 import com.library.project.vinhuni.entity.DocGia;
 import com.library.project.vinhuni.entity.TaiKhoan;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public class DocGiaDto {
@@ -16,11 +18,21 @@ public class DocGiaDto {
 	@Size(max = 255, message = "Địa chỉ không để quá dài")
 	private String diaChi;
 
+	@NotBlank(message = "email không được để trống")
+	@Email(message = "email không hợp lệ")
+	@Size(max = 100, message = "email không để quá dài")
+	private String email;
+
 	@Size(max = 20, message = "Số điện thoại không để quá dài")
 	private String soDt;
+
+	@NotBlank(message = "Giới tính không được để trống")
 	private String gioiTinh;
+
+	@NotBlank(message = "Lớp không được để trống")
 	private String lop;
 
+	@Pattern(regexp = "^(?!\\d+$).+$", message = "Tên đăng nhập không được toàn số")
 	@NotBlank(message = "Tên đăng nhập không được để trống")
 	@Size(max = 50, message = "Tên đăng nhập không để quá dài")
 	private String tenDangNhap;
@@ -51,6 +63,14 @@ public class DocGiaDto {
 
 	public void setSoDt(String soDt) {
 		this.soDt = soDt;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getGioiTinh() {
@@ -89,6 +109,7 @@ public class DocGiaDto {
 		this.tenDocGia = docGia.getTenDocGia();
 		this.diaChi = docGia.getDiaChi();
 		this.soDt = docGia.getSoDT();
+		this.email = taiKhoan.getEmail();
 		this.gioiTinh = docGia.getGioiTinh();
 		this.lop = docGia.getLop();
 

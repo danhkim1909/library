@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,13 +35,15 @@ public class RegisterController {
 	private PasswordEncoder passwordEncoder;
 
 	@GetMapping
-	public String register() {
+	public String register(Model model) {
+		DocGiaDto docGiaDto = new DocGiaDto();
+		model.addAttribute("user", docGiaDto);
 		return "content/register";
 	}
 
 	@PostMapping
 	@Transactional
-	public String register(@Valid @ModelAttribute DocGiaDto user, BindingResult result,
+	public String register(@Valid @ModelAttribute("user") DocGiaDto user, BindingResult result,
 			RedirectAttributes redirectAttributes) {
 
 		if (result.hasErrors()) {

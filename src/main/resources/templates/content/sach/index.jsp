@@ -131,21 +131,14 @@
 												data-bs-placement="right" title="Yêu thích"><i class="icon_heart_alt"
 													th:style="${sach.daThich ? 'color: red' : ''}"></i></button>
 										</form>
-										<span data-bs-toggle="tooltip" data-bs-placement="right"
-											title="Xem nhanh"><button class="quick_button" data-bs-toggle="modal"
-												data-bs-target="#productQuickView">
-												<i class="arrow_move"></i>
-											</button>
-										</span>
-										<a class="quick_button" href="#" data-bs-toggle="tooltip"
-											data-bs-placement="right" title="So sánh"><i
-												class="ti-control-shuffle"></i></a>
 									</div>
-									<button type="button" class="bj_theme_btn add-to-cart-automated"
-										data-name="A Storytelling Workbook" data-img="assets/img/author_book1.jpg"
-										data-price="25" data-mrp="120">
-										<i class="icon_cart_alt"></i>Mượn sách
-									</button>
+									<form th:action="@{/muon}" method="post">
+										<button type="button" class="bj_theme_btn add-to-cart-automated"
+											data-name="A Storytelling Workbook" data-img="assets/img/author_book1.jpg"
+											data-price="25" data-mrp="120">
+											<i class="icon_cart_alt"></i>Mượn sách
+										</button>
+									</form>
 								</div>
 								<div class="bj_new_pr_content">
 									<a th:href="@{/sach/{id}(id = ${sach.maSach})}">
@@ -159,7 +152,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="text-center">
+					<!-- <div class="text-center" th:if="${truyVan.totalPages > 1}">
 						<nav aria-label="...">
 							<ul class="pagination pagi-content">
 								<li th:if="${!truyVan.isFirst()}" class="page-item">
@@ -179,7 +172,7 @@
 								</li>
 							</ul>
 						</nav>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>

@@ -85,6 +85,7 @@ public class QuanLyNguoiDungController {
 		TaiKhoan taiKhoan = new TaiKhoan();
 		taiKhoan.setNhanVien(nhanVienUpdated);
 		taiKhoan.setLoaiTaiKhoan("nhanvien");
+		taiKhoan.setEmail(userNhanVien.getEmail());
 		String matKhauMaHoa = passwordEncoder.encode(userNhanVien.getMatKhau());
 		taiKhoan.setMatKhau(matKhauMaHoa);
 		taiKhoan.setTenDangNhap(userNhanVien.getTenDangNhap());
@@ -115,6 +116,7 @@ public class QuanLyNguoiDungController {
 		TaiKhoan taiKhoan = new TaiKhoan();
 		taiKhoan.setDocGia(docGiaUpdated);
 		taiKhoan.setLoaiTaiKhoan("docgia");
+		taiKhoan.setEmail(userDocGia.getEmail());
 		String matKhauMaHoa = passwordEncoder.encode(userDocGia.getMatKhau());
 		taiKhoan.setMatKhau(matKhauMaHoa);
 		taiKhoan.setTenDangNhap(userDocGia.getTenDangNhap());
@@ -123,7 +125,7 @@ public class QuanLyNguoiDungController {
 		return "redirect:/admin/nguoidung";
 	}
 
-	@PostMapping("/update")
+	@GetMapping("/update")
 	public String update(Model model, @RequestParam("tenDangNhap") String tenDangNhap) {
 		TaiKhoan taiKhoan = taiKhoanService.findByTenDangNhap(tenDangNhap);
 

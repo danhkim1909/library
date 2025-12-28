@@ -2,7 +2,9 @@ package com.library.project.vinhuni.service;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -142,19 +144,21 @@ public class SachService {
 	}
 
 	public List<Sach> checkDaThich(List<Sach> saches, TaiKhoan taiKhoan) {
-		if (taiKhoan == null) {
-			return saches;
+		DocGia docGia = null;
+		if (taiKhoan != null) {
+			docGia = taiKhoan.getDocGia();
 		}
-		DocGia docGia = taiKhoan.getDocGia();
 
 		for (Sach sach : saches) {
 			boolean check = false;
-			if (docGia != null) {
-				for (YeuThich yeuThich : sach.getYeuThichs()) {
+			for (YeuThich yeuThich : sach.getYeuThichs()) {
+				if (docGia != null) {
 					if (yeuThich.getDocGia().getMaDocGia() == docGia.getMaDocGia()) {
 						check = true;
 						break;
 					}
+				} else {
+					check = false;
 				}
 			}
 			sach.setDaThich(check);
@@ -164,6 +168,38 @@ public class SachService {
 
 	public void checkDaThich(Page<Sach> page, TaiKhoan taiKhoan) {
 		checkDaThich(page.getContent(), taiKhoan);
+	}
+
+	public List<Sach> findByCousineSimilarity(List<Double> vector, Integer k, Long exceptSachId) {
+		List<Sach> sachList = findByVectorNotNullAndHienTrue();
+
+		for (Sach sach : sachList) {
+			if (sach.getMaSach() == exceptSachId) {
+				sach.setDiemTuongDongCosine(0.0);
+				continue;
+			}
+			Double tuSo = 0.0;
+			for (int i = 0; i < sach.getVector().size(); i++) {
+				tuSo += sach.getVector().get(i) * vector.get(i);
+			}
+
+			Double mauSo1 = 0.0;
+			for (int i = 0; i < sach.getVector().size(); i++) {
+				mauSo1 += sach.getVector().get(i) * sach.getVector().get(i);
+			}
+
+			Double mauSo2 = 0.0;
+			for (int i = 0; i < vector.size(); i++) {
+				mauSo2 += vector.get(i) * vector.get(i);
+			}
+
+			sach.setDiemTuongDongCosine(tuSo / Math.sqrt(mauSo1 * mauSo2));
+		}
+
+		List<Sach> sachs = sachList.stream().sorted(Comparator.comparing(Sach::getDiemTuongDongCosine).reversed())
+				.limit(k)
+				.collect(Collectors.toList());
+		return sachs;
 	}
 
 }

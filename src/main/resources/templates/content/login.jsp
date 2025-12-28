@@ -12,9 +12,8 @@
         <div class="login-wrapper">
             <div class="login-left">
                 <a th:href="@{/}" class="logo"><img th:src="@{/assets/img/home-two/logo-dark.svg}" alt="Image"></a>
-                <h2 class="title">Login to Your Account</h2>
-                <div class="sibtitle">Welcome Back! Select Method to login:</div>
-
+                <h2 class="title">Đăng nhập</h2>
+                <div class="sibtitle">Chào mừng trở lại, hãy chọn phương thức đăng nhập</div>
                 <div class="social-links">
                     <a href="#"><img th:src="@{/assets/img/login/google-icon.svg}" alt="Image"></a>
                     <a href="#"><img th:src="@{/assets/img/login/fb-icon.svg}" alt="Image"></a>
@@ -34,16 +33,16 @@
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
                             <label class="form-check-label" for="flexCheckChecked">
-                                Remember me
+                                Nhớ tôi
                             </label>
                         </div>
-                        <a href="#" class="forget-password">Forgot Password?</a>
+                        <a th:href="@{/quen-mat-khau}" class="forget-password">Quên mật khẩu?</a>
                     </div>
                     <div class="alert alert-danger" th:if="${param.error}">Sai tài khoản hoặc mật khẩu</div>
-                    <button type="submit" class="bj_theme_btn w-100 border-0">Log In</button>
+                    <button type="submit" class="bj_theme_btn w-100 border-0">Đăng nhập</button>
                 </form>
                 <div class="new-user">
-                    New user?<a th:href="@{/register}"> Create an account</a>
+                    Người dùng mới?<a th:href="@{/register}"> Tạo tài khoản</a>
                 </div>
             </div>
             <div class="login-right">

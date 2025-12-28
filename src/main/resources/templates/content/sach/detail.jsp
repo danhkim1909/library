@@ -469,18 +469,17 @@
 	<section class="bj_frequently_bought_area sec_padding pt-0" data-bg-color="#f5f5f5">
 		<div class="container">
 			<div class="section_title text-center">
-				<h2 class="title_two">Frequently Bought Together</h2>
-				<p>Get Special Promo All Books Are 50% Off Now!</p>
+				<h2 class="title_two">Những quyển sách liên quan</h2>
+				<p>Nếu thích <strong th:text="${sach.tenSach}"></strong>, có thể bạn cũng sẽ thích</p>
 			</div>
 			<div class="row gy-xl-0 gy-4">
-				<div class="col-xl-3 col-lg-4 col-sm-6">
+				<div class="col-xl-3 col-lg-4 col-sm-6" th:each="sachTuongDong : ${sachTuongDongs}">
 					<div class="bj_new_pr_item mb-0 wow fadeInUp" data-wow-delay="0.2s">
-						<label class="select-box" for="fbt-box-1"> <input type="checkbox" class="form-check-input"
-								id="fbt-box-1" checked>
-						</label> <a href="#" class="img"><img th:src="@{/assets/img/home/book5.jpg}" alt="book"></a>
+						</label> <a th:href="@{/sach/{id}(id = ${sachTuongDong.maSach})}" class="img"><img
+								th:src="${sachTuongDong.anhBia}" th:alt="${sachTuongDong.tenSach}"></a>
 						<div class="bj_new_pr_content">
-							<a href="product-single.html">
-								<h4 class="bj_new_pr_title">The Sun And The Star</h4>
+							<a th:href="@{/sach/{id}(id=${sachTuongDong.maSach})}">
+								<h4 class="bj_new_pr_title" th:text="${sachTuongDong.tenSach}">The Sun And The Star</h4>
 							</a>
 							<div class="bj_pr_meta d-flex">
 								<div class="norm_text">Dec 2019</div>
@@ -506,89 +505,9 @@
 						</div>
 					</div>
 				</div>
-
-				<div class="col-xl-3 col-lg-4 col-sm-6">
-					<div class="bj_new_pr_item mb-0 wow fadeInUp" data-wow-delay="0.3s">
-						<label class="select-box" for="fbt-box-2"> <input type="checkbox" class="form-check-input"
-								id="fbt-box-2" checked>
-						</label> <a href="#" class="img"><img th:src="@{/assets/img/home/book6.jpg}" alt="book"></a>
-						<div class="bj_new_pr_content">
-							<a href="product-single.html">
-								<h4 class="bj_new_pr_title">The Most Fun</h4>
-							</a>
-							<div class="bj_pr_meta d-flex">
-								<div class="norm_text">Oct 2024</div>
-								<div class="norm_text">55 pages</div>
-								<div class="ratting">
-									<i class="fas fa-star"></i> <span>4.7</span>
-								</div>
-							</div>
-							<div class="product_varaiation">
-								<select class="selectpickers">
-									<option th:attr="data-img=@{/assets/img/shop/ereader.png}" value="">eBook</option>
-									<option th:attr="data-img=@{/assets/img/shop/book.png}" value="">paperback</option>
-								</select>
-								<div class="book_price mt-2">
-									<del class="me-2">410</del>
-									$100
-								</div>
-							</div>
-							<button type="button" class="bj_theme_btn strock_btn add-to-cart-automated"
-								data-name="The Sun And The Star" data-price="125" data-mrp="250"
-								th:attr="data-img=@{/assets/img/home/book6.jpg}">Add To
-								Cart</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-xl-3 col-lg-4 col-sm-6">
-					<div class="bj_new_pr_item mb-0 wow fadeInUp" data-wow-delay="0.4s">
-						<label class="select-box" for="fbt-box-3"> <input type="checkbox" class="form-check-input"
-								id="fbt-box-3" checked>
-						</label> <a href="#" class="img"><img th:src="@{/assets/img/home/book7.jpg}" alt="book"></a>
-						<div class="bj_new_pr_content">
-							<a href="product-single.html">
-								<h4 class="bj_new_pr_title">The Magic and Fear</h4>
-							</a>
-							<div class="bj_pr_meta d-flex">
-								<div class="norm_text">Jan 2010</div>
-								<div class="norm_text">27 pages</div>
-								<div class="ratting">
-									<i class="fas fa-star"></i> <span>4.7</span>
-								</div>
-							</div>
-							<div class="product_varaiation">
-								<select class="selectpickers">
-									<option th:attr="data-img=@{/assets/img/shop/ereader.png}" value="">eBook</option>
-									<option th:attr="data-img=@{/assets/img/shop/book.png}" value="">paperback</option>
-								</select>
-								<div class="book_price mt-2">
-									<del class="me-2">410</del>
-									$100
-								</div>
-							</div>
-							<button type="button" class="bj_theme_btn strock_btn add-to-cart-automated"
-								data-name="The Sun And The Star" data-price="125" data-mrp="250"
-								th:attr="data-img=@{/assets/img/home/book7.jpg}">Add To
-								Cart</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-xl-3 col-lg-12 col-sm-6">
-					<div class="added_cart_total">
-						<h4 class="mt-auto">Total</h4>
-						<div class="price">$265</div>
-						<del>$740</del>
-						<div>$375.00 saved</div>
-						<a href="#" class="bj_theme_btn w-100 mt-auto">Add selected to
-							cart</a>
-					</div>
-				</div>
 			</div>
 		</div>
 	</section>
-
-
 </body>
 
 </html>

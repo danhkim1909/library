@@ -23,6 +23,12 @@ public class TaiKhoanService implements UserDetailsService {
 		return taiKhoanRepository.findAll();
 	}
 
+	public void changePassword(String matKhauMoi, String tenDangNhap) {
+		TaiKhoan taiKhoan = taiKhoanRepository.findByTenDangNhap(tenDangNhap).orElse(null);
+		taiKhoan.setMatKhau(passwordEncoder.encode(matKhauMoi));
+		taiKhoanRepository.save(taiKhoan);
+	}
+
 	public TaiKhoan findByTenDangNhap(String tenDangNhap) {
 		return taiKhoanRepository.findByTenDangNhap(tenDangNhap).orElse(null);
 	}
