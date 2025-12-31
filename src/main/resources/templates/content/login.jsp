@@ -15,9 +15,8 @@
                 <h2 class="title">Đăng nhập</h2>
                 <div class="sibtitle">Chào mừng trở lại, hãy chọn phương thức đăng nhập</div>
                 <div class="social-links">
-                    <a href="#"><img th:src="@{/assets/img/login/google-icon.svg}" alt="Image"></a>
-                    <a href="#"><img th:src="@{/assets/img/login/fb-icon.svg}" alt="Image"></a>
-                    <a href="#"><img th:src="@{/assets/img/login/apple-icon.png}" alt="Image"></a>
+                    <a href="/oauth2/authorization/google"><img th:src="@{/assets/img/login/google-icon.svg}"
+                            alt="Image"></a>
                 </div>
                 <div class="divider"><span>or</span></div>
                 <form th:action="@{/login}" method="post">

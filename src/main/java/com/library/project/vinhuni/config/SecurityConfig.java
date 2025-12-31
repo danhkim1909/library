@@ -27,8 +27,8 @@ public class SecurityConfig {
 				.formLogin(form -> form.loginPage("/login").loginProcessingUrl("/login").defaultSuccessUrl("/", true)
 						.permitAll())
 
-				.logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/").permitAll());
-
+				.logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/").permitAll())
+				.oauth2Login(oauth2 -> oauth2.loginPage("/login").defaultSuccessUrl("/login/oauth2/google", true));
 		return http.build();
 	}
 }

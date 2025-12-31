@@ -81,6 +81,9 @@ public class DocGia {
 	}
 
 	public String getGioiTinh() {
+		if (gioiTinh == null) {
+			return "Chưa thiết lập";
+		}
 		return gioiTinh;
 	}
 
@@ -89,6 +92,9 @@ public class DocGia {
 	}
 
 	public String getLop() {
+		if (lop == null) {
+			return "Chưa thiết lập";
+		}
 		return lop;
 	}
 
@@ -97,6 +103,9 @@ public class DocGia {
 	}
 
 	public String getSoDT() {
+		if (soDT == null) {
+			return "Chưa thiết lập";
+		}
 		return soDT;
 	}
 
@@ -105,6 +114,9 @@ public class DocGia {
 	}
 
 	public String getDiaChi() {
+		if (diaChi == null) {
+			return "Chưa thiết lập";
+		}
 		return diaChi;
 	}
 
