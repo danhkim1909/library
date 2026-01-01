@@ -125,13 +125,12 @@ public class ChatBotHoTroService {
 	public String sendMessage(String sessionId, String message) {
 
 		List<Double> vectorMessage = new ArrayList<>();
-
 		vectorMessage = vectorHoaDuLieuService.vectorHoaDuLieu(message);
-		if (vectorMessage.size() == 0) {
-			return "Xin lỗi, chúng tôi gặp sự cố";
-		}
 
-		List<Sach> sachs = sachService.findByCousineSimilarity(vectorMessage, 5, 0L);
+		List<Sach> sachs = new ArrayList<>();
+		if (vectorMessage.size() != 0) {
+			sachs = sachService.findByCousineSimilarity(vectorMessage, 5, 0L);
+		}
 
 		String apiURL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key="
 				+ GEMINI_API_KEY;
@@ -140,8 +139,11 @@ public class ChatBotHoTroService {
 		Part part = new Part(message);
 		lichSu.add(new Content("user", List.of(part)));
 
-		String attach = "Thông tin sách tìm được: \n";
-		for (Sach sach : sachs) {
+		String attach = "\n những cuốn sách hot nhất hiện tại:";
+
+		List<Sach> sachHotList = sachService.findHotSach();
+
+		for (Sach sach : sachHotList) {
 
 			String tacGias = "";
 			for (TacGia tacGia : sach.getTacGias()) {
@@ -159,7 +161,34 @@ public class ChatBotHoTroService {
 					+ "Thể loại: " + theLoais + "\n"
 					+ "Năm xuất bản: " + sach.getNamXuatBan() + "\n"
 					+ "Nhà xuất bản: " + sach.getNxb().getTenNhaXuatBan() + "\n"
-					+ "Mô tả: " + sach.getMoTa() + "\n";
+					+ "Mô tả: " + sach.getMoTa() + "\n"
+					+ "Số lần mượn: " + sach.getSoLanMuon() + "\n";
+		}
+
+		if (sachs.size() != 0) {
+			attach += "\n Thông tin sách tìm được bằng vector cosine: \n";
+			for (Sach sach : sachs) {
+
+				String tacGias = "";
+				for (TacGia tacGia : sach.getTacGias()) {
+					tacGias += "" + tacGia.getTenTacGia() + ", ";
+				}
+
+				String theLoais = "";
+				for (TheLoai theLoai : sach.getTheLoais()) {
+					theLoais += "" + theLoai.getTenTheLoai() + ", ";
+				}
+
+				attach += "Mã sách: " + sach.getMaSach() + "\n"
+						+ "Tên sách: " + sach.getTenSach() + "\n"
+						+ "Tác giả: " + tacGias + "\n"
+						+ "Thể loại: " + theLoais + "\n"
+						+ "Năm xuất bản: " + sach.getNamXuatBan() + "\n"
+						+ "Nhà xuất bản: " + sach.getNxb().getTenNhaXuatBan() + "\n"
+						+ "Mô tả: " + sach.getMoTa() + "\n";
+			}
+		} else {
+			attach += "Không tìm thấy sách nào với embedding vector cosine";
 		}
 
 		Content prompt = new Content("user", List.of(new Part(rules + "\n" + attach)));

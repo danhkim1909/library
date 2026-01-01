@@ -100,7 +100,7 @@ public class Sach {
 	@Transient
 	private Double diemTuongDongCosine;
 
-	@Formula("(select count(*) from tbl_muon_sach ms where ms.ma_sach = ma_sach and ms.xac_nhan = true)")
+	@Formula("(select count(*) from tbl_muon_sach ms where ms.ma_sach = ma_sach and ms.xac_nhan = 1)")
 	private Integer soLanMuon;
 
 	public List<MuonSach> getMuonSachs() {

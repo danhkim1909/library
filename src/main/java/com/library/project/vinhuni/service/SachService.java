@@ -48,6 +48,12 @@ public class SachService {
 		return sachRepository.findByVectorNotNullAndHienTrue();
 	}
 
+	public List<Sach> findHotSach() {
+		List<Sach> sachList = findAll();
+		sachList.sort(Comparator.comparing(Sach::getSoLanMuon).reversed());
+		return sachList.stream().filter(s -> s.getHien()).limit(5).collect(Collectors.toList());
+	}
+
 	public Page<Sach> findByKeyword(String tuKhoa, Integer trang, TacGia tacGia, TheLoai theLoai, String sapXepTheo,
 			Integer dungTichTrang) {
 		String[] sapXep = sapXepTheo.split("_");
