@@ -15,15 +15,18 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.library.project.vinhuni.entity.DocGia;
 import com.library.project.vinhuni.entity.Kho;
+import com.library.project.vinhuni.entity.TraSach;
 import com.library.project.vinhuni.entity.MuonSach;
 import com.library.project.vinhuni.entity.Sach;
 import com.library.project.vinhuni.entity.TaiKhoan;
+import com.library.project.vinhuni.entity.TraSach;
 import com.library.project.vinhuni.service.MuonSachService;
 import com.library.project.vinhuni.service.SachService;
 import com.library.project.vinhuni.service.TaiKhoanService;
 import com.library.project.vinhuni.service.TraSachService;
 
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MuonTraSachController {
@@ -53,12 +56,11 @@ public class MuonTraSachController {
 			return "redirect:/sach";
 		}
 
-		if (taiKhoan == null) {
-			redirectAttributess.addFlashAttribute("info", "Vui lòng đăng nhập");
-			return "redirect:/login";
-		}
-		if (taiKhoan.getLoaiTaiKhoan().equals("nhanvien")) {
-			redirectAttributess.addFlashAttribute("error", "Chức năng này dành cho độc giả");
+		String idDocGia = taiKhoan.getTenDangNhap();
+		DocGia docGiaCheck = taiKhoanService.findByTenDangNhap(idDocGia).getDocGia();
+
+		if (muonSachService.checkTienNo(docGiaCheck)) {
+			redirectAttributess.addFlashAttribute("error", "Bạn còn sách chưa trả tiền phạt");
 			return "redirect:/sach/" + id;
 		}
 
@@ -131,6 +133,17 @@ public class MuonTraSachController {
 		muonSachService.cancel(muonSach);
 		redirectAttributes.addFlashAttribute("success", "Đã hủy yêu cầu mượn");
 		return "redirect:/sachmuon";
+	}
+
+	@GetMapping("/trasach/chitiet/{id}")
+	public String chitiettrasach(@PathVariable("id") Long id, Model model, RedirectAttributes redirectAttributes) {
+		TraSach traSach = traSachService.findByMaTraSach(id);
+		if (traSach == null) {
+			redirectAttributes.addFlashAttribute("error", "Có lỗi xảy ra, vui lòng thử lại");
+			return "redirect:/sachmuon";
+		}
+		model.addAttribute("traSach", traSach);
+		return "content/muonsach/chitiettrasach";
 	}
 
 }

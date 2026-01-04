@@ -39,6 +39,18 @@ public class TraSach {
 	@JoinColumn(name = "MaNhanVien")
 	private NhanVien nhanVien;
 
+	@Column(name = "TienPhat")
+	private Integer tienPhat;
+
+	@Column(name = "LyDoPhat", length = 500)
+	private String lyDoPhat;
+
+	@Column(name = "DaNopPhat")
+	private Boolean daNopPhat;
+
+	@Column(name = "MaGiaoDich")
+	private String maGiaoDich;
+
 	public Long getMaTraSach() {
 		return maTraSach;
 	}
@@ -85,6 +97,41 @@ public class TraSach {
 
 	public void setNhanVien(NhanVien nhanVien) {
 		this.nhanVien = nhanVien;
+	}
+
+	public Integer getTienPhat() {
+		if (this.tienPhat == null) {
+			return 0;
+		}
+		return tienPhat;
+	}
+
+	public void setTienPhat(Integer tienPhat) {
+		this.tienPhat = tienPhat;
+	}
+
+	public Boolean getDaNopPhat() {
+		return daNopPhat;
+	}
+
+	public void setDaNopPhat(Boolean daNopPhat) {
+		this.daNopPhat = daNopPhat;
+	}
+
+	public String getLyDoPhat() {
+		return lyDoPhat;
+	}
+
+	public void setLyDoPhat(String lyDoPhat) {
+		this.lyDoPhat = lyDoPhat;
+	}
+
+	public String getMaGiaoDich() {
+		return maGiaoDich;
+	}
+
+	public void setMaGiaoDich(String maGiaoDich) {
+		this.maGiaoDich = maGiaoDich;
 	}
 
 }

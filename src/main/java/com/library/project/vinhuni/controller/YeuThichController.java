@@ -39,10 +39,6 @@ public class YeuThichController {
     @PostMapping("/yeuthich")
     public String yeuthich(Long idSach, @AuthenticationPrincipal TaiKhoan taiKhoan,
             RedirectAttributes redirectAttributes, HttpServletRequest request) {
-        if (taiKhoan == null) {
-            redirectAttributes.addFlashAttribute("error", "Vui lòng đăng nhập");
-            return "redirect:/login";
-        }
 
         Sach sach = sachService.findByMaSach(idSach);
         String referer = request.getHeader("Referer");
@@ -76,14 +72,7 @@ public class YeuThichController {
     @GetMapping("/danhsachyeuthich")
     public String index(Model model, @AuthenticationPrincipal TaiKhoan taiKhoan,
             RedirectAttributes redirectAttributes) {
-        if (taiKhoan == null) {
-            redirectAttributes.addFlashAttribute("error", "Vui lòng đăng nhập");
-            return "redirect:/login";
-        }
-        if (taiKhoan.getLoaiTaiKhoan().equals("nhanvien")) {
-            redirectAttributes.addFlashAttribute("error", "Chức năng dành cho độc giả");
-            return "redirect:/";
-        }
+
         DocGia docGia = taiKhoanService.findByTenDangNhap(taiKhoan.getTenDangNhap()).getDocGia();
         List<YeuThich> yeuThichs = yeuThichService.findByDocGia(docGia);
         model.addAttribute("yeuThichs", yeuThichs);

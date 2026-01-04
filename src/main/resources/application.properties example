@@ -33,3 +33,9 @@ spring.security.oauth2.client.registration.google.client-secret=
 spring.security.oauth2.client.registration.google.scope=email, profile
 spring.security.oauth2.client.registration.google.redirect-uri=http://localhost:8080/login/oauth2/code/{registrationId}
 spring.security.oauth2.client.registration.google.client-name=Google Login
+
+vnpay.payUrl=https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
+vnpay.returnUrl=http://localhost:8080/thanhtoan/vnpay-return
+vnpay.tmnCode=079NRULI
+vnpay.secretKey=
+vnpay.apiUrl=https://sandbox.vnpayment.vn/merchant_webapi/api/transaction

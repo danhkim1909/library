@@ -64,6 +64,25 @@ public class DocGia {
 	@OneToMany(mappedBy = "docGia")
 	private List<YeuThich> yeuThichs = new ArrayList<>();
 
+	@OneToMany(mappedBy = "docGia")
+	private List<MuonSach> muonSachs = new ArrayList<>();
+
+	public List<YeuThich> getYeuThichs() {
+		return yeuThichs;
+	}
+
+	public void setYeuThichs(List<YeuThich> yeuThichs) {
+		this.yeuThichs = yeuThichs;
+	}
+
+	public List<MuonSach> getMuonSachs() {
+		return muonSachs;
+	}
+
+	public void setMuonSachs(List<MuonSach> muonSachs) {
+		this.muonSachs = muonSachs;
+	}
+
 	public Integer getMaDocGia() {
 		return maDocGia;
 	}

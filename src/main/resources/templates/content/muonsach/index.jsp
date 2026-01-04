@@ -92,6 +92,7 @@
 														<th scope="col">Sách</th>
 														<th scope="col">Mượn lúc</th>
 														<th scope="col">Trạng thái</th>
+														<th scope="col">Hành động</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -107,10 +108,22 @@
 															11
 															Oct 2024</td>
 														<td>
-															<div th:if="${muonSach.xacNhan == true}"
-																class="text-success">Đã trả</div>
-															<div th:if="${muonSach.xacNhan == false}"
-																class="text-danger">Đã hủy</div>
+															<div class="text-success"
+																th:if="${muonSach.traSach.tienPhat == 0}">Đã trả</div>
+															<div class="text-danger"
+																th:if="${muonSach.traSach.tienPhat != 0 && muonSach.traSach.daNopPhat == false}">
+																Đã trả, chờ
+																nộp phạt</div>
+															<div class="text-success"
+																th:if="${muonSach.traSach.tienPhat != 0 && muonSach.traSach.daNopPhat == true}">
+																Đã trả, đã nộp phạt</div>
+
+														</td>
+														<td>
+															<a class="btn btn-info"
+																th:href="@{/trasach/chitiet/{id}(id=${muonSach.traSach.maTraSach})}"><i
+																	class="fa fa-eye"></i>
+																Xem</a>
 														</td>
 
 													</tr>

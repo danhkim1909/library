@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.library.project.vinhuni.controller.RegisterController;
+import com.library.project.vinhuni.dto.XacNhanTraSachDto;
 import com.library.project.vinhuni.entity.Kho;
 import com.library.project.vinhuni.entity.MuonSach;
 import com.library.project.vinhuni.entity.NhanVien;
@@ -49,16 +50,25 @@ public class TraSachService {
 		traSachRepository.save(traSach);
 	}
 
-	public void confirm(TraSach traSach, String anh, NhanVien nhanVien) {
-		traSach.setAnh(anh);
+	public void confirm(TraSach traSach, XacNhanTraSachDto dto, NhanVien nhanVien) {
+		traSach.setAnh(dto.getAnh());
 		traSach.setNhanVien(nhanVien);
 		traSach.setThoiGianTra(LocalDateTime.now());
+		traSach.setTienPhat(dto.getTienPhat());
+		traSach.setLyDoPhat(dto.getLyDoPhat());
+		traSach.setDaNopPhat(dto.getDaNopPhat());
 		traSach.setXacNhan(true);
 		traSachRepository.save(traSach);
 
 		Kho kho = traSach.getMuonSach().getSach().getKho();
 		kho.setSoLuong(kho.getSoLuong() + traSach.getMuonSach().getSoLuong());
 		khoRepository.save(kho);
+	}
+
+	public void nopPhat(TraSach traSach, String maGiaoDich) {
+		traSach.setMaGiaoDich(maGiaoDich);
+		traSach.setDaNopPhat(true);
+		traSachRepository.save(traSach);
 	}
 
 }

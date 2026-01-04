@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.library.project.vinhuni.dto.XacNhanTraSachDto;
 import com.library.project.vinhuni.entity.MuonSach;
 import com.library.project.vinhuni.entity.TaiKhoan;
 import com.library.project.vinhuni.entity.TraSach;
 import com.library.project.vinhuni.service.MuonSachService;
 import com.library.project.vinhuni.service.TaiKhoanService;
 import com.library.project.vinhuni.service.TraSachService;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/admin/trasach")
@@ -50,11 +52,12 @@ public class QuanLyTraSachController {
 			return "redirect:/admin/trasach";
 		}
 		model.addAttribute("muonSach", muonSach);
+		model.addAttribute("xacNhanTraSachDto", new XacNhanTraSachDto());
 		return "admin/trasach/confirm";
 	}
 
 	@PostMapping("/{id}")
-	public String tra(@PathVariable Long id, String imageBase64, @AuthenticationPrincipal TaiKhoan taiKhoan) {
+	public String tra(@PathVariable Long id, XacNhanTraSachDto dto, @AuthenticationPrincipal TaiKhoan taiKhoan) {
 		MuonSach muonSach = muonSachService.findByMaMuonSach(id);
 		if (muonSach == null) {
 			return "redirect:/admin/trasach";
@@ -65,7 +68,7 @@ public class QuanLyTraSachController {
 			traSach = new TraSach();
 			traSach.setMuonSach(muonSach);
 		}
-		traSachService.confirm(traSach, imageBase64, taiKhoanDB.getNhanVien());
+		traSachService.confirm(traSach, dto, taiKhoanDB.getNhanVien());
 
 		return "redirect:/admin/trasach";
 	}
@@ -76,4 +79,12 @@ public class QuanLyTraSachController {
 		model.addAttribute("traSachs", traSachs);
 		return "admin/trasach/lichsu";
 	}
+
+	@GetMapping("/lichsu/{id}")
+	public String chitietlichsu(@PathVariable("id") Long maTraSach, Model model) {
+		TraSach traSach = traSachService.findByMaTraSach(maTraSach);
+		model.addAttribute("traSach", traSach);
+		return "admin/trasach/chitietlichsu";
+	}
+
 }

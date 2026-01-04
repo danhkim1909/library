@@ -125,7 +125,7 @@ public class BangDieuKhienController {
 	}
 
 	@PostMapping("/vector-hoa-du-lieu")
-	public String vectorHoaDuLieu(RedirectAttributes redirectAttributes) {
+	public String vectorHoaDuLieu(RedirectAttributes redirectAttributes) throws InterruptedException {
 		List<Sach> sachList = sachService.findByVectorNull();
 		if (sachList.isEmpty()) {
 			redirectAttributes.addFlashAttribute("info", "Không có sách nào cần tạo vector");
@@ -156,6 +156,8 @@ public class BangDieuKhienController {
 				redirectAttributes.addFlashAttribute("error", "Tạo vector thất bại");
 				return "redirect:/admin";
 			}
+
+			Thread.sleep(1000);
 		}
 		redirectAttributes.addFlashAttribute("success", "Tạo vector thành công");
 		return "redirect:/admin";

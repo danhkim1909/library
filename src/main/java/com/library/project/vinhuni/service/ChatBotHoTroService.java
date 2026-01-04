@@ -126,9 +126,8 @@ public class ChatBotHoTroService {
 
 		List<Double> vectorMessage = new ArrayList<>();
 		vectorMessage = vectorHoaDuLieuService.vectorHoaDuLieu(message);
-
 		List<Sach> sachs = new ArrayList<>();
-		if (vectorMessage.size() != 0) {
+		if (vectorMessage != null && vectorMessage.size() != 0) {
 			sachs = sachService.findByCousineSimilarity(vectorMessage, 5, 0L);
 		}
 
@@ -165,7 +164,7 @@ public class ChatBotHoTroService {
 					+ "Số lần mượn: " + sach.getSoLanMuon() + "\n";
 		}
 
-		if (sachs.size() != 0) {
+		if (vectorMessage != null && vectorMessage.size() != 0) {
 			attach += "\n Thông tin sách tìm được bằng vector cosine: \n";
 			for (Sach sach : sachs) {
 

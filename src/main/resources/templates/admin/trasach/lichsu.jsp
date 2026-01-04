@@ -38,8 +38,11 @@
                                         <td style="text-align: center;" th:text="${traSach.muonSach.docGia.tenDocGia}">
                                             @mdo</td>
                                         <td style="text-align: center;" th:text="${traSach.muonSach.soLuong}"></td>
-                                        <td style="text-align: center;"> <img th:src="${traSach.anh}" width="100px"
-                                                height="200px" style="margin-bottom: 10px;"></td>
+                                        <td style="text-align: center;"><a class="btn btn-info"
+                                                th:href="@{/admin/trasach/lichsu/{id}(id=${traSach.maTraSach})}"><i
+                                                    class="fas fa-eye"></i>
+                                                Xem</a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
