@@ -624,65 +624,24 @@
 					<p>Duyệt các bài viết và mẹo mới nhất từ blog của chúng tôi.</p>
 				</div>
 				<div class="row">
-					<div class="col-lg-4 col-md-6">
+					<div class="col-lg-4 col-md-6" th:each="baiViet : ${baiViets}">
 						<div class="bj_blog_grid_item wow fadeInUp" data-wow-delay="0.3s">
 							<div class="bj_blog_img">
-								<a href="#"><img class="img-fluid" th:src="@{/assets/img/home-two/blog_img1.jpg}"
-										alt=""></a> <a href="#" class="blog_category">Book Journeys</a>
+								<a href="#"><img class="img-fluid" th:src="${baiViet.anh}" alt=""
+										style="width: 100%;"></a> <a href="#" class="blog_category"
+									th:text="${baiViet.danhMucBaiViet.tenDanhMuc}"></a>
 							</div>
 							<a th:href="@{/blog-details}">
-								<h3 class="blog_title">Uncover Your Next Great Read: A
-									Journey Through BookJar</h3>
+								<h3 class="blog_title" th:text="${baiViet.tenBaiViet}"></h3>
 							</a>
 							<div class="blog_meta">
 								<div class="post_author">
-									<img th:src="@{/assets/img/home-two/author1.jpg}" alt="">
-									<a th:href="@{/author-single}">Talan Torff</a>
+									<!-- <img th:src="@{/assets/img/home-two/author1.jpg}" alt=""> -->
+									<a th:text="${baiViet.nhanVien.tenNhanVien}"></a>
 								</div>
 								<div class="post_date">
-									<i class="icon_calendar"></i>Nov 08, 2024
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6">
-						<div class="bj_blog_grid_item wow fadeInUp" data-wow-delay="0.4s">
-							<div class="bj_blog_img">
-								<a href="#"><img class="img-fluid" th:src="@{/assets/img/home-two/blog_img2.jpg}"
-										alt=""></a> <a href="#" class="blog_category">Stories Uncovered</a>
-							</div>
-							<a th:href="@{/blog-details}">
-								<h3 class="blog_title">Beyond the Pages: Discover the Magic
-									Inside BookJar</h3>
-							</a>
-							<div class="blog_meta">
-								<div class="post_author">
-									<img th:src="@{/assets/img/home-two/author1.jpg}" alt="">
-									<a th:href="@{/author-single}">Muaz Bk</a>
-								</div>
-								<div class="post_date">
-									<i class="icon_calendar"></i>Nov 08, 2024
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6">
-						<div class="bj_blog_grid_item wow fadeInUp" data-wow-delay="0.5s">
-							<div class="bj_blog_img">
-								<a href="#"><img class="img-fluid" th:src="@{/assets/img/home-two/blog_img3.jpg}"
-										alt=""></a> <a href="#" class="blog_category">Reader's Haven</a>
-							</div>
-							<a th:href="@{/blog-details}">
-								<h3 class="blog_title">Stories Await: Dive into a World of
-									Books at BookJar</h3>
-							</a>
-							<div class="blog_meta">
-								<div class="post_author">
-									<img th:src="@{/assets/img/home-two/author1.jpg}" alt="">
-									<a th:href="@{/author-single}">Jason Moe</a>
-								</div>
-								<div class="post_date">
-									<i class="icon_calendar"></i>Nov 08, 2024
+									<i class="icon_calendar"></i><span
+										th:text="${#temporals.format(baiViet.ngayTao, 'dd/MM/yyyy')}"></span>
 								</div>
 							</div>
 						</div>

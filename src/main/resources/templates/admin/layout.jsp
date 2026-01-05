@@ -11,6 +11,8 @@
 	<link rel="stylesheet" th:href="@{/admins/assets/bundles/izitoast/css/iziToast.min.css}">
 	<link rel="stylesheet" th:href="@{/admins/assets/css/app.min.css}">
 	<link rel="stylesheet" th:href="@{/admins/assets/css/style.css}">
+	<link rel="stylesheet" th:href="@{/admins/assets/bundles/summernote/summernote-bs4.css}">
+
 	<link rel="stylesheet" th:href="@{/admins/assets/css/components.css}">
 	<link rel="stylesheet" th:href="@{/admins/assets/css/custom.css}">
 
@@ -193,28 +195,32 @@
 									data-feather="users"></i><span>Quản
 									lý người dùng</span></a></li>
 						<li class="dropdown"><a th:href="@{/admin/theloai}" class="nav-link"><i
-									data-feather="align-center"></i><span>Quản
+									data-feather="grid"></i><span>Quản
 									lý thể loại</span></a></li>
 						<li class="dropdown"><a th:href="@{/admin/tacgia}" class="nav-link"><i
-									data-feather="user"></i><span>Quản
+									data-feather="pen-tool"></i><span>Quản
 									lý tác giả</span></a></li>
 						<li class="dropdown"><a th:href="@{/admin/nhaxuatban}" class="nav-link"><i
-									data-feather="map-pin"></i><span>Quản
+									data-feather="printer"></i><span>Quản
 									lý nhà xuất bản</span></a></li>
 						<li class="dropdown"><a th:href="@{/admin/sach}" class="nav-link"><i
 									data-feather="book"></i><span>Quản
 									lý sách</span></a></li>
 						<li class="dropdown"><a th:href="@{/admin/kho}" class="nav-link"><i
-									data-feather="archive"></i><span>Quản
+									data-feather="package"></i><span>Quản
 									lý nhập xuất kho</span></a></li>
 						<li class="dropdown"><a th:href="@{/admin/muonsach}" class="nav-link"><i
-									data-feather="archive"></i><span>Quản
+									data-feather="shopping-bag"></i><span>Quản
 									lý mượn sách</span></a></li>
 						<li class="dropdown"><a th:href="@{/admin/trasach}" class="nav-link"><i
-									data-feather="archive"></i><span>Quản
+									data-feather="rotate-ccw"></i><span>Quản
 									lý trả sách</span></a></li>
 						<li class="dropdown"><a th:href="@{/admin/trasach/lichsu}" class="nav-link"><i
-									data-feather="archive"></i><span>Lịch sử trả sách</span></a></li>
+									data-feather="clock"></i><span>Lịch sử trả sách</span></a></li>
+						<li class="dropdown"><a th:href="@{/admin/danhmucbaiviet}" class="nav-link"><i
+									data-feather="list"></i><span>Quản lý danh mục bài viết</span></a></li>
+						<li class="dropdown"><a th:href="@{/admin/baiviet}" class="nav-link"><i
+									data-feather="file-text"></i><span>Quản lý bài viết</span></a></li>
 					</ul>
 				</aside>
 			</div>
@@ -321,8 +327,11 @@
 	<script th:src="@{/admins/assets/js/page/index.js}"></script>
 	<script th:src="@{/admins/assets/js/scripts.js}"></script>
 	<script type="text/javascript" th:src="@{/admins/assets/bundles/select2/dist/js/select2.full.min.js}"></script>
+	<script th:src="@{/admins/assets/bundles/summernote/summernote-bs4.js}"></script>
 	<script th:src="@{/admins/assets/js/custom.js}"></script>
 	<script th:src="@{/admins/assets/bundles/izitoast/js/iziToast.min.js}"></script>
+	<script th:src="@{/admins/assets/js/page/ckeditor.js}"></script>
+
 	<script type="text/javascript" th:inline="javascript">
 		document.addEventListener("DOMContentLoaded", function () {
 			const success = /*[[${success}]]*/ null;

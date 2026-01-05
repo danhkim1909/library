@@ -10,25 +10,25 @@
 	<section class="bj_breadcrumb_area text-center banner_animation_03" data-bg-color="#f5f5f5">
 		<div class="bg_one" data-bg-image="assets/img/breadcrumb/breadcrumb_banner_bg.png"></div>
 		<div class="bd_shape one wow fadeInDown layer" data-wow-delay="0.3s" data-depth="0.5">
-			<img data-parallax='{"y": -50}' src="assets/img/breadcrumb/book_left1.png" alt="">
+			<img data-parallax='{"y": -50}' src="assets/img/breadcrumb/book_left1.png" alt="" />
 		</div>
 		<div class="bd_shape two wow fadeInUp layer" data-depth="0.6" data-wow-delay="0.4s">
-			<img data-parallax='{"y": 30}' src="assets/img/breadcrumb/book-left2.png" alt="">
+			<img data-parallax='{"y": 30}' src="assets/img/breadcrumb/book-left2.png" alt="" />
 		</div>
 		<div class="bd_shape three wow fadeInDown layer" data-wow-delay="0.3s" data-depth="0.5">
-			<img data-parallax='{"y": -50}' src="assets/img/breadcrumb/plane-1.png" alt="">
+			<img data-parallax='{"y": -50}' src="assets/img/breadcrumb/plane-1.png" alt="" />
 		</div>
 		<div class="bd_shape four wow fadeInUp layer" data-depth="0.6" data-wow-delay="0.4s">
-			<img data-parallax='{"y": 30}' src="assets/img/breadcrumb/plan-3.png" alt="">
+			<img data-parallax='{"y": 30}' src="assets/img/breadcrumb/plan-3.png" alt="" />
 		</div>
 		<div class="bd_shape five wow fadeInUp layer" data-depth="0.6" data-wow-delay="0.4s">
-			<img data-parallax='{"y": 80}' src="assets/img/breadcrumb/plan-2.png" alt="">
+			<img data-parallax='{"y": 80}' src="assets/img/breadcrumb/plan-2.png" alt="" />
 		</div>
 		<div class="bd_shape six wow fadeInDown layer" data-wow-delay="0.3s" data-depth="0.5">
-			<img data-parallax='{"y": -60}' src="assets/img/breadcrumb/book-right.png" alt="">
+			<img data-parallax='{"y": -60}' src="assets/img/breadcrumb/book-right.png" alt="" />
 		</div>
 		<div class="bd_shape seven wow fadeInUp layer" data-depth="0.6" data-wow-delay="0.4s">
-			<img data-parallax='{"x": 50}' src="assets/img/breadcrumb/book-right2.png" alt="">
+			<img data-parallax='{"x": 50}' src="assets/img/breadcrumb/book-right2.png" alt="" />
 		</div>
 		<div class="container">
 			<h2 class="title wow fadeInUp" data-wow-delay="0.2s">Sách</h2>
@@ -45,7 +45,7 @@
 					<div class="shop_sidebar">
 						<div class="widget filter_widget">
 							<h3 class="shop_sidebar_title">
-								<a href="#"><img src="assets/img/shop/filter.svg" alt=""></a>Bộ lọc
+								<a href="#"><img src="assets/img/shop/filter.svg" alt="" /></a>Bộ lọc
 							</h3>
 						</div>
 						<div class="widget shop_category_widget">
@@ -80,11 +80,11 @@
 				</div>
 				<div class="col-lg-9">
 					<form role="search" method="get" class="pr_search_form input-group" th:action="@{/sach}">
-						<input type="hidden" name="maTheLoai" th:value="${maTheLoai}">
-						<input type="hidden" name="maTacGia" th:value="${maTacGia}">
-						<input type="hidden" name="sapXepTheo" th:value="${sapXepTheo}">
+						<input type="hidden" name="maTheLoai" th:value="${maTheLoai}" />
+						<input type="hidden" name="maTacGia" th:value="${maTacGia}" />
+						<input type="hidden" name="sapXepTheo" th:value="${sapXepTheo}" />
 						<input type="text" name="tuKhoa" class="form-control search-field" id="search"
-							placeholder="Tìm sách..." th:value="${tuKhoa}">
+							placeholder="Tìm sách..." th:value="${tuKhoa}" />
 						<button type="submit">
 							<i class="ti-search"></i>
 						</button>
@@ -117,7 +117,7 @@
 							<div class="best_product_item best_product_item_two shop_product">
 								<div class="img">
 									<a th:href="@{/sach/{id}(id = ${sach.maSach})}"><img th:src="${sach.anhBia}"
-											th:alt="${sach.tenSach}"></a>
+											th:alt="${sach.tenSach}" /></a>
 									<div class="pr_ribbon">
 										<span class="product-badge" th:if="${sach.isMoi()}">Sách
 											mới</span>
@@ -126,7 +126,7 @@
 									</div>
 									<div class="hover_item">
 										<form th:action="@{/yeuthich}" method="post">
-											<input type="hidden" name="idSach" th:value="${sach.maSach}">
+											<input type="hidden" name="idSach" th:value="${sach.maSach}" />
 											<button class="quick_button" data-bs-toggle="tooltip"
 												data-bs-placement="right" title="Yêu thích"><i class="icon_heart_alt"
 													th:style="${sach.daThich ? 'color: red' : ''}"></i></button>

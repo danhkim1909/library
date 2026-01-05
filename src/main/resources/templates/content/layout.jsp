@@ -3,20 +3,20 @@
 
 <head>
 	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="shortcut icon" th:href="@{/assets/img/favicon.png}">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="shortcut icon" th:href="@{/assets/img/favicon.png}" />
 	<!-- Bootstrap CSS -->
-	<link th:href="@{/assets/vendors/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
-	<link th:href="@{/assets/vendors/elagent-icon/style.css}" rel="stylesheet">
-	<link th:href="@{/assets/vendors/icomoon/style.css}" rel="stylesheet">
-	<link th:href="@{/assets/vendors/themify-icon/themify-icons.css}" rel="stylesheet">
-	<link th:href="@{/assets/vendors/font-awesome/css/all.min.css}" rel="stylesheet">
-	<link th:href="@{/assets/vendors/animation/animate.css}" rel="stylesheet">
+	<link th:href="@{/assets/vendors/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+	<link th:href="@{/assets/vendors/elagent-icon/style.css}" rel="stylesheet" />
+	<link th:href="@{/assets/vendors/icomoon/style.css}" rel="stylesheet" />
+	<link th:href="@{/assets/vendors/themify-icon/themify-icons.css}" rel="stylesheet" />
+	<link th:href="@{/assets/vendors/font-awesome/css/all.min.css}" rel="stylesheet" />
+	<link th:href="@{/assets/vendors/animation/animate.css}" rel="stylesheet" />
 	<link th:href="@{/assets/vendors/izitoast/css/iziToast.min.css}" rel="stylesheet" />
-	<link th:href="@{/assets/vendors/nice-select/css/nice-select.css}" rel="stylesheet">
-	<link th:href="@{/assets/css/style.css}" rel="stylesheet">
-	<link th:href="@{/assets/css/responsive.css}" rel="stylesheet">
+	<link th:href="@{/assets/vendors/nice-select/css/nice-select.css}" rel="stylesheet" />
+	<link th:href="@{/assets/css/style.css}" rel="stylesheet" />
+	<link th:href="@{/assets/css/responsive.css}" rel="stylesheet" />
 
 	<title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Bookjar</title>
 </head>
@@ -27,7 +27,7 @@
 			<div class="round_spinner">
 				<div class="spinner"></div>
 				<div class="text">
-					<img th:src="@{/assets/img/favicon.png}" alt="Image">
+					<img th:src="@{/assets/img/favicon.png}" alt="Image" />
 					<h4>
 						<span>Bookjar</span>
 					</h4>
@@ -61,10 +61,10 @@
 					<div class="bj_book_single">
 						<div class="bj_book_img flip">
 							<div class="front">
-								<img class="img-fluid" src="assets/img/book-single1.jpg" alt="">
+								<img class="img-fluid" src="assets/img/book-single1.jpg" alt="" />
 							</div>
 							<div class="back">
-								<img class="img-fluid" src="assets/img/book-single.jpg" alt="">
+								<img class="img-fluid" src="assets/img/book-single.jpg" alt="" />
 							</div>
 							<div class="pr_ribbon">
 								<span class="product-badge">New</span>
@@ -102,7 +102,7 @@
 										<button class="quantity_btn minus">
 											<i class="icon_minus-06"></i>
 										</button>
-										<input type="number" min="1" max="99" step="1" value="1">
+										<input type="number" min="1" max="99" step="1" value="1" />
 										<button class="quantity_btn plus">
 											<i class="icon_plus"></i>
 										</button>
@@ -111,16 +111,16 @@
 
 								<div class="single_product_price_variation mb-3">
 									<label class="variation_single"> <input class="variation_single_input"
-											name="variation_single" type="radio" checked> <span class="price-details">
+											name="variation_single" type="radio" checked /> <span class="price-details">
 											<span class="price-type">Handcover</span> <span
 												class="price-cost">$10</span>
 										</span>
 									</label> <label class="variation_single"> <input class="variation_single_input"
-											name="variation_single" type="radio"> <span class="price-details"> <span
+											name="variation_single" type="radio" /> <span class="price-details"> <span
 												class="price-type">eBook</span> <span class="price-cost">$20</span>
 										</span>
 									</label> <label class="variation_single"> <input class="variation_single_input"
-											name="variation_single" type="radio"> <span class="price-details"> <span
+											name="variation_single" type="radio" /> <span class="price-details"> <span
 												class="price-type">Print</span> <span class="price-cost">$30</span>
 										</span>
 									</label>
@@ -145,7 +145,7 @@
 			<nav class="navbar navbar-expand-lg menu_one" id="header">
 				<div class="container">
 					<a class="navbar-brand" th:href="@{/}"><img th:src="@{/assets/img/home-two/logo-dark.svg}"
-							alt="logo"></a>
+							alt="logo" /></a>
 					<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
 						data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 						aria-expanded="false" aria-label="Toggle navigation">
@@ -321,7 +321,7 @@
 											class="ti-search"></i></a>
 									<form action="#" method="get" class="menu-search-form">
 										<div class="input-group">
-											<input type="search" class="form-control" placeholder="Search here..">
+											<input type="search" class="form-control" placeholder="Search here.." />
 											<button type="submit">
 												<i class="ti-arrow-right"></i>
 											</button>
@@ -359,13 +359,13 @@
 					<div class="row">
 						<div class="col-lg-3 col-sm-6">
 							<div class="f_widget f_widget_dark link_widget">
-								<a href="#" class="f_logo"> <img src="assets/img/home-two/logo-dark.svg" alt="f_logo">
+								<a href="#" class="f_logo"> <img src="assets/img/home-two/logo-dark.svg" alt="f_logo" />
 								</a>
 								<div class="footer_subscribes">
 									<h2 class="f_widget_title dark">Subscribe Now</h2>
 									<form action="#">
 										<div class="footer_subscribe_form">
-											<input type="text" placeholder="Enter your Email" class="form-control">
+											<input type="text" placeholder="Enter your Email" class="form-control" />
 											<button type="submit" class="bj_theme_btn">Subscribe</button>
 										</div>
 									</form>
@@ -484,7 +484,7 @@
 
 	<th:block layout:fragment="scripts"></th:block>
 
-	<link th:href="@{/assets/css/chatbot.css}" rel="stylesheet">
+	<link th:href="@{/assets/css/chatbot.css}" rel="stylesheet" />
 
 	<button id="chat-widget-btn" onclick="batTatChat()"><i class="fa fa-commenting"></i></button>
 
@@ -497,7 +497,7 @@
 			<div class="message bot">Xin chào! Tôi có thể giúp gì cho bạn?</div>
 		</div>
 		<div class="input-area">
-			<input type="text" id="msg-input" placeholder="Nhập tin nhắn..." onkeypress="xuLyEnter(event)">
+			<input type="text" id="msg-input" placeholder="Nhập tin nhắn..." onkeypress="xuLyEnter(event)" />
 			<button id="send-btn" onclick="guiTinNhan()">Gửi</button>
 		</div>
 	</div>

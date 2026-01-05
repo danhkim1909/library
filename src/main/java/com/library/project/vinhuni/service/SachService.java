@@ -156,15 +156,22 @@ public class SachService {
 		}
 
 		for (Sach sach : saches) {
+			if (docGia == null) {
+				sach.setDaThich(false);
+				continue;
+			}
+
 			boolean check = false;
-			for (YeuThich yeuThich : sach.getYeuThichs()) {
-				if (docGia != null) {
-					if (yeuThich.getDocGia().getMaDocGia() == docGia.getMaDocGia()) {
-						check = true;
-						break;
+			if (sach.getYeuThichs() != null) {
+				for (YeuThich yeuThich : sach.getYeuThichs()) {
+					if (docGia != null) {
+						if (yeuThich.getDocGia().getMaDocGia() == docGia.getMaDocGia()) {
+							check = true;
+							break;
+						}
+					} else {
+						check = false;
 					}
-				} else {
-					check = false;
 				}
 			}
 			sach.setDaThich(check);

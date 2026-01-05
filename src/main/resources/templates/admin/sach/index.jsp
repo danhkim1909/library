@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html layout:decorate="~{admin/layout}"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+<html layout:decorate="~{admin/layout}" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>Quản lý sách</title>
+	<meta charset="UTF-8">
+	<title>Quản lý sách</title>
 </head>
+
 <body>
 	<section class="section" layout:fragment="content">
 		<div class="section-body">
@@ -16,8 +17,8 @@
 							<h4>Sách</h4>
 						</div>
 						<div class="card-body">
-							<a class="section-title mt-0 btn btn-outline-success"
-								th:href="@{/admin/sach/create}">Thêm sách mới</a>
+							<a class="section-title mt-0 btn btn-outline-success" th:href="@{/admin/sach/create}">Thêm
+								sách mới</a>
 							<table class="table table-hover table-bordered">
 								<thead>
 									<tr>
@@ -35,16 +36,14 @@
 									<tr th:each="sach,i : ${sachs}" class="">
 										<th scope="row" th:text="${i.count}">STT</th>
 
-										<td><img th:if="${sach.anhBia != null}"
-											th:src="@{${sach.anhBia}}" alt="Ảnh bìa"
-											style="width: 60px; height: auto; object-fit: cover;">
+										<td><img th:if="${sach.anhBia != null}" th:src="@{${sach.anhBia}}" alt="Ảnh bìa"
+												style="width: 60px; height: auto; object-fit: cover;">
 										</td>
 
 										<td th:text="${sach.tenSach}">Tên sách mẫu</td>
 
 										<td>
-											<div th:each="tl : ${sach.theLoais}"
-												th:text="${tl.tenTheLoai}"></div>
+											<div th:each="tl : ${sach.theLoais}" th:text="${tl.tenTheLoai}"></div>
 										</td>
 
 
@@ -58,13 +57,13 @@
 										<td th:text="${sach.getSoLuong()}">10</td>
 
 										<td class="d-flex align-items-center gap-2"><a
-											th:href="@{/admin/sach/update/{id}(id=${sach.maSach})}"
-											class="btn btn-outline-info btn-sm">Sửa</a> <a
-											th:href="@{/admin/sach/show/{id}(id=${sach.maSach})}"
-											th:class="${sach.hien ? 'btn btn-outline-warning btn-sm' : 'btn btn-outline-danger btn-sm'}">
+												th:href="@{/admin/sach/update/{id}(id=${sach.maSach})}"
+												class="btn btn-outline-info btn-sm">Sửa</a> <a
+												th:href="@{/admin/sach/show/{id}(id=${sach.maSach})}"
+												th:class="${sach.hien ? 'btn btn-outline-warning btn-sm' : 'btn btn-outline-danger btn-sm'}">
 												<i th:class="${sach.hien ? 'fa fa-eye' : 'fa fa-eye-slash'}"></i>
 												<span th:text="${sach.hien ? 'Đang hiện' : 'Đã ẩn'}"></span>
-										</a></td>
+											</a></td>
 									</tr>
 								</tbody>
 							</table>
@@ -75,4 +74,5 @@
 		</div>
 	</section>
 </body>
+
 </html>
