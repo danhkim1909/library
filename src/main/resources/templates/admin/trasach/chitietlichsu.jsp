@@ -64,7 +64,7 @@
                                         <label class="col-sm-3 col-form-label font-weight-bold">Tiền phạt:</label>
                                         <div class="col-sm-9">
                                             <p class="form-control-static"
-                                                th:text="${traSach.tienPhat != null ? #numbers.formatInteger(traSach.tienPhat, 3, 'POINT') + ' VNĐ' : 'Không có'}">
+                                                th:text="${#numbers.formatInteger(traSach.tienPhat, 1, 'POINT') + '.000 VNĐ'}">
                                             </p>
                                         </div>
                                     </div>
