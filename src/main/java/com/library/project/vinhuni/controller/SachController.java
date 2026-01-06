@@ -60,7 +60,7 @@ public class SachController {
 		this.muonSachService = muonSachService;
 	}
 
-	final Integer DUNGTICHTRANG = 12;
+	final Integer DUNGTICHTRANG = 1;
 
 	@GetMapping("/sach")
 	public String index(@RequestParam(defaultValue = "") String tuKhoa, @RequestParam(defaultValue = "1") Integer trang,

@@ -53,7 +53,7 @@ public class QuanLyBaiVietController {
 
     @GetMapping("/create")
     public String create(Model model) {
-        List<DanhMucBaiViet> danhMucBaiViets = danhMucBaiVietService.findByHienTrueAndOrderByThuTu();
+        List<DanhMucBaiViet> danhMucBaiViets = danhMucBaiVietService.findByHienTrueOrderByThuTuAsc();
         model.addAttribute("danhMucBaiViets", danhMucBaiViets);
 
         BaiVietDto baiVietDto = new BaiVietDto();
@@ -71,7 +71,7 @@ public class QuanLyBaiVietController {
         }
 
         if (result.hasErrors()) {
-            List<DanhMucBaiViet> danhMucBaiViets = danhMucBaiVietService.findByHienTrueAndOrderByThuTu();
+            List<DanhMucBaiViet> danhMucBaiViets = danhMucBaiVietService.findByHienTrueOrderByThuTuAsc();
             model.addAttribute("danhMucBaiViets", danhMucBaiViets);
             return "admin/baiviet/create";
         }
@@ -84,7 +84,7 @@ public class QuanLyBaiVietController {
 
     @GetMapping("/update/{id}")
     public String update(@PathVariable("id") Long maBaiViet, Model model, RedirectAttributes redirectAttributes) {
-        List<DanhMucBaiViet> danhMucBaiViets = danhMucBaiVietService.findByHienTrueAndOrderByThuTu();
+        List<DanhMucBaiViet> danhMucBaiViets = danhMucBaiVietService.findByHienTrueOrderByThuTuAsc();
         model.addAttribute("danhMucBaiViets", danhMucBaiViets);
 
         BaiViet baiViet = baiVietService.findByMaBaiViet(maBaiViet);
@@ -104,7 +104,7 @@ public class QuanLyBaiVietController {
             throws IOException {
 
         if (result.hasErrors()) {
-            List<DanhMucBaiViet> danhMucBaiViets = danhMucBaiVietService.findByHienTrueAndOrderByThuTu();
+            List<DanhMucBaiViet> danhMucBaiViets = danhMucBaiVietService.findByHienTrueOrderByThuTuAsc();
             model.addAttribute("danhMucBaiViets", danhMucBaiViets);
             return "admin/baiviet/update";
         }

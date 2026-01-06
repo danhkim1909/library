@@ -29,7 +29,7 @@ public class QuanLyDanhMucBaiVietController {
 
     @GetMapping
     public String index(Model model) {
-        List<DanhMucBaiViet> danhMucBaiViets = danhMucBaiVietService.findAllOrderByThuTu();
+        List<DanhMucBaiViet> danhMucBaiViets = danhMucBaiVietService.findAllOrderByThuTuAsc();
         model.addAttribute("danhMucBaiViets", danhMucBaiViets);
         return "admin/danhmucbaiviet/index";
     }

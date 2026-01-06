@@ -14,11 +14,11 @@ public class DanhMucBaiVietService {
     @Autowired
     private DanhMucBaiVietRepository danhMucBaiVietRepository;
 
-    public List<DanhMucBaiViet> findByHienTrueAndOrderByThuTu() {
+    public List<DanhMucBaiViet> findByHienTrueOrderByThuTuAsc() {
         return danhMucBaiVietRepository.findByHienTrueOrderByThuTuAsc();
     }
 
-    public List<DanhMucBaiViet> findAllOrderByThuTu() {
+    public List<DanhMucBaiViet> findAllOrderByThuTuAsc() {
         return danhMucBaiVietRepository.findAllByOrderByThuTuAsc();
     }
 

@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -80,6 +81,19 @@ public class BaiVietService {
     public void show(BaiViet baiViet) {
         baiViet.setHien(!baiViet.getHien());
         baiVietRepository.save(baiViet);
+    }
+
+    public Page<BaiViet> index(Integer trang, Integer dungTichTrang, String tuKhoa, Integer maDanhMuc) {
+        Pageable pageable = PageRequest.of(trang - 1, dungTichTrang);
+        if (!tuKhoa.isBlank() && maDanhMuc > 0) {
+            return baiVietRepository.findByDanhMucAndKeyword(maDanhMuc, tuKhoa, pageable);
+        } else if (!tuKhoa.isBlank() && maDanhMuc == 0) {
+            return baiVietRepository.findByKeyword(tuKhoa, pageable);
+        } else if (tuKhoa.isBlank() && maDanhMuc > 0) {
+            return baiVietRepository.findByDanhMuc(maDanhMuc, pageable);
+        } else {
+            return baiVietRepository.findAllByOrderByNgayTaoDesc(pageable);
+        }
     }
 
 }

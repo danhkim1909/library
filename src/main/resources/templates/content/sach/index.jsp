@@ -2,7 +2,7 @@
 <html layout:decorate="~{content/layout}">
 
 <head>
-	<title>Quản lý sách</title>
+	<title>Sách</title>
 </head>
 
 <body layout:fragment="content">
@@ -152,7 +152,7 @@
 							</div>
 						</div>
 					</div>
-					<!-- <div class="text-center" th:if="${truyVan.totalPages > 1}">
+					<div class="text-center" th:if="${truyVan.totalPages > 1}">
 						<nav aria-label="...">
 							<ul class="pagination pagi-content">
 								<li th:if="${!truyVan.isFirst()}" class="page-item">
@@ -172,7 +172,7 @@
 								</li>
 							</ul>
 						</nav>
-					</div> -->
+					</div>
 				</div>
 			</div>
 		</div>
