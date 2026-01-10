@@ -39,7 +39,7 @@ public class TaiKhoan implements UserDetails {
 	@Column(name = "MatKhau", length = 255, nullable = false)
 	private String matKhau;
 
-	@Column(name = "Email", length = 100, nullable = false)
+	@Column(name = "Email", length = 100, nullable = true)
 	private String email;
 
 	@Column(name = "LoaiTaiKhoan", length = 20)

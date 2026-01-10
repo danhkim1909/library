@@ -3,8 +3,8 @@ package com.library.project.vinhuni.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,30 +19,29 @@ import com.library.project.vinhuni.service.DanhMucBaiVietService;
 @RequestMapping("/baiviet")
 public class BaiVietController {
 
-    final Integer DUNGTICHTRANG = 1;
+	final Integer DUNGTICHTRANG = 1;
 
-    @Autowired
-    BaiVietService baiVietService;
+	@Autowired
+	BaiVietService baiVietService;
 
-    @Autowired
-    DanhMucBaiVietService danhMucBaiVietService;
+	@Autowired
+	DanhMucBaiVietService danhMucBaiVietService;
 
-    @GetMapping
-    public String index(Model model, @RequestParam(name = "page", defaultValue = "1") Integer trang,
-            @RequestParam(name = "category", defaultValue = "0") Integer danhMucId,
-            @RequestParam(name = "keyword", defaultValue = "") String tuKhoa) {
+	@GetMapping
+	public String index(Model model, @RequestParam(name = "page", defaultValue = "1") Integer trang,
+			@RequestParam(name = "category", defaultValue = "0") Integer danhMucId,
+			@RequestParam(name = "keyword", defaultValue = "") String tuKhoa) {
 
-        List<DanhMucBaiViet> danhMucBaiViets = danhMucBaiVietService.findByHienTrueOrderByThuTuAsc();
+		List<DanhMucBaiViet> danhMucBaiViets = danhMucBaiVietService.findByHienTrueOrderByThuTuAsc();
 
-        Page<BaiViet> baiViets = baiVietService.index(trang, DUNGTICHTRANG, tuKhoa,
-                danhMucId);
+		Page<BaiViet> baiViets = baiVietService.index(trang, DUNGTICHTRANG, tuKhoa, danhMucId);
 
-        model.addAttribute("danhMucBaiViets", danhMucBaiViets);
-        model.addAttribute("truyVan", baiViets);
+		model.addAttribute("danhMucBaiViets", danhMucBaiViets);
+		model.addAttribute("truyVan", baiViets);
 
-        model.addAttribute("category", danhMucId);
-        model.addAttribute("keyword", tuKhoa);
+		model.addAttribute("category", danhMucId);
+		model.addAttribute("keyword", tuKhoa);
 
-        return "content/baiviet/index";
-    }
+		return "content/baiviet/index";
+	}
 }

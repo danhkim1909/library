@@ -25,9 +25,6 @@ import com.library.project.vinhuni.service.TacGiaService;
 import com.library.project.vinhuni.service.TaiKhoanService;
 import com.library.project.vinhuni.service.TheLoaiService;
 import com.library.project.vinhuni.service.YeuThichService;
-import com.library.project.vinhuni.entity.YeuThich;
-import java.util.Set;
-import java.util.HashSet;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -60,7 +57,7 @@ public class SachController {
 		this.muonSachService = muonSachService;
 	}
 
-	final Integer DUNGTICHTRANG = 1;
+	final Integer DUNGTICHTRANG = 8;
 
 	@GetMapping("/sach")
 	public String index(@RequestParam(defaultValue = "") String tuKhoa, @RequestParam(defaultValue = "1") Integer trang,
