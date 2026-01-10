@@ -109,18 +109,21 @@
 															Oct 2024</td>
 														<td>
 															<div class="text-success"
-																th:if="${muonSach.traSach.tienPhat == 0}">Đã trả</div>
+																th:if="${muonSach.traSach?.tienPhat == 0}">Đã trả</div>
 															<div class="text-danger"
-																th:if="${muonSach.traSach.tienPhat != 0 && muonSach.traSach.daNopPhat == false}">
+																th:if="${muonSach.traSach?.tienPhat != 0 && muonSach.traSach?.daNopPhat == false}">
 																Đã trả, chờ
 																nộp phạt</div>
 															<div class="text-success"
-																th:if="${muonSach.traSach.tienPhat != 0 && muonSach.traSach.daNopPhat == true}">
+																th:if="${muonSach.traSach?.tienPhat != 0 && muonSach.traSach?.daNopPhat == true}">
 																Đã trả, đã nộp phạt</div>
+															<div class="text-danger"
+																th:if="${muonSach.traSach == null}">
+																Đã hủy</div>
 
 														</td>
 														<td>
-															<a class="btn btn-info"
+															<a th:if="${muonSach.traSach != null}" class="btn btn-info"
 																th:href="@{/trasach/chitiet/{id}(id=${muonSach.traSach.maTraSach})}"><i
 																	class="fa fa-eye"></i>
 																Xem</a>

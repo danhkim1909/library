@@ -50,13 +50,13 @@
                                 </div>
                             </div>
 
-                            <form method="POST" th:action="@{/admin/trasach/{id}(id=${muonSach.maMuonSach})}"
+                            <form method="POST" th:action="@{/admin/trasach/{id}(id=${muonSach.maMuonSach})}" novalidate
                                 id="upload-form" th:object="${xacNhanTraSachDto}">
 
                                 <input type="hidden" name="anh" id="input-image-base64" required>
                                 <div class="form-group">
                                     <label>Tiền phạt</label>
-                                    <input type="number" name="tienPhat"
+                                    <input type="number" th:field="*{tienPhat}"
                                         placeholder="Đơn vị: nghìn VNĐ (Ví dụ, bạn nhập 12, hệ thống ghi nợ 12.000 VNĐ)"
                                         class="form-control">
                                 </div>
@@ -64,7 +64,7 @@
                                     th:errors="*{tienPhat}"></div>
                                 <div class="form-group">
                                     <label>Lý do phạt</label>
-                                    <input type="text" name="lyDoPhat" class="form-control">
+                                    <input type="text" th:field="*{lyDoPhat}" class="form-control">
                                 </div>
                                 <div th:if="${#fields.hasErrors('lyDoPhat')}" class="text-danger"
                                     th:errors="*{lyDoPhat}"></div>
