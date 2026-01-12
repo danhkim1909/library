@@ -631,7 +631,7 @@
 										style="width: 100%;"></a> <a href="#" class="blog_category"
 									th:text="${baiViet.danhMucBaiViet.tenDanhMuc}"></a>
 							</div>
-							<a th:href="@{/blog-details}">
+							<a th:href="@{/baiviet/{id}(id=${baiViet.maBaiViet})}">
 								<h3 class="blog_title" th:text="${baiViet.tenBaiViet}"></h3>
 							</a>
 							<div class="blog_meta">
