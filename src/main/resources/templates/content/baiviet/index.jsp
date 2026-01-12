@@ -32,7 +32,7 @@
                 data-parallax='{"x": 50}' src="assets/img/breadcrumb/book-right2.png" alt="">
         </div>
         <div class="container">
-            <h2 class="title wow fadeInUp" data-wow-delay="0.2s">Blog List</h2>
+            <h2 class="title wow fadeInUp" data-wow-delay="0.2s">Bài viết</h2>
             <ol class="breadcrumb justify-content-center wow fadeInUp" data-wow-delay="0.3s">
                 <li><a href="/">Trang chủ</a></li>
                 <li class="active">Bài viết</li>
@@ -53,7 +53,7 @@
                                 <p class="blog-text dot-sep"><i class="icon_tag_alt"></i><span
                                         th:text="${baiViet.danhMucBaiViet.tenDanhMuc}"></span>
                                 </p>
-                                <a href="blog-details.html" class="title">
+                                <a th:href="@{/baiviet/{id}(id = ${baiViet.maBaiViet})}" class="title">
                                     <h4 th:text="${baiViet.tenBaiViet}"></h4>
                                 </a>
                                 <div class="blog-sub-text">
